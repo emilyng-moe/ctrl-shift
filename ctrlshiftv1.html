@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ctrl+shift | Issue 01 · August 2026</title>
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --navy:   #0D1B3E;
+      --navy2:  #162347;
+      --lime:   #AADC32;
+      --lime2:  #C5E85A;
+      --white:  #FFFFFF;
+      --offwhite: #F5F7FA;
+      --muted:  #8A96A8;
+      --border: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.04);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: var(--lime); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 3px; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--lime);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 10px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 60px 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── TOP BAR ────────────────────────────────────────── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,27,62,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .topbar-logo:hover { text-decoration: none; }
+    .logo-mark { width: 28px; height: 28px; }
+    .logo-mark svg { width: 100%; height: 100%; }
+    .logo-wordmark {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .logo-wordmark span { color: var(--lime); }
+    .topbar-issue {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .topbar-nav {
+      display: flex;
+      gap: 2px;
+      list-style: none;
+      flex-wrap: nowrap;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .topbar-nav a {
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: color var(--transition), background var(--transition);
+      padding: 5px 10px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .topbar-nav a:hover {
+      color: var(--lime);
+      background: rgba(170,220,50,0.08);
+      text-decoration: none;
+    }
+    .topbar-nav a.active {
+      color: var(--lime);
+      background: rgba(170,220,50,0.1);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(170,220,50,0.12) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(170,220,50,0.07) 0%, transparent 70%);
+      bottom: -100px;
+      left: -100px;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      position: relative;
+    }
+    .live-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--lime);
+      animation: pulse-ring 1.8s ease-out infinite;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .hero-title .accent { color: var(--lime); }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 auto 40px;
+      max-width: 520px;
+    }
+    .hero-intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 780px;
+      color: rgba(255,255,255,0.85);
+      margin: 0 auto 48px;
+    }
+    .hero-intro strong { color: var(--lime); }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary { background: var(--lime); color: var(--navy); }
+    .btn-primary:hover {
+      background: var(--lime2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(170,220,50,0.3);
+      text-decoration: none;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--lime);
+      color: var(--lime);
+      text-decoration: none;
+    }
+
+    /* ─── SECTIONS ───────────────────────────────────────── */
+    .section { padding: 72px 0; }
+    .section-header { margin-bottom: 40px; }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .section-desc { color: var(--muted); margin-top: 10px; font-size: 0.95rem; }
+
+    /* ─── CARD ───────────────────────────────────────────── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .card:hover {
+      border-color: rgba(170,220,50,0.3);
+      transform: translateY(-3px);
+    }
+
+    /* ─── FREQUENCY ──────────────────────────────────────── */
+    .news-grid { display: grid; gap: 20px; }
+    .news-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .news-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--lime);
+      opacity: 0.25;
+      line-height: 1;
+      min-width: 36px;
+    }
+    .news-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .news-summary {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .news-full {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-top: 0;
+      transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1),
+                  opacity 0.35s ease,
+                  margin-top 0.35s ease;
+    }
+    .news-full.open {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 8px;
+    }
+    .read-toggle {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--lime);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font);
+    }
+    .read-toggle:hover { text-decoration: underline; }
+
+    /* ─── LAUNCHPAD ──────────────────────────────────────── */
+    .events-list { display: grid; gap: 16px; }
+    .event-card {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .event-card:hover {
+      border-color: rgba(170,220,50,0.4);
+      transform: translateY(-3px);
+      text-decoration: none;
+      color: inherit;
+    }
+    .event-date-box {
+      background: rgba(170,220,50,0.1);
+      border: 1px solid rgba(170,220,50,0.2);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+    .event-date-box .day { font-size: 1.5rem; font-weight: 900; color: var(--lime); line-height: 1; }
+    .event-date-box .month {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .event-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .event-info p { font-size: 0.82rem; color: var(--muted); }
+    .event-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .badge-open { background: rgba(170,220,50,0.15); color: var(--lime); }
+    .badge-soon { background: rgba(255,200,50,0.15); color: #FFC832; }
+    .badge-tbc  { background: rgba(170,170,170,0.15); color: #AAAAAA; }
+
+    /* ─── THINK TANK ─────────────────────────────────────── */
+    .spotlight-card {
+      background: linear-gradient(135deg, rgba(170,220,50,0.08) 0%, rgba(13,27,62,0) 60%);
+      border: 1px solid rgba(170,220,50,0.2);
+      border-radius: var(--radius);
+      padding: 36px;
+    }
+    .spotlight-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 16px;
+    }
+    .spotlight-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3; }
+    .case-steps { display: grid; gap: 16px; margin: 24px 0; }
+    .case-step { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+    .step-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(170,220,50,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; flex-shrink: 0;
+    }
+    .case-step h4 { font-size: 0.82rem; font-weight: 700; color: var(--lime); margin-bottom: 3px; }
+    .case-step p { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+    .try-box {
+      background: rgba(170,220,50,0.06);
+      border-left: 3px solid var(--lime);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin-top: 24px;
+    }
+    .try-box .try-label { font-size: 0.72rem; font-weight: 700; color: var(--lime); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .try-box p { font-size: 0.88rem; color: rgba(255,255,255,0.8); font-style: italic; }
+
+    /* ─── WORKBENCH ──────────────────────────────────────── */
+    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .tool-main { grid-column: 1 / -1; }
+    .tool-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .tool-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(170,220,50,0.12);
+      border: 1px solid rgba(170,220,50,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .tool-name { font-size: 1.1rem; font-weight: 800; }
+    .tool-desc { font-size: 0.82rem; color: var(--muted); }
+    .feature-list { list-style: none; display: grid; gap: 10px; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: rgba(255,255,255,0.75);
+    }
+    .feature-list li::before { content: '→'; color: var(--lime); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .tip-card {
+      background: rgba(170,220,50,0.06);
+      border: 1px solid rgba(170,220,50,0.15);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+    .tip-card .tip-label { font-size: 0.7rem; font-weight: 700; color: var(--lime); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .tip-card p { font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+    .prompt-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: var(--lime);
+      margin-top: 10px;
+    }
+    .prompt-box::before { content: '> '; opacity: 0.5; }
+    .cursor {
+      display: inline-block; width: 8px; height: 14px;
+      background: var(--lime); margin-left: 2px; vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    /* ─── IN THE FIELD ───────────────────────────────────── */
+    .story-card { }
+    .story-quote {
+      font-size: 1.1rem; font-style: italic; line-height: 1.7;
+      color: rgba(255,255,255,0.9); margin-bottom: 24px;
+      padding-left: 20px; border-left: 3px solid var(--lime);
+    }
+    .story-body {
+      font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .story-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(170,220,50,0.15);
+      border: 2px solid rgba(170,220,50,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .author-name { font-size: 0.9rem; font-weight: 700; }
+    .author-role { font-size: 0.78rem; color: var(--muted); }
+    .story-tag { display: inline-block; margin-bottom: 20px; }
+
+    /* ─── POLL ───────────────────────────────────────────── */
+    .poll-card {
+      background: linear-gradient(135deg, rgba(170,220,50,0.06) 0%, rgba(13,27,62,0) 60%);
+      border: 1px solid rgba(170,220,50,0.15);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+    }
+    .poll-question { font-size: 1.15rem; font-weight: 700; margin-bottom: 24px; }
+    .poll-options { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .poll-option {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--white);
+    }
+    .poll-option:hover {
+      border-color: var(--lime);
+      color: var(--lime);
+      background: rgba(170,220,50,0.08);
+    }
+    .poll-note { font-size: 0.78rem; color: var(--muted); margin-top: 20px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; text-align: center; }
+    .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--lime); }
+    .footer-tagline { font-size: 0.85rem; color: var(--muted); margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; list-style: none; margin-bottom: 32px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--lime); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .topbar-nav { display: none; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .tool-main { grid-column: 1; }
+      .event-card { grid-template-columns: 60px 1fr; }
+      .event-badge { display: none; }
+    }
+  
+    /* Glow pulse animation */
+    @keyframes glow-pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.12); opacity: 0.7; }
+    }
+    @keyframes glow-pulse-2 {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.18); opacity: 0.6; }
+    }
+    .hero-glow {
+      animation: glow-pulse 6s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      animation: glow-pulse-2 8s ease-in-out infinite;
+    }
+
+    /* Typewriter cursor on subtitle */
+    .hero-subtitle::after {
+      content: '|';
+      color: var(--lime);
+      font-weight: 300;
+      margin-left: 2px;
+      animation: blink-cursor 1.1s step-end infinite;
+    }
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+  
+/* ── Editorial scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Staggered Frequency news items ── */
+.freq-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1),
+              transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.freq-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.freq-item:nth-child(1) { transition-delay: 0s; }
+.freq-item:nth-child(2) { transition-delay: 0.12s; }
+.freq-item:nth-child(3) { transition-delay: 0.24s; }
+.freq-item:nth-child(4) { transition-delay: 0.36s; }
+.freq-item:nth-child(5) { transition-delay: 0.48s; }
+
+/* ── Launchpad event card hover — calendar CTA feel ── */
+.event-card {
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+.event-card::after {
+  content: '📅 Add to calendar';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(170,220,50,0.18) 0%, transparent 100%);
+  color: #aadc32;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 10px 0 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.event-card:hover {
+  transform: translateY(-4px) scale(1.012);
+  box-shadow: 0 8px 32px rgba(170,220,50,0.18), 0 2px 8px rgba(0,0,0,0.3);
+  border-color: rgba(170,220,50,0.45);
+}
+.event-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Poll option micro-interaction ── */
+.poll-option {
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+  position: relative;
+  user-select: none;
+}
+.poll-option.selected {
+  background: rgba(170,220,50,0.18);
+  border-color: #aadc32;
+  transform: scale(1.025);
+}
+.poll-option.selected::before {
+  content: '✓';
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: #aadc32;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: checkPop 0.25s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes checkPop {
+  from { opacity: 0; transform: translateY(-50%) scale(0.4); }
+  to   { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+.poll-option.bounce {
+  animation: pollBounce 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes pollBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.04); }
+  100% { transform: scale(1.025); }
+}
+
+/* ── Read more smooth expand/collapse ── */
+.article-full {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.35s ease;
+}
+.article-full.expanded {
+  max-height: 600px;
+  opacity: 1;
+}
+
+/* ── Hero glow blobs — more noticeable pulse ── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.18); }
+}
+  50%       { opacity: 0.9;  transform: scale(1.18); }
+}
+
+/* ── Hero animated grid shift ── */
+@keyframes gridShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(170,220,50,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170,220,50,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridShift 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar" role="navigation" aria-label="Main navigation">
+  <div class="container topbar-inner">
+    <a href="#top" class="topbar-logo" aria-label="ctrl+shift home">
+      <div class="logo-mark">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="28" height="28" rx="6" fill="#AADC32"/>
+          <text x="4" y="20" font-family="monospace" font-size="13" font-weight="900" fill="#0D1B3E">&gt;_</text>
+        </svg>
+      </div>
+      <div class="logo-wordmark">ctrl<span>+</span>shift</div>
+    </a>
+    <span class="topbar-issue">Issue 01 · Aug 2026</span>
+    <ul class="topbar-nav" role="list">
+      <li><a href="#frequency">📡 Frequency</a></li>
+      <li><a href="#launchpad">🚀 Launchpad</a></li>
+      <li><a href="#think-tank">💡 Think Tank</a></li>
+      <li><a href="#workbench">🛠 Workbench</a></li>
+      <li><a href="#in-the-field">🎙 In the Field</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-eyebrow fade-up">
+      <span class="tag">Issue 01 · August 2026</span>
+    </div>
+    <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
+    <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
+    <p class="hero-intro fade-up delay-3">
+      Welcome to the first issue of <strong>ctrl+shift</strong> — a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
+    </p>
+    <div class="hero-cta fade-up delay-4">
+      <a href="#frequency" class="btn btn-primary">Read this issue ↓</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- FREQUENCY -->
+<section id="frequency" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">📡 Frequency</p>
+      <h2 class="section-title">What's happening in AI</h2>
+      <p class="section-desc">The signal through the noise — curated updates that actually matter for your work.</p>
+    </div>
+    <div class="news-grid">
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">01</div>
+        <div class="news-content">
+          <h3>M365 Copilot Gets Smarter: New Capabilities Now Rolling Out</h3>
+          <p class="news-summary">MOE HQ has been rolling out new M365 Copilot features across Excel, Outlook, and Teams — and a workshop was recently held to help officers get up to speed.</p>
+          <div class="news-full" id="article-1-full">
+            <p>The workshop walked participants through practical Copilot features built into the tools you already use every day — from drafting and summarising in Outlook, to generating insights in Excel, to catching up on missed Teams meetings. Pre-work materials are available on GovTech SharePoint if you want to explore before the next session. Keep an eye out for upcoming workshop dates from MOE HQ.</p>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
+        </div>
+      </article>
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">02</div>
+        <div class="news-content">
+          <h3>The Challenge Is On — Prompt Royale Finals This September</h3>
+          <p class="news-summary">MOE's Prompt Royale competition is well underway, with the finals set for 11 September 2026 at MOE HQ Buona Vista, Level 24 Function Room.</p>
+          <div class="news-full" id="article-2-full">
+            <p>The competition has been running MOE-wide, challenging officers to craft the most effective AI prompts for real work scenarios. The finals on 11 Sep will bring together the top contenders for a live showdown. Whether you're competing or cheering from the sidelines, it's shaping up to be a great showcase of what MOE officers can do with AI. Stay tuned for more details.</p>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
+        </div>
+      </article>
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">03</div>
+        <div class="news-content">
+          <h3>Go All-In on AI: The COP AI First Accelerator Is Coming</h3>
+          <p class="news-summary">A full-day AI immersion event is coming on 24 August 2026 at SEAB Multi-purpose Hall (Level 4), organised by Jeremy CHAN from MOE.</p>
+          <div class="news-full" id="article-3-full">
+            <p>The COP AI First Accelerator is designed to help teams deepen AI-first ways of working, accelerate high-value AI use cases, and foster cross-team collaboration. It's a full-day format — expect hands-on sessions, peer learning, and space to actually work through real challenges with AI. If you're looking to move beyond dabbling and into doing, this is the event for you. Mark 24 Aug in your calendar.</p>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LAUNCHPAD -->
+<section id="launchpad" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🚀 Launchpad</p>
+      <h2 class="section-title">What&#39;s coming up</h2>
+      <p class="section-desc">Click any event to add it to your Outlook calendar.</p>
+    </div>
+    <div class="events-list">
+
+      <a href="https://outlook.office.com/calendar/action/compose?subject=About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work%20(Prompt%20Royale%20Workshop)&startdt=2026-08-31T15:00:00&enddt=2026-08-31T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work.%20Online%20via%20Microsoft%20Teams." target="_blank" rel="noopener" class="card event-card" aria-label="Add About Opus workshop to calendar">
+        <div class="event-date-box">
+          <div class="day">31</div>
+          <div class="month">Aug</div>
+        </div>
+        <div class="event-info">
+          <h3>About Opus: Your AI Productivity Layer for Government Work</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
+        </div>
+        <span class="event-badge badge-open">Open</span>
+      </a>
+
+      <a href="https://outlook.office.com/calendar/action/compose?subject=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer&startdt=2026-09-03T09:00:00&enddt=2026-09-03T17:00:00&body=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer.%20Time%20and%20venue%20to%20be%20confirmed." target="_blank" rel="noopener" class="card event-card" aria-label="Add FPD AI Learning Train-The-Trainer to calendar">
+        <div class="event-date-box">
+          <div class="day">03</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Services Wing: FPD AI Learning Train-The-Trainer</h3>
+          <p>Time &amp; venue TBC</p>
+        </div>
+        <span class="event-badge badge-tbc">TBC</span>
+      </a>
+
+      <a href="https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20(Prompt%20Royale%20Workshop)&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams." target="_blank" rel="noopener" class="card event-card" aria-label="Add AIBots workshop to calendar">
+        <div class="event-date-box">
+          <div class="day">07</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>AIBots: How To Create and Optimise Agents</h3>
+          <p>Online via Teams · Prompt Royale Workshop</p>
+        </div>
+        <span class="event-badge badge-open">Open</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- THINK TANK -->
+<section id="think-tank" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">💡 Think Tank</p>
+      <h2 class="section-title">Ideas worth exploring</h2>
+      <p class="section-desc">A use case, a thought experiment, or a question worth sitting with.</p>
+    </div>
+    <div class="spotlight-card">
+      <p class="spotlight-label">Use Case of the Month</p>
+      <h3 class="spotlight-title">Meeting Prep in Minutes with Copilot Notebook</h3>
+      <p style="font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:16px;">
+        Scattered email threads. Half-read documents. A meeting in 20 minutes. Sound familiar? Here's a 5-step workflow HQ officers are using to turn that chaos into a clean meeting brief — using Copilot Notebook at <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">copilot.microsoft.com</a>.
+      </p>
+      <div class="case-steps">
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">1</div>
+          <div>
+            <h4>Open a new Notebook</h4>
+            <p>Go to copilot.microsoft.com and start a new Notebook. This gives Copilot a persistent workspace — it remembers everything you paste in.</p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">2</div>
+          <div>
+            <h4>Paste in your raw materials</h4>
+            <p>Drop in the relevant email threads, document excerpts, or meeting notes. Don't worry about formatting — just get the context in.</p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">3</div>
+          <div>
+            <h4>Ask for a structured brief</h4>
+            <p>Prompt: <em>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief."</em></p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">4</div>
+          <div>
+            <h4>Identify your role</h4>
+            <p>Follow up with: <em>"Based on the above, what should I be prepared to speak to or decide in this meeting?"</em></p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">5</div>
+          <div>
+            <h4>Walk in ready</h4>
+            <p>You've got a brief, your talking points, and the key context — in under 10 minutes. The Notebook stays open so you can refer back during the meeting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="try-box">
+        <p class="try-label">Try it before your next meeting</p>
+        <p>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief with a section on what I should be prepared to speak to."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WORKBENCH -->
+<section id="workbench" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🛠 Workbench</p>
+      <h2 class="section-title">Tools &amp; tips for this month</h2>
+      <p class="section-desc">Practical things you can try today — no technical background needed.</p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="card tool-main">
+        <div class="tool-header" style="align-items:flex-start; gap:16px; margin-bottom:20px;">
+          <img src="data:image/webp;base64,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" alt="AIAssistant Desk logo" style="width:88px; height:88px; border-radius:16px; flex-shrink:0; object-fit:contain; background:#ffffff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.18);">
+          <div>
+            <div class="tool-name" style="font-size:1.1rem; line-height:1.3;"><a href="https://desk.ai.tech.gov.sg" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; border-bottom:2px solid var(--lime); padding-bottom:1px;">Desk, Your New AI Assistant for Public Service Work</a></div>
+            <div class="tool-desc" style="margin-top:4px;">Tool of the Month · AIAssistant Desk</div>
+          </div>
+        </div>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:20px; line-height:1.6;">
+          AIAssistant Desk has been quietly levelling up. If you haven't logged in recently, here's what's new — and why it's worth another look.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📧</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Outlook integration</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Read your emails, draft replies, summarise threads, and flag what needs action — without leaving Desk.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📅</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Calendar access</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Ask what's on your schedule, find a free slot, or prep for an upcoming meeting.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📄</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">File reading</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Upload a PDF, Word doc, or spreadsheet and ask questions about it directly.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">🌐</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Web search</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Get up-to-date information without switching tabs or leaving your workflow.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">🧠</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Memory across sessions</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Desk remembers your preferences and context, so you don't have to repeat yourself every time.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📊</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Data analysis &amp; charts</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Paste in data or upload a file and ask Desk to analyse it, spot trends, or generate a chart.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card tip-card">
+        <p class="tip-label">⚡ Quick Tip</p>
+        <p>Use Desk to prep before you write. Paste in your raw notes — bullet points, half-formed thoughts, email snippets — and ask: <em>"What are the key points here?"</em> Let it do the retrieval work so your brain can focus on the actual thinking.</p>
+      </div>
+
+      <div class="card tip-card">
+        <p class="tip-label">🎯 Prompt of the Month</p>
+        <p style="margin-bottom:10px; font-size:0.82rem; color:var(--muted);">Pressure-Test My Position</p>
+        <div class="prompt-box">
+          Here is my current recommendation / draft position on [topic]: [paste draft]. Play devil's advocate — what are the strongest objections a sceptical stakeholder might raise? What have I not accounted for? What would make this argument more robust?<span class="cursor" aria-hidden="true"></span>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- IN THE FIELD -->
+<section id="in-the-field" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🎙 In the Field</p>
+      <h2 class="section-title">Stories from MOE officers</h2>
+      <p class="section-desc">Real people, real experiments, real results. No success theatre — just honest sharing.</p>
+    </div>
+    <div class="card story-card">
+      <div style="margin-bottom:20px;"><span class="tag story-tag">HQ Officer</span></div>
+      <blockquote class="story-quote">
+        "The thing that surprised me most wasn't the output — it was how much mental energy I got back. AI handles the retrieval layer. I get to do the actual thinking."
+      </blockquote>
+      <div class="story-body">
+        <p>Priya attended an M365 Copilot training session online — and came away with something she didn't expect: a shift in how she thinks about her own work. During the session, she used Copilot to summarise a 47-reply email thread live. What would have taken her 20 minutes of careful reading took seconds.</p>
+        <p style="margin-top:12px;">"I realised I'd been spending a lot of time just piecing together context," she says. "Finding the email, reading the chain, figuring out where things landed. Copilot just... does that. And then I can actually think about what to do next."</p>
+        <p style="margin-top:12px;">Her advice for officers who haven't tried it yet? <em>"Don't wait for the right task. Just try it with something you're already working on."</em></p>
+      </div>
+      <div class="story-author">
+        <div class="author-avatar" aria-hidden="true">👩‍💼</div>
+        <div>
+          <div class="author-name">Priya Nair</div>
+          <div class="author-role">Senior Executive · Curriculum Planning Division · MOE HQ</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 32px; text-align: center;">
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:16px;">Got a story to share? We'd love to feature you in the next issue.</p>
+      <a href="mailto:diva@moe.gov.sg?subject=ctrl%2Bshift%20Story%20Submission" class="btn btn-ghost">Share your story →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- POLL -->
+<section class="section reveal">
+  <div class="container">
+    <div class="poll-card">
+      <p class="section-label" style="margin-bottom:12px;">📊 Quick Poll</p>
+      <p class="poll-question">Which AI tool have you used most this month?</p>
+      <div class="poll-options">
+        <span class="poll-option">AIAssistant Desk</span>
+        <span class="poll-option">M365 Copilot</span>
+        <span class="poll-option">ChatGPT</span>
+        <span class="poll-option">Opus</span>
+        <span class="poll-option">None yet</span>
+      </div>
+      <p class="poll-note">Results shared in the next issue. No login needed — just click!</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logo">ctrl<span>+</span>shift</div>
+    <p class="footer-tagline">Your monthly reset for all things digital at MOE</p>
+    <ul class="footer-links" role="list">
+      <li><a href="#frequency">Frequency</a></li>
+      <li><a href="#launchpad">Launchpad</a></li>
+      <li><a href="#think-tank">Think Tank</a></li>
+      <li><a href="#workbench">Workbench</a></li>
+      <li><a href="#in-the-field">In the Field</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Ministry of Education Singapore · DIVA Team · Issue 01</p>
+  </div>
+</footer>
+
+<script>
+  /* ─── REVEAL ON SCROLL ───────────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ─── ACTIVE NAV SCROLL SPY ──────────────────────────── */
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.topbar-nav a');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.topbar-nav a[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(section => spyObserver.observe(section));
+
+  /* ─── FREQUENCY EXPAND / COLLAPSE ───────────────────── */
+  function toggleArticle(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isOpen = el.classList.toggle('open');
+    btn.textContent = isOpen ? 'Read less ↑' : 'Read more ↓';
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  /* ─── FREQUENCY STAGGER REVEAL ───────────────────────── */
+  const freqItems = document.querySelectorAll('.freq-item');
+  if (freqItems.length) {
+    const freqObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          freqObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    freqItems.forEach(el => freqObserver.observe(el));
+  }
+
+  /* ─── POLL CLICK INTERACTION ─────────────────────────── */
+  document.querySelectorAll('.poll-option').forEach(opt => {
+    opt.addEventListener('click', function () {
+      // Deselect all siblings
+      this.closest('.poll-options').querySelectorAll('.poll-option').forEach(o => {
+        o.classList.remove('selected', 'bounce');
+      });
+      // Select this one + trigger bounce
+      this.classList.add('selected');
+      // Trigger bounce via re-adding class (force reflow)
+      void this.offsetWidth;
+      this.classList.add('bounce');
+      this.addEventListener('animationend', () => this.classList.remove('bounce'), { once: true });
+    });
+  });
+</script>
+
+</body>
+</html>
