@@ -332,6 +332,160 @@
       color: rgba(255,255,255,0.65);
       line-height: 1.6;
     }
+    .stat-visual {
+      margin: 4px 0 14px;
+      padding: 18px 20px;
+      background: rgba(170,220,50,0.05);
+      border: 1px solid rgba(170,220,50,0.15);
+      border-radius: var(--radius-sm);
+    }
+    .stat-number-row {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      margin-bottom: 12px;
+    }
+    .stat-number {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--lime);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-suffix {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--lime);
+      opacity: 0.7;
+    }
+    .stat-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .stat-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-width: 340px;
+    }
+    .stat-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      opacity: 0;
+      transform: scale(0.3);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .stat-visual.visible .stat-dot {
+      opacity: var(--dot-op, 0.5);
+      transform: scale(1);
+    }
+
+    /* ─── TRANSFORM VISUAL (Copilot before/after) ────────── */
+    .transform-visual {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 4px 0 14px;
+      padding: 18px 20px;
+      background: rgba(170,220,50,0.05);
+      border: 1px solid rgba(170,220,50,0.15);
+      border-radius: var(--radius-sm);
+    }
+    .tv-col { flex: 1; min-width: 0; }
+    .tv-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .transform-before, .transform-after {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .tv-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.3);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .transform-visual.visible .tv-bar { transform: scaleX(1); }
+    .transform-before .tv-bar:nth-child(1) { transition-delay: 0s; }
+    .transform-before .tv-bar:nth-child(2) { transition-delay: 0.08s; }
+    .transform-before .tv-bar:nth-child(3) { transition-delay: 0.16s; }
+    .transform-before .tv-bar:nth-child(4) { transition-delay: 0.24s; }
+    .transform-arrow {
+      flex-shrink: 0;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.4s ease 0.55s, transform 0.4s ease 0.55s;
+    }
+    .transform-visual.visible .transform-arrow { opacity: 1; transform: translateX(0); }
+    .tv-point {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(6px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .transform-visual.visible .tv-point { opacity: 1; transform: translateX(0); }
+    .transform-visual.visible .tv-point:nth-child(1) { transition-delay: 0.65s; }
+    .transform-visual.visible .tv-point:nth-child(2) { transition-delay: 0.78s; }
+    .transform-visual.visible .tv-point:nth-child(3) { transition-delay: 0.91s; }
+    .tv-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      flex-shrink: 0;
+    }
+    .tv-line {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--lime);
+      opacity: 0.85;
+    }
+
+    /* ─── PULSE VISUAL (Survey) ──────────────────────────── */
+    .pulse-visual {
+      margin: 4px 0 14px;
+      padding: 18px 20px 14px;
+      background: rgba(170,220,50,0.05);
+      border: 1px solid rgba(170,220,50,0.15);
+      border-radius: var(--radius-sm);
+    }
+    .pulse-svg { width: 100%; height: 52px; display: block; overflow: visible; }
+    .pulse-path {
+      fill: none;
+      stroke: var(--lime);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 380;
+      stroke-dashoffset: 380;
+      transition: stroke-dashoffset 1.1s cubic-bezier(0.22,1,0.36,1);
+    }
+    .pulse-visual.visible .pulse-path { stroke-dashoffset: 0; }
+    .pulse-dot {
+      fill: var(--lime);
+      opacity: 0;
+      filter: drop-shadow(0 0 4px rgba(170,220,50,0.85));
+      transition: opacity 0.3s ease 1.05s;
+    }
+    .pulse-visual.visible .pulse-dot { opacity: 1; }
+    .pulse-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
     .news-full {
       overflow: hidden;
       max-height: 0;
@@ -349,6 +503,7 @@
       opacity: 1;
       margin-top: 8px;
     }
+    .news-full p + p { margin-top: 12px; }
     .read-toggle {
       display: inline-block;
       margin-top: 8px;
@@ -372,6 +527,7 @@
       align-items: center;
       text-decoration: none;
       color: inherit;
+      cursor: pointer;
     }
     .event-card:hover {
       border-color: rgba(170,220,50,0.4);
@@ -403,8 +559,11 @@
       padding: 4px 10px;
       border-radius: 100px;
       white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
     }
     .badge-open { background: rgba(170,220,50,0.15); color: var(--lime); }
+    a.badge-open:hover { background: rgba(170,220,50,0.28); text-decoration: none; }
     .badge-soon { background: rgba(255,200,50,0.15); color: #FFC832; }
     .badge-tbc  { background: rgba(170,170,170,0.15); color: #AAAAAA; }
 
@@ -778,7 +937,7 @@
   <div class="container">
     <div class="section-header">
       <p class="section-label">📡 Frequency</p>
-      <h2 class="section-title">What's happening in AI</h2>
+      <h2 class="section-title">What's Shifting</h2>
       <p class="section-desc">The signal through the noise — curated updates that actually matter for your work.</p>
     </div>
     <div class="news-grid">
@@ -786,10 +945,34 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">01</div>
         <div class="news-content">
-          <h3>M365 Copilot Gets Smarter: New Capabilities Now Rolling Out</h3>
-          <p class="news-summary">MOE HQ has been rolling out new M365 Copilot features across Excel, Outlook, and Teams — and a workshop was recently held to help officers get up to speed.</p>
+          <h3>M365 Copilot Access Rolls Out Across MOE HQ</h3>
+          <div class="transform-visual">
+            <div class="tv-col">
+              <p class="tv-label">Cluttered inbox</p>
+              <div class="transform-before">
+                <span class="tv-bar" style="width:88%;"></span>
+                <span class="tv-bar" style="width:64%;"></span>
+                <span class="tv-bar" style="width:95%;"></span>
+                <span class="tv-bar" style="width:72%;"></span>
+              </div>
+            </div>
+            <div class="transform-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="var(--lime)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="tv-col">
+              <p class="tv-label">Key points</p>
+              <div class="transform-after">
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:78%;"></span></div>
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:55%;"></span></div>
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:66%;"></span></div>
+              </div>
+            </div>
+          </div>
+          <p class="news-summary">Sorting through a cluttered inbox before you've even had coffee. Pulling the key points out of a 40-page report an hour before a meeting. If either of those sounds familiar, a new wave of M365 Copilot access is worth your attention.</p>
           <div class="news-full" id="article-1-full">
-            <p>The workshop walked participants through practical Copilot features built into the tools you already use every day — from drafting and summarising in Outlook, to generating insights in Excel, to catching up on missed Teams meetings. Pre-work materials are available on GovTech SharePoint if you want to explore before the next session. Keep an eye out for upcoming workshop dates from MOE HQ.</p>
+            <p>M365 Copilot is built for the parts of work that quietly eat up the day: sorting email and calendars, pulling key points from documents, getting ready for meetings. It's not here to change how you work. It's here to take the routine pieces off your plate so you have more time for the work that actually needs your judgment.</p>
+            <p>Before you can use it, complete the AI101 AI Literacy Programme on Glow by 14 August. Guides, tips, and training resources are all on the M365 Copilot onboarding page. There's also a 1.5-hour virtual session coming up if you'd rather see it in action than read about it.</p>
+            <p>If you've been curious about what Copilot can actually do, this is where to start.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -798,10 +981,18 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">02</div>
         <div class="news-content">
-          <h3>The Challenge Is On — Prompt Royale Finals This September</h3>
-          <p class="news-summary">MOE's Prompt Royale competition is well underway, with the finals set for 11 September 2026 at MOE HQ Buona Vista, Level 24 Function Room.</p>
+          <h3>The Challenge Is On: Prompt Royale Finals This September</h3>
+          <div class="stat-visual">
+            <div class="stat-number-row">
+              <span class="stat-number" data-target="360">0</span><span class="stat-suffix">+</span>
+            </div>
+            <p class="stat-caption">MOE officers signed up and in the running</p>
+            <div class="stat-dots"><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.0s;"></span><span class="stat-dot" style="--dot-op:0.6; transition-delay:0.012s;"></span><span class="stat-dot" style="--dot-op:0.49; transition-delay:0.024s;"></span><span class="stat-dot" style="--dot-op:0.64; transition-delay:0.036s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.048s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.06s;"></span><span class="stat-dot" style="--dot-op:0.26; transition-delay:0.072s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.084s;"></span><span class="stat-dot" style="--dot-op:0.42; transition-delay:0.096s;"></span><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.108s;"></span><span class="stat-dot" style="--dot-op:0.9; transition-delay:0.12s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.132s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.144s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.156s;"></span><span class="stat-dot" style="--dot-op:0.67; transition-delay:0.168s;"></span><span class="stat-dot" style="--dot-op:0.35; transition-delay:0.18s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.192s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.204s;"></span><span class="stat-dot" style="--dot-op:0.59; transition-delay:0.216s;"></span><span class="stat-dot" style="--dot-op:0.73; transition-delay:0.228s;"></span><span class="stat-dot" style="--dot-op:0.69; transition-delay:0.24s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.252s;"></span><span class="stat-dot" style="--dot-op:0.74; transition-delay:0.264s;"></span><span class="stat-dot" style="--dot-op:0.63; transition-delay:0.276s;"></span><span class="stat-dot" style="--dot-op:0.45; transition-delay:0.288s;"></span><span class="stat-dot" style="--dot-op:0.27; transition-delay:0.3s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.312s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.324s;"></span><span class="stat-dot" style="--dot-op:0.72; transition-delay:0.336s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.348s;"></span><span class="stat-dot" style="--dot-op:0.71; transition-delay:0.36s;"></span><span class="stat-dot" style="--dot-op:0.85; transition-delay:0.372s;"></span><span class="stat-dot" style="--dot-op:0.51; transition-delay:0.384s;"></span><span class="stat-dot" style="--dot-op:0.77; transition-delay:0.396s;"></span><span class="stat-dot" style="--dot-op:0.54; transition-delay:0.408s;"></span><span class="stat-dot" style="--dot-op:0.86; transition-delay:0.42s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.432s;"></span><span class="stat-dot" style="--dot-op:0.31; transition-delay:0.444s;"></span><span class="stat-dot" style="--dot-op:0.34; transition-delay:0.456s;"></span><span class="stat-dot" style="--dot-op:0.39; transition-delay:0.468s;"></span><span class="stat-dot" style="--dot-op:0.88; transition-delay:0.48s;"></span><span class="stat-dot" style="--dot-op:0.53; transition-delay:0.492s;"></span></div>
+          </div>
+          <p class="news-summary">Shown up in force. Over 360 MOE officers have signed up for the fourth edition of Prompt Royale, and many are now deep in the thick of it, working through real problem statements.</p>
           <div class="news-full" id="article-2-full">
-            <p>The competition has been running MOE-wide, challenging officers to craft the most effective AI prompts for real work scenarios. The finals on 11 Sep will bring together the top contenders for a live showdown. Whether you're competing or cheering from the sidelines, it's shaping up to be a great showcase of what MOE officers can do with AI. Stay tuned for more details.</p>
+            <p>To help officers prepare, a series of workshops has been running across the AI product suite, covering Platform AI Studio, AIBots, Desk, and NotebookLM, with more sessions lined up over the next month.</p>
+            <p>Submissions close on 14 August, and the top 5 finalists will be announced end August. They'll face off at the PRxMOE 2026 Live Finals on 11 September, at MOE HQ Buona Vista, Level 24 Function Room. Whether you're one of the 360-plus officers in the running or just cheering from the sidelines, it's worth clearing your calendar for the showdown.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -810,10 +1001,22 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">03</div>
         <div class="news-content">
-          <h3>Go All-In on AI: The COP AI First Accelerator Is Coming</h3>
-          <p class="news-summary">A full-day AI immersion event is coming on 24 August 2026 at SEAB Multi-purpose Hall (Level 4), organised by Jeremy CHAN from MOE.</p>
+          <h3>Pulse Survey for AI Adoption: Tell Us Where You're At</h3>
+          <div class="pulse-visual">
+            <svg class="pulse-svg" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+              <path id="pulsePathRef" class="pulse-path" d="M0 40 L50 40 L62 40 L70 12 L80 62 L90 40 L100 40 L300 40" />
+              <circle class="pulse-dot" r="4">
+                <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.1s">
+                  <mpath href="#pulsePathRef" xlink:href="#pulsePathRef"></mpath>
+                </animateMotion>
+              </circle>
+            </svg>
+            <p class="pulse-caption">Where MOE stands today, in real time</p>
+          </div>
+          <p class="news-summary">Whether you're a daily AI user, still finding your footing, or somewhere in between — the Pulse Survey for AI Adoption takes five minutes and tells us exactly where you stand.</p>
           <div class="news-full" id="article-3-full">
-            <p>The COP AI First Accelerator is designed to help teams deepen AI-first ways of working, accelerate high-value AI use cases, and foster cross-team collaboration. It's a full-day format — expect hands-on sessions, peer learning, and space to actually work through real challenges with AI. If you're looking to move beyond dabbling and into doing, this is the event for you. Mark 24 Aug in your calendar.</p>
+            <p>This only works if we're honest about where we stand and willing to help each other along the way. The survey tells us what's working for you, and what's still getting in the way.</p>
+            <p>It's also your first step into something new: Learn &amp; Grow with GovRewards. Starting this September, every survey completed, workshop attended, and in-person training session earns you points toward real milestones. Take the survey now, and you'll bank your first milestone points before September even begins.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -831,23 +1034,23 @@
     <div class="section-header">
       <p class="section-label">🚀 Launchpad</p>
       <h2 class="section-title">What&#39;s coming up</h2>
-      <p class="section-desc">Click any event to add it to your Outlook calendar.</p>
+      <p class="section-desc">Click Open to join on Teams, or click anywhere else on the card to add it to your Outlook calendar.</p>
     </div>
     <div class="events-list">
 
-      <a href="https://outlook.office.com/calendar/action/compose?subject=About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work%20(Prompt%20Royale%20Workshop)&startdt=2026-08-31T15:00:00&enddt=2026-08-31T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work.%20Online%20via%20Microsoft%20Teams." target="_blank" rel="noopener" class="card event-card" aria-label="Add About Opus workshop to calendar">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add About Opus workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=About%20Opus%20(Prompt%20Royale%20Workshop)&startdt=2026-08-24T15:00:00&enddt=2026-08-24T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
-          <div class="day">31</div>
+          <div class="day">24</div>
           <div class="month">Aug</div>
         </div>
         <div class="event-info">
-          <h3>About Opus: Your AI Productivity Layer for Government Work</h3>
+          <h3>About Opus</h3>
           <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <span class="event-badge badge-open">Open</span>
-      </a>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjcyYmE0MzYtMWZiZi00MjE3LThmNzUtMTBjMTU4Y2E2NGVi%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22e916b5d9-93da-4954-b415-221c0792c05c%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join About Opus on Teams">Open</a>
+      </div>
 
-      <a href="https://outlook.office.com/calendar/action/compose?subject=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer&startdt=2026-09-03T09:00:00&enddt=2026-09-03T17:00:00&body=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer.%20Time%20and%20venue%20to%20be%20confirmed." target="_blank" rel="noopener" class="card event-card" aria-label="Add FPD AI Learning Train-The-Trainer to calendar">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add FPD AI Learning Train-The-Trainer to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer&startdt=2026-09-03T09:00:00&enddt=2026-09-03T17:00:00&body=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer.%20Time%20and%20venue%20to%20be%20confirmed.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
           <div class="day">03</div>
           <div class="month">Sep</div>
@@ -857,19 +1060,55 @@
           <p>Time &amp; venue TBC</p>
         </div>
         <span class="event-badge badge-tbc">TBC</span>
-      </a>
+      </div>
 
-      <a href="https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20(Prompt%20Royale%20Workshop)&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams." target="_blank" rel="noopener" class="card event-card" aria-label="Add AIBots workshop to calendar">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AIBots workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20(Prompt%20Royale%20Workshop)&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
           <div class="day">07</div>
           <div class="month">Sep</div>
         </div>
         <div class="event-info">
           <h3>AIBots: How To Create and Optimise Agents</h3>
-          <p>Online via Teams · Prompt Royale Workshop</p>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
+        </div>
+        <a href="https://teams.microsoft.com/meet/43741059047862?p=pGRJm5B7Z9el92Sjai" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join AIBots on Teams">Open</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Prompt Royale Finals to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Prompt%20Royale%20x%20MOE%20Finals%20(Live)&startdt=2026-09-11T09:00:00&enddt=2026-09-11T12:00:00&body=Prompt%20Royale%20x%20MOE%20Finals%20(Live).%20MOE%20Buona%20Vista%20L24.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">11</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Prompt Royale x MOE Finals (Live)</h3>
+          <p>MOE BV L24 · 9:00 AM – 12:00 PM</p>
         </div>
         <span class="event-badge badge-open">Open</span>
-      </a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Coding with AI Agent to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Coding%20with%20AI%20Agent&startdt=2026-09-15T15:00:00&enddt=2026-09-15T16:00:00&body=Coding%20with%20AI%20Agent.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">15</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Coding with AI Agent</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM</p>
+        </div>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ1YzI1ZWYtM2IwNy00MGQwLWJhZDQtZTg4MmU0MjczYzEz%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Coding with AI Agent on Teams">Open</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Getting Started with Pair Chat to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Getting%20Started%20with%20Pair%20Chat&startdt=2026-09-16T15:00:00&enddt=2026-09-16T16:00:00&body=Getting%20Started%20with%20Pair%20Chat.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">16</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Getting Started with Pair Chat</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM</p>
+        </div>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDk2MjRjYjktOTA3OC00Mjc0LWE4NjAtMjRjYjlkMzFlOGNl%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Getting Started with Pair Chat on Teams">Open</a>
+      </div>
 
     </div>
   </div>
@@ -952,8 +1191,8 @@
         <div class="tool-header" style="align-items:flex-start; gap:16px; margin-bottom:20px;">
           <img src="data:image/webp;base64,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" alt="AIAssistant Desk logo" style="width:88px; height:88px; border-radius:16px; flex-shrink:0; object-fit:contain; background:#ffffff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.18);">
           <div>
-            <div class="tool-name" style="font-size:1.1rem; line-height:1.3;"><a href="https://desk.ai.tech.gov.sg" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; border-bottom:2px solid var(--lime); padding-bottom:1px;">Desk, Your New AI Assistant for Public Service Work</a></div>
-            <div class="tool-desc" style="margin-top:4px;">Tool of the Month · AIAssistant Desk</div>
+            <div class="tool-name" style="font-size:1.25rem; font-weight:700; line-height:1.25; letter-spacing:-0.01em;"><a href="https://desk.ai.tech.gov.sg" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">AIAssistant Desk</a></div>
+            <div class="tool-desc" style="margin-top:6px; font-size:0.85rem; opacity:0.7; letter-spacing:0.04em; text-transform:uppercase;">Tool of the Month · Your AI Workspace for Public Service Work</div>
           </div>
         </div>
         <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:20px; line-height:1.6;">
@@ -1067,11 +1306,12 @@
       <p class="section-label" style="margin-bottom:12px;">📊 Quick Poll</p>
       <p class="poll-question">Which AI tool have you used most this month?</p>
       <div class="poll-options">
-        <span class="poll-option">AIAssistant Desk</span>
         <span class="poll-option">M365 Copilot</span>
         <span class="poll-option">ChatGPT</span>
+        <span class="poll-option">Pair</span>
+        <span class="poll-option">Desk</span>
         <span class="poll-option">Opus</span>
-        <span class="poll-option">None yet</span>
+        <span class="poll-option">Others</span>
       </div>
       <p class="poll-note">Results shared in the next issue. No login needed — just click!</p>
     </div>
@@ -1097,7 +1337,11 @@
 </footer>
 
 <script>
-  /* ─── REVEAL ON SCROLL ───────────────────────────────── */
+  /* ─── LAUNCHPAD: add-to-calendar (card click) ────────── */
+  function addToCalendar(url) {
+    window.open(url, '_blank', 'noopener');
+  }
+
   const revealEls = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1148,7 +1392,47 @@
     freqItems.forEach(el => freqObserver.observe(el));
   }
 
-  /* ─── POLL CLICK INTERACTION ─────────────────────────── */
+  /* ─── STAT VISUAL: dot reveal + count-up ─────────────── */
+  const statVisuals = document.querySelectorAll('.stat-visual');
+  if (statVisuals.length) {
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('visible');
+        const numEl = el.querySelector('.stat-number');
+        if (numEl) {
+          const target = parseInt(numEl.dataset.target, 10) || 0;
+          const duration = 900;
+          const start = performance.now();
+          function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            numEl.textContent = Math.round(eased * target);
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+        statObserver.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    statVisuals.forEach(el => statObserver.observe(el));
+  }
+
+  /* ─── TRANSFORM / PULSE VISUAL REVEAL ────────────────── */
+  const revealVisuals = document.querySelectorAll('.transform-visual, .pulse-visual');
+  if (revealVisuals.length) {
+    const visualObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          visualObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    revealVisuals.forEach(el => visualObserver.observe(el));
+  }
+
   document.querySelectorAll('.poll-option').forEach(opt => {
     opt.addEventListener('click', function () {
       // Deselect all siblings
