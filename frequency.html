@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ctrl+shift | Issue 01 · August 2026</title>
+  <title>Frequency | ctrl+shift</title>
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -957,7 +957,6 @@
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
 }
-.intro-goal p + p { margin-top: 14px; }
 .intro-goal strong { color: var(--lime); }
 
 .feature-grid {
@@ -1080,76 +1079,9 @@
   .journey-path::before { left: 27px; }
   .journey-num { width: 36px; height: 36px; font-size: 0.85rem; }
 }
-/* ─── REUSABLE: lime "+" accent for any ctrl+shift mention ── */
-.plus-accent { color: var(--lime); }
-
-/* ─── INTRO HEADING: typewriter reveal ───────────────────── */
-.intro-goal h2 .tw-text {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
-}
-.intro-section.visible .intro-goal h2 .tw-text {
-  animation: typing 1.6s steps(37, end) forwards;
-}
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 40ch; }
-}
-.intro-goal h2 .cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--lime);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink-cursor 0.9s step-end infinite;
-}
-
-/* ─── FEATURE ICONS: animated SVG (replaces emoji) ───────── */
-.feature-icon svg { display: block; }
-
-/* Icon 1: compass, needle wavers as if finding direction */
-.compass-needle {
-  transform-origin: 22px 22px;
-  animation: compassSpin 4.5s ease-in-out infinite;
-}
-@keyframes compassSpin {
-  0%   { transform: rotate(0deg); }
-  22%  { transform: rotate(28deg); }
-  50%  { transform: rotate(-18deg); }
-  76%  { transform: rotate(12deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* Icon 2: signal, arcs pulse outward like a broadcast */
-.signal-arc {
-  animation: signalPulse 2.2s ease-in-out infinite;
-}
-.signal-arc.arc2 { animation-delay: 0.35s; }
-@keyframes signalPulse {
-  0%, 100% { opacity: 0.25; }
-  50%      { opacity: 1; }
-}
-
-/* Icon 3: growth bars, rise and settle on loop */
-.grow-bar {
-  transform-box: fill-box;
-  transform-origin: bottom center;
-  animation: growPulse 2.4s ease-in-out infinite;
-}
-.grow-bar.bar2 { animation-delay: 0.18s; }
-.grow-bar.bar3 { animation-delay: 0.36s; }
-@keyframes growPulse {
-  0%, 100% { transform: scaleY(0.72); }
-  50%      { transform: scaleY(1); }
-}
-
 </style>
 </head>
-<body data-page="home">
+<body data-page="frequency">
 
 <nav class="topbar" role="navigation" aria-label="Main navigation">
   <div class="container topbar-inner">
@@ -1173,139 +1105,115 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header id="top" class="hero" role="banner">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="hero-grid"></div>
-  </div>
-  <div class="container">
-    <div class="hero-eyebrow fade-up">
-      <span class="tag">Issue 01 · August 2026</span>
-    </div>
-    <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
-    <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
-    <p class="hero-intro fade-up delay-3">
-      Welcome to <strong>ctrl+shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
-    </p>
-    <div class="hero-cta fade-up delay-4">
-      <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
-    </div>
-  </div>
-</header>
-
 <main>
 
-<!-- INTRODUCTION -->
-<section class="intro-section section reveal">
-  <div class="container">
-    <div class="intro-goal">
-      <h2><span class="tw-text">ctrl<span class="plus-accent">+</span>shift is a shortcut, literally<span class="cursor" aria-hidden="true"></span></span></h2>
-      <p>On any keyboard, it's the combination behind switching modes, redoing what you just did, working a little differently. That's the idea here too: a small shift in how MOE officers work with AI, whatever your role or technical background.</p>
-      <p>We cut through the noise of a fast-moving field and surface what's clear, relevant, and actionable, so you can focus on what matters: doing your job better, with confidence.</p>
-    </div>
+<div class="container breadcrumb">
+  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Frequency</span>
+</div>
 
-    <div class="feature-grid">
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="22" r="14" stroke="var(--lime)" stroke-width="2"/>
-            <path class="compass-needle" d="M22 12 L26 22 L22 32 L18 22 Z" fill="var(--lime)"/>
-          </svg>
+<section id="frequency" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">📡 Frequency</p>
+      <h2 class="section-title">What's Shifting</h2>
+      <p class="section-desc">The signal through the noise — curated updates that actually matter for your work.</p>
+    </div>
+    <div class="news-grid">
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">01</div>
+        <div class="news-content">
+          <h3>M365 Copilot Access Rolls Out Across MOE HQ</h3>
+          <div class="transform-visual">
+            <div class="tv-col">
+              <p class="tv-label">Cluttered inbox</p>
+              <div class="transform-before">
+                <span class="tv-bar" style="width:88%;"></span>
+                <span class="tv-bar" style="width:64%;"></span>
+                <span class="tv-bar" style="width:95%;"></span>
+                <span class="tv-bar" style="width:72%;"></span>
+              </div>
+            </div>
+            <div class="transform-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="var(--lime)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="tv-col">
+              <p class="tv-label">Key points</p>
+              <div class="transform-after">
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:78%;"></span></div>
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:55%;"></span></div>
+                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:66%;"></span></div>
+              </div>
+            </div>
+          </div>
+          <p class="news-summary">Sorting through a cluttered inbox before you've even had coffee. Pulling the key points out of a 40-page report an hour before a meeting. If either of those sounds familiar, a new wave of M365 Copilot access is worth your attention.</p>
+          <div class="news-full" id="article-1-full">
+            <p>M365 Copilot is built for the parts of work that quietly eat up the day: sorting email and calendars, pulling key points from documents, getting ready for meetings. It's not here to change how you work. It's here to take the routine pieces off your plate so you have more time for the work that actually needs your judgment.</p>
+            <p>Before you can use it, complete the AI101 AI Literacy Programme on <a href="https://go.gov.sg/glow" target="_blank" rel="noopener">Glow</a> by 14 August. Guides, tips, and training resources are all on the <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener">M365 Copilot onboarding page</a>. There are a series of virtual training sessions too, so do look out for them.</p>
+            <p>If you've been curious about what Copilot can actually do, this is where to start.</p>
+            <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Start here →</a>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
-        <h3>Navigate AI with confidence</h3>
-        <p>Understand which tools you can use, how to use them safely, and what the wider AI landscape looks like for public officers.</p>
-      </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="30" r="3" fill="var(--lime)"/>
-            <path class="signal-arc arc1" d="M14 26a11 11 0 0 1 16 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-            <path class="signal-arc arc2" d="M8 21a19 19 0 0 1 28 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+      </article>
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">02</div>
+        <div class="news-content">
+          <h3>The Challenge Is On: Prompt Royale Finals This September</h3>
+          <div class="stat-visual">
+            <div class="stat-number-row">
+              <span class="stat-number" data-target="360">0</span><span class="stat-suffix">+</span>
+            </div>
+            <p class="stat-caption">MOE officers signed up and in the running</p>
+            <div class="stat-dots"><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.0s;"></span><span class="stat-dot" style="--dot-op:0.6; transition-delay:0.012s;"></span><span class="stat-dot" style="--dot-op:0.49; transition-delay:0.024s;"></span><span class="stat-dot" style="--dot-op:0.64; transition-delay:0.036s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.048s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.06s;"></span><span class="stat-dot" style="--dot-op:0.26; transition-delay:0.072s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.084s;"></span><span class="stat-dot" style="--dot-op:0.42; transition-delay:0.096s;"></span><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.108s;"></span><span class="stat-dot" style="--dot-op:0.9; transition-delay:0.12s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.132s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.144s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.156s;"></span><span class="stat-dot" style="--dot-op:0.67; transition-delay:0.168s;"></span><span class="stat-dot" style="--dot-op:0.35; transition-delay:0.18s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.192s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.204s;"></span><span class="stat-dot" style="--dot-op:0.59; transition-delay:0.216s;"></span><span class="stat-dot" style="--dot-op:0.73; transition-delay:0.228s;"></span><span class="stat-dot" style="--dot-op:0.69; transition-delay:0.24s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.252s;"></span><span class="stat-dot" style="--dot-op:0.74; transition-delay:0.264s;"></span><span class="stat-dot" style="--dot-op:0.63; transition-delay:0.276s;"></span><span class="stat-dot" style="--dot-op:0.45; transition-delay:0.288s;"></span><span class="stat-dot" style="--dot-op:0.27; transition-delay:0.3s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.312s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.324s;"></span><span class="stat-dot" style="--dot-op:0.72; transition-delay:0.336s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.348s;"></span><span class="stat-dot" style="--dot-op:0.71; transition-delay:0.36s;"></span><span class="stat-dot" style="--dot-op:0.85; transition-delay:0.372s;"></span><span class="stat-dot" style="--dot-op:0.51; transition-delay:0.384s;"></span><span class="stat-dot" style="--dot-op:0.77; transition-delay:0.396s;"></span><span class="stat-dot" style="--dot-op:0.54; transition-delay:0.408s;"></span><span class="stat-dot" style="--dot-op:0.86; transition-delay:0.42s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.432s;"></span><span class="stat-dot" style="--dot-op:0.31; transition-delay:0.444s;"></span><span class="stat-dot" style="--dot-op:0.34; transition-delay:0.456s;"></span><span class="stat-dot" style="--dot-op:0.39; transition-delay:0.468s;"></span><span class="stat-dot" style="--dot-op:0.88; transition-delay:0.48s;"></span><span class="stat-dot" style="--dot-op:0.53; transition-delay:0.492s;"></span></div>
+          </div>
+          <p class="news-summary">Shown up in force. Over 360 MOE officers have signed up for the fourth edition of Prompt Royale, and many are now deep in the thick of it, working through real problem statements.</p>
+          <div class="news-full" id="article-2-full">
+            <p>To help officers prepare, a series of workshops has been running across the AI product suite, covering Platform AI Studio, AIBots, Desk, and NotebookLM, with more sessions lined up over the next month.</p>
+            <p>Submissions close on 14 August, and the top 5 finalists will be announced end August. They'll face off at the PRxMOE 2026 Live Finals on 11 September, at MOE HQ Buona Vista, Level 24 Function Room. Whether you're one of the 360-plus officers in the running or just cheering from the sidelines, it's worth clearing your calendar for the showdown.</p>
+            <a href="https://promptroyale.gov.sg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Find out more →</a>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
-        <h3>Stay connected to what matters</h3>
-        <p>From MOE-specific updates to WOG announcements, ctrl+shift is your single source of curated AI news.</p>
-      </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <rect class="grow-bar bar1" x="10" y="26" width="5" height="8" rx="1.5" fill="var(--lime)" opacity="0.55"/>
-            <rect class="grow-bar bar2" x="19" y="18" width="5" height="16" rx="1.5" fill="var(--lime)" opacity="0.75"/>
-            <rect class="grow-bar bar3" x="28" y="10" width="5" height="24" rx="1.5" fill="var(--lime)"/>
-          </svg>
+      </article>
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">03</div>
+        <div class="news-content">
+          <h3>Pulse Survey for AI Adoption: Tell Us Where You're At</h3>
+          <div class="pulse-visual">
+            <svg class="pulse-svg" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+              <path id="pulsePathRef" class="pulse-path" d="M0 40 L50 40 L62 40 L70 12 L80 62 L90 40 L100 40 L300 40" />
+              <circle class="pulse-dot" r="4">
+                <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.1s">
+                  <mpath href="#pulsePathRef" xlink:href="#pulsePathRef"></mpath>
+                </animateMotion>
+              </circle>
+            </svg>
+            <p class="pulse-caption">Where MOE stands today, in real time</p>
+          </div>
+          <p class="news-summary">Whether you're a daily AI user, still finding your footing, or somewhere in between — the Pulse Survey for AI Adoption takes five minutes and tells us exactly where you stand.</p>
+          <div class="news-full" id="article-3-full">
+            <p>This only works if we're honest about where we stand and willing to help each other along the way. The survey tells us what's working for you, and what's still getting in the way.</p>
+            <p>It's also your first step into something new: Learn &amp; Grow with GovRewards. Starting this September, every survey completed, workshop attended, and in-person training session earns you points toward real milestones. Take the survey now, and you'll bank your first milestone points before September even begins.</p>
+            <a href="#" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Take the Pulse Survey →</a>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
-        <h3>Grow at your own pace</h3>
-        <p>Whether you're just AI-curious or already experimenting, every issue has something useful for you.</p>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- GET STARTED: INTERACTIVE NAVIGATION -->
-<section id="get-started" class="journey-section section reveal">
-  <div class="container">
-    <div class="journey-heading">
-      <span class="tag">Get Started</span>
-      <h2>Where would you like to go?</h2>
-      <p>Pick a stop, or work through them in order, it's your journey.</p>
-    </div>
-    <div class="journey-path">
-      <a href="frequency.html" class="journey-stop">
-        <div class="journey-num">01</div>
-        <div class="journey-icon" aria-hidden="true">📡</div>
-        <div class="journey-info">
-          <h3>Frequency</h3>
-          <p>The latest AI updates, tools, and changes that matter for your work.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="launchpad.html" class="journey-stop">
-        <div class="journey-num">02</div>
-        <div class="journey-icon" aria-hidden="true">🚀</div>
-        <div class="journey-info">
-          <h3>Launchpad</h3>
-          <p>Workshops and training sessions on the calendar, and how to join them.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="think-tank.html" class="journey-stop">
-        <div class="journey-num">03</div>
-        <div class="journey-icon" aria-hidden="true">💡</div>
-        <div class="journey-info">
-          <h3>Think Tank</h3>
-          <p>A real use case, broken into steps you can try today.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="workbench.html" class="journey-stop">
-        <div class="journey-num">04</div>
-        <div class="journey-icon" aria-hidden="true">🛠</div>
-        <div class="journey-info">
-          <h3>Workbench</h3>
-          <p>This month's featured tool, plus quick tips and prompts to try.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="in-the-field.html" class="journey-stop">
-        <div class="journey-num">05</div>
-        <div class="journey-icon" aria-hidden="true">🎙</div>
-        <div class="journey-info">
-          <h3>In the Field</h3>
-          <p>Real stories and results from officers just like you.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+<div class="container">
+  <div class="journey-nav">
+    <span class="journey-link disabled">← Previous</span>
+    <a href="index.html" class="journey-link home">🏠 Back to Home</a>
+    <a href="launchpad.html" class="journey-link">Launchpad →</a>
   </div>
-</section>
+</div>
 
 </main>
 

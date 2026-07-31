@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ctrl+shift | Issue 01 · August 2026</title>
+  <title>Think Tank | ctrl+shift</title>
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -957,7 +957,6 @@
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
 }
-.intro-goal p + p { margin-top: 14px; }
 .intro-goal strong { color: var(--lime); }
 
 .feature-grid {
@@ -1080,76 +1079,9 @@
   .journey-path::before { left: 27px; }
   .journey-num { width: 36px; height: 36px; font-size: 0.85rem; }
 }
-/* ─── REUSABLE: lime "+" accent for any ctrl+shift mention ── */
-.plus-accent { color: var(--lime); }
-
-/* ─── INTRO HEADING: typewriter reveal ───────────────────── */
-.intro-goal h2 .tw-text {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
-}
-.intro-section.visible .intro-goal h2 .tw-text {
-  animation: typing 1.6s steps(37, end) forwards;
-}
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 40ch; }
-}
-.intro-goal h2 .cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--lime);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink-cursor 0.9s step-end infinite;
-}
-
-/* ─── FEATURE ICONS: animated SVG (replaces emoji) ───────── */
-.feature-icon svg { display: block; }
-
-/* Icon 1: compass, needle wavers as if finding direction */
-.compass-needle {
-  transform-origin: 22px 22px;
-  animation: compassSpin 4.5s ease-in-out infinite;
-}
-@keyframes compassSpin {
-  0%   { transform: rotate(0deg); }
-  22%  { transform: rotate(28deg); }
-  50%  { transform: rotate(-18deg); }
-  76%  { transform: rotate(12deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* Icon 2: signal, arcs pulse outward like a broadcast */
-.signal-arc {
-  animation: signalPulse 2.2s ease-in-out infinite;
-}
-.signal-arc.arc2 { animation-delay: 0.35s; }
-@keyframes signalPulse {
-  0%, 100% { opacity: 0.25; }
-  50%      { opacity: 1; }
-}
-
-/* Icon 3: growth bars, rise and settle on loop */
-.grow-bar {
-  transform-box: fill-box;
-  transform-origin: bottom center;
-  animation: growPulse 2.4s ease-in-out infinite;
-}
-.grow-bar.bar2 { animation-delay: 0.18s; }
-.grow-bar.bar3 { animation-delay: 0.36s; }
-@keyframes growPulse {
-  0%, 100% { transform: scaleY(0.72); }
-  50%      { transform: scaleY(1); }
-}
-
 </style>
 </head>
-<body data-page="home">
+<body data-page="think-tank">
 
 <nav class="topbar" role="navigation" aria-label="Main navigation">
   <div class="container topbar-inner">
@@ -1173,139 +1105,77 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header id="top" class="hero" role="banner">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="hero-grid"></div>
-  </div>
-  <div class="container">
-    <div class="hero-eyebrow fade-up">
-      <span class="tag">Issue 01 · August 2026</span>
-    </div>
-    <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
-    <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
-    <p class="hero-intro fade-up delay-3">
-      Welcome to <strong>ctrl+shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
-    </p>
-    <div class="hero-cta fade-up delay-4">
-      <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
-    </div>
-  </div>
-</header>
-
 <main>
 
-<!-- INTRODUCTION -->
-<section class="intro-section section reveal">
-  <div class="container">
-    <div class="intro-goal">
-      <h2><span class="tw-text">ctrl<span class="plus-accent">+</span>shift is a shortcut, literally<span class="cursor" aria-hidden="true"></span></span></h2>
-      <p>On any keyboard, it's the combination behind switching modes, redoing what you just did, working a little differently. That's the idea here too: a small shift in how MOE officers work with AI, whatever your role or technical background.</p>
-      <p>We cut through the noise of a fast-moving field and surface what's clear, relevant, and actionable, so you can focus on what matters: doing your job better, with confidence.</p>
-    </div>
+<div class="container breadcrumb">
+  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Think Tank</span>
+</div>
 
-    <div class="feature-grid">
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="22" r="14" stroke="var(--lime)" stroke-width="2"/>
-            <path class="compass-needle" d="M22 12 L26 22 L22 32 L18 22 Z" fill="var(--lime)"/>
-          </svg>
+<section id="think-tank" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">💡 Think Tank</p>
+      <h2 class="section-title">Ideas worth exploring</h2>
+      <p class="section-desc">A use case, a thought experiment, or a question worth sitting with.</p>
+    </div>
+    <div class="spotlight-card">
+      <p class="spotlight-label">Use Case of the Month</p>
+      <h3 class="spotlight-title">Meeting Prep in Minutes with Copilot Notebook</h3>
+      <p style="font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:16px;">
+        Scattered email threads. Half-read documents. A meeting in 20 minutes. Sound familiar? Here's a 5-step workflow HQ officers are using to turn that chaos into a clean meeting brief — using Copilot Notebook at <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">copilot.microsoft.com</a>.
+      </p>
+      <div class="case-steps">
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">1</div>
+          <div>
+            <h4>Open a new Notebook</h4>
+            <p>Go to copilot.microsoft.com and start a new Notebook. This gives Copilot a persistent workspace — it remembers everything you paste in.</p>
+          </div>
         </div>
-        <h3>Navigate AI with confidence</h3>
-        <p>Understand which tools you can use, how to use them safely, and what the wider AI landscape looks like for public officers.</p>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">2</div>
+          <div>
+            <h4>Paste in your raw materials</h4>
+            <p>Drop in the relevant email threads, document excerpts, or meeting notes. Don't worry about formatting — just get the context in.</p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">3</div>
+          <div>
+            <h4>Ask for a structured brief</h4>
+            <p>Prompt: <em>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief."</em></p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">4</div>
+          <div>
+            <h4>Identify your role</h4>
+            <p>Follow up with: <em>"Based on the above, what should I be prepared to speak to or decide in this meeting?"</em></p>
+          </div>
+        </div>
+        <div class="case-step">
+          <div class="step-icon" aria-hidden="true">5</div>
+          <div>
+            <h4>Walk in ready</h4>
+            <p>You've got a brief, your talking points, and the key context — in under 10 minutes. The Notebook stays open so you can refer back during the meeting.</p>
+          </div>
+        </div>
       </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="30" r="3" fill="var(--lime)"/>
-            <path class="signal-arc arc1" d="M14 26a11 11 0 0 1 16 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-            <path class="signal-arc arc2" d="M8 21a19 19 0 0 1 28 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Stay connected to what matters</h3>
-        <p>From MOE-specific updates to WOG announcements, ctrl+shift is your single source of curated AI news.</p>
-      </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <rect class="grow-bar bar1" x="10" y="26" width="5" height="8" rx="1.5" fill="var(--lime)" opacity="0.55"/>
-            <rect class="grow-bar bar2" x="19" y="18" width="5" height="16" rx="1.5" fill="var(--lime)" opacity="0.75"/>
-            <rect class="grow-bar bar3" x="28" y="10" width="5" height="24" rx="1.5" fill="var(--lime)"/>
-          </svg>
-        </div>
-        <h3>Grow at your own pace</h3>
-        <p>Whether you're just AI-curious or already experimenting, every issue has something useful for you.</p>
+      <div class="try-box">
+        <p class="try-label">Try it before your next meeting</p>
+        <p>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief with a section on what I should be prepared to speak to."</p>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- GET STARTED: INTERACTIVE NAVIGATION -->
-<section id="get-started" class="journey-section section reveal">
-  <div class="container">
-    <div class="journey-heading">
-      <span class="tag">Get Started</span>
-      <h2>Where would you like to go?</h2>
-      <p>Pick a stop, or work through them in order, it's your journey.</p>
-    </div>
-    <div class="journey-path">
-      <a href="frequency.html" class="journey-stop">
-        <div class="journey-num">01</div>
-        <div class="journey-icon" aria-hidden="true">📡</div>
-        <div class="journey-info">
-          <h3>Frequency</h3>
-          <p>The latest AI updates, tools, and changes that matter for your work.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="launchpad.html" class="journey-stop">
-        <div class="journey-num">02</div>
-        <div class="journey-icon" aria-hidden="true">🚀</div>
-        <div class="journey-info">
-          <h3>Launchpad</h3>
-          <p>Workshops and training sessions on the calendar, and how to join them.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="think-tank.html" class="journey-stop">
-        <div class="journey-num">03</div>
-        <div class="journey-icon" aria-hidden="true">💡</div>
-        <div class="journey-info">
-          <h3>Think Tank</h3>
-          <p>A real use case, broken into steps you can try today.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="workbench.html" class="journey-stop">
-        <div class="journey-num">04</div>
-        <div class="journey-icon" aria-hidden="true">🛠</div>
-        <div class="journey-info">
-          <h3>Workbench</h3>
-          <p>This month's featured tool, plus quick tips and prompts to try.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="in-the-field.html" class="journey-stop">
-        <div class="journey-num">05</div>
-        <div class="journey-icon" aria-hidden="true">🎙</div>
-        <div class="journey-info">
-          <h3>In the Field</h3>
-          <p>Real stories and results from officers just like you.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+<div class="container">
+  <div class="journey-nav">
+    <a href="launchpad.html" class="journey-link">← Launchpad</a>
+    <a href="index.html" class="journey-link home">🏠 Back to Home</a>
+    <a href="workbench.html" class="journey-link">Workbench →</a>
   </div>
-</section>
+</div>
 
 </main>
 

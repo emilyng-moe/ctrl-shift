@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ctrl+shift | Issue 01 · August 2026</title>
+  <title>Launchpad | ctrl+shift</title>
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -957,7 +957,6 @@
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
 }
-.intro-goal p + p { margin-top: 14px; }
 .intro-goal strong { color: var(--lime); }
 
 .feature-grid {
@@ -1080,76 +1079,9 @@
   .journey-path::before { left: 27px; }
   .journey-num { width: 36px; height: 36px; font-size: 0.85rem; }
 }
-/* ─── REUSABLE: lime "+" accent for any ctrl+shift mention ── */
-.plus-accent { color: var(--lime); }
-
-/* ─── INTRO HEADING: typewriter reveal ───────────────────── */
-.intro-goal h2 .tw-text {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
-}
-.intro-section.visible .intro-goal h2 .tw-text {
-  animation: typing 1.6s steps(37, end) forwards;
-}
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 40ch; }
-}
-.intro-goal h2 .cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--lime);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink-cursor 0.9s step-end infinite;
-}
-
-/* ─── FEATURE ICONS: animated SVG (replaces emoji) ───────── */
-.feature-icon svg { display: block; }
-
-/* Icon 1: compass, needle wavers as if finding direction */
-.compass-needle {
-  transform-origin: 22px 22px;
-  animation: compassSpin 4.5s ease-in-out infinite;
-}
-@keyframes compassSpin {
-  0%   { transform: rotate(0deg); }
-  22%  { transform: rotate(28deg); }
-  50%  { transform: rotate(-18deg); }
-  76%  { transform: rotate(12deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* Icon 2: signal, arcs pulse outward like a broadcast */
-.signal-arc {
-  animation: signalPulse 2.2s ease-in-out infinite;
-}
-.signal-arc.arc2 { animation-delay: 0.35s; }
-@keyframes signalPulse {
-  0%, 100% { opacity: 0.25; }
-  50%      { opacity: 1; }
-}
-
-/* Icon 3: growth bars, rise and settle on loop */
-.grow-bar {
-  transform-box: fill-box;
-  transform-origin: bottom center;
-  animation: growPulse 2.4s ease-in-out infinite;
-}
-.grow-bar.bar2 { animation-delay: 0.18s; }
-.grow-bar.bar3 { animation-delay: 0.36s; }
-@keyframes growPulse {
-  0%, 100% { transform: scaleY(0.72); }
-  50%      { transform: scaleY(1); }
-}
-
 </style>
 </head>
-<body data-page="home">
+<body data-page="launchpad">
 
 <nav class="topbar" role="navigation" aria-label="Main navigation">
   <div class="container topbar-inner">
@@ -1173,139 +1105,104 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header id="top" class="hero" role="banner">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="hero-grid"></div>
-  </div>
-  <div class="container">
-    <div class="hero-eyebrow fade-up">
-      <span class="tag">Issue 01 · August 2026</span>
-    </div>
-    <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
-    <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
-    <p class="hero-intro fade-up delay-3">
-      Welcome to <strong>ctrl+shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
-    </p>
-    <div class="hero-cta fade-up delay-4">
-      <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
-    </div>
-  </div>
-</header>
-
 <main>
 
-<!-- INTRODUCTION -->
-<section class="intro-section section reveal">
-  <div class="container">
-    <div class="intro-goal">
-      <h2><span class="tw-text">ctrl<span class="plus-accent">+</span>shift is a shortcut, literally<span class="cursor" aria-hidden="true"></span></span></h2>
-      <p>On any keyboard, it's the combination behind switching modes, redoing what you just did, working a little differently. That's the idea here too: a small shift in how MOE officers work with AI, whatever your role or technical background.</p>
-      <p>We cut through the noise of a fast-moving field and surface what's clear, relevant, and actionable, so you can focus on what matters: doing your job better, with confidence.</p>
-    </div>
+<div class="container breadcrumb">
+  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Launchpad</span>
+</div>
 
-    <div class="feature-grid">
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="22" r="14" stroke="var(--lime)" stroke-width="2"/>
-            <path class="compass-needle" d="M22 12 L26 22 L22 32 L18 22 Z" fill="var(--lime)"/>
-          </svg>
+<section id="launchpad" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🚀 Launchpad</p>
+      <h2 class="section-title">What&#39;s coming up</h2>
+      <p class="section-desc">Click Open to join on Teams, or click anywhere else on the card to add it to your Outlook calendar.</p>
+    </div>
+    <div class="events-list">
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add About Opus workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=About%20Opus%20(Prompt%20Royale%20Workshop)&startdt=2026-08-24T15:00:00&enddt=2026-08-24T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">24</div>
+          <div class="month">Aug</div>
         </div>
-        <h3>Navigate AI with confidence</h3>
-        <p>Understand which tools you can use, how to use them safely, and what the wider AI landscape looks like for public officers.</p>
-      </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="30" r="3" fill="var(--lime)"/>
-            <path class="signal-arc arc1" d="M14 26a11 11 0 0 1 16 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-            <path class="signal-arc arc2" d="M8 21a19 19 0 0 1 28 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+        <div class="event-info">
+          <h3>About Opus</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <h3>Stay connected to what matters</h3>
-        <p>From MOE-specific updates to WOG announcements, ctrl+shift is your single source of curated AI news.</p>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjcyYmE0MzYtMWZiZi00MjE3LThmNzUtMTBjMTU4Y2E2NGVi%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22e916b5d9-93da-4954-b415-221c0792c05c%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join About Opus on Teams">Open</a>
       </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <rect class="grow-bar bar1" x="10" y="26" width="5" height="8" rx="1.5" fill="var(--lime)" opacity="0.55"/>
-            <rect class="grow-bar bar2" x="19" y="18" width="5" height="16" rx="1.5" fill="var(--lime)" opacity="0.75"/>
-            <rect class="grow-bar bar3" x="28" y="10" width="5" height="24" rx="1.5" fill="var(--lime)"/>
-          </svg>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add FPD AI Learning Train-The-Trainer to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer&startdt=2026-09-03T09:00:00&enddt=2026-09-03T17:00:00&body=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer.%20Time%20and%20venue%20to%20be%20confirmed.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">03</div>
+          <div class="month">Sep</div>
         </div>
-        <h3>Grow at your own pace</h3>
-        <p>Whether you're just AI-curious or already experimenting, every issue has something useful for you.</p>
+        <div class="event-info">
+          <h3>Services Wing: FPD AI Learning Train-The-Trainer</h3>
+          <p>Time &amp; venue TBC</p>
+        </div>
+        <span class="event-badge badge-tbc">TBC</span>
       </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AIBots workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20(Prompt%20Royale%20Workshop)&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">07</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>AIBots: How To Create and Optimise Agents</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
+        </div>
+        <a href="https://teams.microsoft.com/meet/43741059047862?p=pGRJm5B7Z9el92Sjai" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join AIBots on Teams">Open</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Prompt Royale Finals to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Prompt%20Royale%20x%20MOE%20Finals%20(Live)&startdt=2026-09-11T09:00:00&enddt=2026-09-11T12:00:00&body=Prompt%20Royale%20x%20MOE%20Finals%20(Live).%20MOE%20Buona%20Vista%20L24.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">11</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Prompt Royale x MOE Finals (Live)</h3>
+          <p>MOE BV L24 · 9:00 AM – 12:00 PM</p>
+        </div>
+        <span class="event-badge badge-open">Open</span>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Coding with AI Agent to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Coding%20with%20AI%20Agent&startdt=2026-09-15T15:00:00&enddt=2026-09-15T16:00:00&body=Coding%20with%20AI%20Agent.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">15</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Coding with AI Agent</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM</p>
+        </div>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ1YzI1ZWYtM2IwNy00MGQwLWJhZDQtZTg4MmU0MjczYzEz%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Coding with AI Agent on Teams">Open</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Getting Started with Pair Chat to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Getting%20Started%20with%20Pair%20Chat&startdt=2026-09-16T15:00:00&enddt=2026-09-16T16:00:00&body=Getting%20Started%20with%20Pair%20Chat.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="day">16</div>
+          <div class="month">Sep</div>
+        </div>
+        <div class="event-info">
+          <h3>Getting Started with Pair Chat</h3>
+          <p>Online via Teams · 3:00 – 4:00 PM</p>
+        </div>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDk2MjRjYjktOTA3OC00Mjc0LWE4NjAtMjRjYjlkMzFlOGNl%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Getting Started with Pair Chat on Teams">Open</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- GET STARTED: INTERACTIVE NAVIGATION -->
-<section id="get-started" class="journey-section section reveal">
-  <div class="container">
-    <div class="journey-heading">
-      <span class="tag">Get Started</span>
-      <h2>Where would you like to go?</h2>
-      <p>Pick a stop, or work through them in order, it's your journey.</p>
-    </div>
-    <div class="journey-path">
-      <a href="frequency.html" class="journey-stop">
-        <div class="journey-num">01</div>
-        <div class="journey-icon" aria-hidden="true">📡</div>
-        <div class="journey-info">
-          <h3>Frequency</h3>
-          <p>The latest AI updates, tools, and changes that matter for your work.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="launchpad.html" class="journey-stop">
-        <div class="journey-num">02</div>
-        <div class="journey-icon" aria-hidden="true">🚀</div>
-        <div class="journey-info">
-          <h3>Launchpad</h3>
-          <p>Workshops and training sessions on the calendar, and how to join them.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="think-tank.html" class="journey-stop">
-        <div class="journey-num">03</div>
-        <div class="journey-icon" aria-hidden="true">💡</div>
-        <div class="journey-info">
-          <h3>Think Tank</h3>
-          <p>A real use case, broken into steps you can try today.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="workbench.html" class="journey-stop">
-        <div class="journey-num">04</div>
-        <div class="journey-icon" aria-hidden="true">🛠</div>
-        <div class="journey-info">
-          <h3>Workbench</h3>
-          <p>This month's featured tool, plus quick tips and prompts to try.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="in-the-field.html" class="journey-stop">
-        <div class="journey-num">05</div>
-        <div class="journey-icon" aria-hidden="true">🎙</div>
-        <div class="journey-info">
-          <h3>In the Field</h3>
-          <p>Real stories and results from officers just like you.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+<div class="container">
+  <div class="journey-nav">
+    <a href="frequency.html" class="journey-link">← Frequency</a>
+    <a href="index.html" class="journey-link home">🏠 Back to Home</a>
+    <a href="think-tank.html" class="journey-link">Think Tank →</a>
   </div>
-</section>
+</div>
 
 </main>
 

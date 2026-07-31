@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ctrl+shift | Issue 01 · August 2026</title>
+  <title>Workbench | ctrl+shift</title>
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -957,7 +957,6 @@
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
 }
-.intro-goal p + p { margin-top: 14px; }
 .intro-goal strong { color: var(--lime); }
 
 .feature-grid {
@@ -1080,76 +1079,9 @@
   .journey-path::before { left: 27px; }
   .journey-num { width: 36px; height: 36px; font-size: 0.85rem; }
 }
-/* ─── REUSABLE: lime "+" accent for any ctrl+shift mention ── */
-.plus-accent { color: var(--lime); }
-
-/* ─── INTRO HEADING: typewriter reveal ───────────────────── */
-.intro-goal h2 .tw-text {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
-}
-.intro-section.visible .intro-goal h2 .tw-text {
-  animation: typing 1.6s steps(37, end) forwards;
-}
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 40ch; }
-}
-.intro-goal h2 .cursor {
-  display: inline-block;
-  width: 3px;
-  height: 0.85em;
-  background: var(--lime);
-  margin-left: 3px;
-  vertical-align: text-bottom;
-  animation: blink-cursor 0.9s step-end infinite;
-}
-
-/* ─── FEATURE ICONS: animated SVG (replaces emoji) ───────── */
-.feature-icon svg { display: block; }
-
-/* Icon 1: compass, needle wavers as if finding direction */
-.compass-needle {
-  transform-origin: 22px 22px;
-  animation: compassSpin 4.5s ease-in-out infinite;
-}
-@keyframes compassSpin {
-  0%   { transform: rotate(0deg); }
-  22%  { transform: rotate(28deg); }
-  50%  { transform: rotate(-18deg); }
-  76%  { transform: rotate(12deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* Icon 2: signal, arcs pulse outward like a broadcast */
-.signal-arc {
-  animation: signalPulse 2.2s ease-in-out infinite;
-}
-.signal-arc.arc2 { animation-delay: 0.35s; }
-@keyframes signalPulse {
-  0%, 100% { opacity: 0.25; }
-  50%      { opacity: 1; }
-}
-
-/* Icon 3: growth bars, rise and settle on loop */
-.grow-bar {
-  transform-box: fill-box;
-  transform-origin: bottom center;
-  animation: growPulse 2.4s ease-in-out infinite;
-}
-.grow-bar.bar2 { animation-delay: 0.18s; }
-.grow-bar.bar3 { animation-delay: 0.36s; }
-@keyframes growPulse {
-  0%, 100% { transform: scaleY(0.72); }
-  50%      { transform: scaleY(1); }
-}
-
 </style>
 </head>
-<body data-page="home">
+<body data-page="workbench">
 
 <nav class="topbar" role="navigation" aria-label="Main navigation">
   <div class="container topbar-inner">
@@ -1173,139 +1105,103 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header id="top" class="hero" role="banner">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="hero-grid"></div>
-  </div>
-  <div class="container">
-    <div class="hero-eyebrow fade-up">
-      <span class="tag">Issue 01 · August 2026</span>
-    </div>
-    <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
-    <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
-    <p class="hero-intro fade-up delay-3">
-      Welcome to <strong>ctrl+shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
-    </p>
-    <div class="hero-cta fade-up delay-4">
-      <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
-    </div>
-  </div>
-</header>
-
 <main>
 
-<!-- INTRODUCTION -->
-<section class="intro-section section reveal">
-  <div class="container">
-    <div class="intro-goal">
-      <h2><span class="tw-text">ctrl<span class="plus-accent">+</span>shift is a shortcut, literally<span class="cursor" aria-hidden="true"></span></span></h2>
-      <p>On any keyboard, it's the combination behind switching modes, redoing what you just did, working a little differently. That's the idea here too: a small shift in how MOE officers work with AI, whatever your role or technical background.</p>
-      <p>We cut through the noise of a fast-moving field and surface what's clear, relevant, and actionable, so you can focus on what matters: doing your job better, with confidence.</p>
-    </div>
+<div class="container breadcrumb">
+  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Workbench</span>
+</div>
 
-    <div class="feature-grid">
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="22" r="14" stroke="var(--lime)" stroke-width="2"/>
-            <path class="compass-needle" d="M22 12 L26 22 L22 32 L18 22 Z" fill="var(--lime)"/>
-          </svg>
+<section id="workbench" class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🛠 Workbench</p>
+      <h2 class="section-title">Tools &amp; tips for this month</h2>
+      <p class="section-desc">Practical things you can try today — no technical background needed.</p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="card tool-main">
+        <div class="tool-header" style="align-items:flex-start; gap:16px; margin-bottom:20px;">
+          <img src="data:image/webp;base64,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" alt="AIAssistant Desk logo" style="width:88px; height:88px; border-radius:16px; flex-shrink:0; object-fit:contain; background:#ffffff; padding:8px; box-shadow:0 2px 10px rgba(0,0,0,0.18);">
+          <div>
+            <div class="tool-name" style="font-size:1.25rem; font-weight:700; line-height:1.25; letter-spacing:-0.01em;"><a href="https://desk.ai.tech.gov.sg" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">AIAssistant Desk</a></div>
+            <div class="tool-desc" style="margin-top:6px; font-size:0.85rem; opacity:0.7; letter-spacing:0.04em; text-transform:uppercase;">Tool of the Month · Your AI Workspace for Public Service Work</div>
+          </div>
         </div>
-        <h3>Navigate AI with confidence</h3>
-        <p>Understand which tools you can use, how to use them safely, and what the wider AI landscape looks like for public officers.</p>
-      </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <circle cx="22" cy="30" r="3" fill="var(--lime)"/>
-            <path class="signal-arc arc1" d="M14 26a11 11 0 0 1 16 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-            <path class="signal-arc arc2" d="M8 21a19 19 0 0 1 28 0" stroke="var(--lime)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:20px; line-height:1.6;">
+          AIAssistant Desk has been quietly levelling up. If you haven't logged in recently, here's what's new — and why it's worth another look.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📧</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Outlook integration</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Read your emails, draft replies, summarise threads, and flag what needs action — without leaving Desk.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📅</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Calendar access</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Ask what's on your schedule, find a free slot, or prep for an upcoming meeting.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📄</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">File reading</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Upload a PDF, Word doc, or spreadsheet and ask questions about it directly.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">🌐</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Web search</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Get up-to-date information without switching tabs or leaving your workflow.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">🧠</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Memory across sessions</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Desk remembers your preferences and context, so you don't have to repeat yourself every time.</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:12px; padding:12px 14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px;">
+            <span style="font-size:1rem; flex-shrink:0; margin-top:1px;">📊</span>
+            <div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-bottom:2px;">Data analysis &amp; charts</div>
+              <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); line-height:1.5;">Paste in data or upload a file and ask Desk to analyse it, spot trends, or generate a chart.</div>
+            </div>
+          </div>
         </div>
-        <h3>Stay connected to what matters</h3>
-        <p>From MOE-specific updates to WOG announcements, ctrl+shift is your single source of curated AI news.</p>
       </div>
-      <div class="card feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="24" height="24" fill="none">
-            <rect class="grow-bar bar1" x="10" y="26" width="5" height="8" rx="1.5" fill="var(--lime)" opacity="0.55"/>
-            <rect class="grow-bar bar2" x="19" y="18" width="5" height="16" rx="1.5" fill="var(--lime)" opacity="0.75"/>
-            <rect class="grow-bar bar3" x="28" y="10" width="5" height="24" rx="1.5" fill="var(--lime)"/>
-          </svg>
+
+      <div class="card tip-card">
+        <p class="tip-label">⚡ Quick Tip</p>
+        <p>Use Desk to prep before you write. Paste in your raw notes — bullet points, half-formed thoughts, email snippets — and ask: <em>"What are the key points here?"</em> Let it do the retrieval work so your brain can focus on the actual thinking.</p>
+      </div>
+
+      <div class="card tip-card">
+        <p class="tip-label">🎯 Prompt of the Month</p>
+        <p style="margin-bottom:10px; font-size:0.82rem; color:var(--muted);">Pressure-Test My Position</p>
+        <div class="prompt-box">
+          Here is my current recommendation / draft position on [topic]: [paste draft]. Play devil's advocate — what are the strongest objections a sceptical stakeholder might raise? What have I not accounted for? What would make this argument more robust?<span class="cursor" aria-hidden="true"></span>
         </div>
-        <h3>Grow at your own pace</h3>
-        <p>Whether you're just AI-curious or already experimenting, every issue has something useful for you.</p>
       </div>
+
+    </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
-
-<!-- GET STARTED: INTERACTIVE NAVIGATION -->
-<section id="get-started" class="journey-section section reveal">
-  <div class="container">
-    <div class="journey-heading">
-      <span class="tag">Get Started</span>
-      <h2>Where would you like to go?</h2>
-      <p>Pick a stop, or work through them in order, it's your journey.</p>
-    </div>
-    <div class="journey-path">
-      <a href="frequency.html" class="journey-stop">
-        <div class="journey-num">01</div>
-        <div class="journey-icon" aria-hidden="true">📡</div>
-        <div class="journey-info">
-          <h3>Frequency</h3>
-          <p>The latest AI updates, tools, and changes that matter for your work.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="launchpad.html" class="journey-stop">
-        <div class="journey-num">02</div>
-        <div class="journey-icon" aria-hidden="true">🚀</div>
-        <div class="journey-info">
-          <h3>Launchpad</h3>
-          <p>Workshops and training sessions on the calendar, and how to join them.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="think-tank.html" class="journey-stop">
-        <div class="journey-num">03</div>
-        <div class="journey-icon" aria-hidden="true">💡</div>
-        <div class="journey-info">
-          <h3>Think Tank</h3>
-          <p>A real use case, broken into steps you can try today.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="workbench.html" class="journey-stop">
-        <div class="journey-num">04</div>
-        <div class="journey-icon" aria-hidden="true">🛠</div>
-        <div class="journey-info">
-          <h3>Workbench</h3>
-          <p>This month's featured tool, plus quick tips and prompts to try.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-
-      <a href="in-the-field.html" class="journey-stop">
-        <div class="journey-num">05</div>
-        <div class="journey-icon" aria-hidden="true">🎙</div>
-        <div class="journey-info">
-          <h3>In the Field</h3>
-          <p>Real stories and results from officers just like you.</p>
-        </div>
-        <svg class="journey-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+<div class="container">
+  <div class="journey-nav">
+    <a href="think-tank.html" class="journey-link">← Think Tank</a>
+    <a href="index.html" class="journey-link home">🏠 Back to Home</a>
+    <a href="in-the-field.html" class="journey-link">In the Field →</a>
   </div>
-</section>
+</div>
 
 </main>
 
