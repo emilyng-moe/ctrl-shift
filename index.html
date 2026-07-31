@@ -1086,17 +1086,14 @@
 /* ─── INTRO HEADING: typewriter reveal ───────────────────── */
 .intro-goal h2 .tw-text {
   display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 0;
-  vertical-align: bottom;
+  clip-path: inset(0 100% 0 0);
 }
 .intro-section.visible .intro-goal h2 .tw-text {
-  animation: typing 1.6s steps(37, end) forwards;
+  animation: typingClip 1.6s steps(37, end) forwards;
 }
-@keyframes typing {
-  from { width: 0; }
-  to   { width: 40ch; }
+@keyframes typingClip {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 .intro-goal h2 .cursor {
   display: inline-block;
