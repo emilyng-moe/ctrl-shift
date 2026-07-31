@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Think Tank | ctrl+shift</title>
+  <title>Toolbox | ctrl+shift</title>
   <style>
     /* ─── TOKENS ─────────────────────────────────────────── */
     :root {
@@ -1079,9 +1079,156 @@
   .journey-path::before { left: 27px; }
   .journey-num { width: 36px; height: 36px; font-size: 0.85rem; }
 }
+/* ─── TOOLKIT: pill tabs, panels, tool chips ─────────────── */
+.toolkit-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0 28px;
+  flex-wrap: wrap;
+}
+.tab-pill {
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.tab-pill:hover { border-color: var(--lime); color: var(--white); }
+.tab-pill.active {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--navy);
+}
+
+.toolkit-intro {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin-bottom: 22px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.toolkit-panel { display: none; }
+.toolkit-panel.active { display: block; animation: fadeInPanel 0.4s ease; }
+@keyframes fadeInPanel {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.tool-chip {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tool-chip-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(170,220,50,0.12);
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: -0.02em;
+}
+.tool-chip-name { font-size: 1rem; font-weight: 700; }
+.tool-chip-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  flex: 1;
+}
+.tool-chip-desc strong { color: var(--lime); font-weight: 700; }
+.tool-chip-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+.chip-link {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(170,220,50,0.12);
+  color: var(--lime);
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.chip-link:hover { background: rgba(170,220,50,0.25); text-decoration: none; }
+.chip-link.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: rgba(255,255,255,0.6);
+}
+.chip-link.ghost:hover { border-color: var(--lime); color: var(--lime); }
+
+/* ─── TOOLBOX: block label + spotlight row ───────────────── */
+.block-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 18px;
+}
+.sub-heading { margin-bottom: 22px; }
+.sub-heading-title {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.sub-heading-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+@media (max-width: 760px) {
+  .spotlight-grid { grid-template-columns: 1fr; }
+}
+
+.spotlight-desk {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(170,220,50,0.1);
+  color: var(--lime);
+  white-space: nowrap;
+}
+
 </style>
 </head>
-<body data-page="think-tank">
+<body data-page="toolbox">
 
 <nav class="topbar" role="navigation" aria-label="Main navigation">
   <div class="container topbar-inner">
@@ -1108,72 +1255,192 @@
 <main>
 
 <div class="container breadcrumb">
-  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Think Tank</span>
+  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Toolbox</span>
 </div>
 
-<section id="think-tank" class="section reveal">
+<section id="toolbox" class="section reveal">
   <div class="container">
     <div class="section-header">
-      <p class="section-label">💡 Think Tank</p>
-      <h2 class="section-title">Ideas worth exploring</h2>
-      <p class="section-desc">A use case, a thought experiment, or a question worth sitting with.</p>
+      <p class="section-label">🧰 Toolbox</p>
+      <h2 class="section-title">Know your tools before you need them.</h2>
     </div>
-    <div class="spotlight-card">
-      <p class="spotlight-label">Use Case of the Month</p>
-      <h3 class="spotlight-title">Meeting Prep in Minutes with Copilot Notebook</h3>
-      <p style="font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:16px;">
-        Scattered email threads. Half-read documents. A meeting in 20 minutes. Sound familiar? Here's a 5-step workflow HQ officers are using to turn that chaos into a clean meeting brief — using Copilot Notebook at <a href="https://copilot.microsoft.com" target="_blank" rel="noopener">copilot.microsoft.com</a>.
-      </p>
-      <div class="case-steps">
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">1</div>
+
+    <div class="sub-heading">
+      <h3 class="sub-heading-title">⭐ Tool of the Month</h3>
+      <p class="sub-heading-desc">This month's featured pick, plus a prompt to help you get more out of it.</p>
+    </div>
+    <div class="spotlight-grid">
+
+      <div class="card spotlight-desk">
+        <div class="tool-header" style="align-items:center; gap:14px; margin-bottom:14px;">
+          <img src="data:image/webp;base64,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" alt="AIAssistant Desk logo" style="width:52px; height:52px; border-radius:12px; flex-shrink:0; object-fit:contain; background:#ffffff; padding:6px; box-shadow:0 2px 10px rgba(0,0,0,0.18);">
           <div>
-            <h4>Open a new Notebook</h4>
-            <p>Go to copilot.microsoft.com and start a new Notebook. This gives Copilot a persistent workspace — it remembers everything you paste in.</p>
+            <div class="tool-name" style="font-size:1.1rem; font-weight:700; line-height:1.25;"><a href="https://desk.ai.tech.gov.sg" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">AIAssistant Desk</a></div>
+            <div style="margin-top:4px; font-size:0.78rem; opacity:0.65; letter-spacing:0.04em; text-transform:uppercase;">Your AI Workspace</div>
           </div>
         </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">2</div>
-          <div>
-            <h4>Paste in your raw materials</h4>
-            <p>Drop in the relevant email threads, document excerpts, or meeting notes. Don't worry about formatting — just get the context in.</p>
-          </div>
+        <p style="font-size:0.86rem; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:14px;">
+          Your everyday AI workspace, and it's been quietly levelling up. Draft, search, and analyse as usual, or build your own agent that works in the background while you get on with your day.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+          <span class="feature-tag">🤖 Build custom agents</span>
+          <span class="feature-tag">⚡ 2x faster search</span>
+          <span class="feature-tag">📚 Sources cited</span>
         </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">3</div>
-          <div>
-            <h4>Ask for a structured brief</h4>
-            <p>Prompt: <em>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief."</em></p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">4</div>
-          <div>
-            <h4>Identify your role</h4>
-            <p>Follow up with: <em>"Based on the above, what should I be prepared to speak to or decide in this meeting?"</em></p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">5</div>
-          <div>
-            <h4>Walk in ready</h4>
-            <p>You've got a brief, your talking points, and the key context — in under 10 minutes. The Notebook stays open so you can refer back during the meeting.</p>
-          </div>
+        <a href="https://desk.ai.tech.gov.sg/chat" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open Desk →</a>
+        <p style="margin-top:16px; padding-top:14px; border-top:1px solid var(--border); font-size:0.78rem; color:var(--muted); line-height:1.55;">
+          🚀 <strong style="color:rgba(255,255,255,0.75);">New:</strong> Build an agent that checks your inbox daily and drafts replies grounded in your files, no code, and it never sends without your review.
+        </p>
+      </div>
+
+      <div class="card tip-card">
+        <p class="tip-label">🎯 Prompt of the Month</p>
+        <p style="margin-bottom:10px; font-size:0.82rem; color:var(--muted);">Build Your Own Inbox Agent (Desk)</p>
+        <div class="prompt-box">
+          Build me an agent that checks my inbox every morning, drafts replies grounded in [SharePoint folder or uploaded files], and holds every draft for my review, it should never send without my approval.<span class="cursor" aria-hidden="true"></span>
         </div>
       </div>
-      <div class="try-box">
-        <p class="try-label">Try it before your next meeting</p>
-        <p>"Summarise the key discussion points, decisions made, and open questions from the above. Format as a meeting brief with a section on what I should be prepared to speak to."</p>
+
+    </div>
+
+    <div class="toolkit-block">
+      <div class="sub-heading" style="margin-top:56px;">
+        <h3 class="sub-heading-title">🗂 Your AI Tools Cheatsheet</h3>
+        <p class="sub-heading-desc">A practical guide to the tools on your desk: what they are, what they're good at, and when to reach for them.</p>
       </div>
+
+      <div class="toolkit-tabs" role="tablist">
+        <button class="tab-pill active" data-tab="wog" role="tab" aria-selected="true">WOG Exclusive Tools</button>
+        <button class="tab-pill" data-tab="commercial" role="tab" aria-selected="false">Commercial AI Tools</button>
+      </div>
+
+      <div class="toolkit-panel active" data-panel="wog">
+        <p class="toolkit-intro">Built for the Singapore public service. Secured for data up to Confidential (Cloud-Eligible) and Sensitive Normal. Access is managed through your government account.</p>
+        <div class="toolkit-grid">
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="var(--lime)" stroke-width="1.5" stroke-linejoin="round"/><path d="M14.5 8.3l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6.6-1.4Z" fill="var(--lime)"/></svg></div>
+            <div class="tool-chip-name">Desk</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Your everyday AI assistant. Free for every officer, no usage quota, built for public service work: drafting, search, summarising, analysis, and planning, all integrated with M365.</p>
+            <div class="tool-chip-links">
+              <a href="https://desk.ai.tech.gov.sg/chat" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M3 5h11a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H9l-3 2.4V13H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round" opacity="0.5"/><path d="M10 8h11a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-3v2.4L14.5 16H10a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+            <div class="tool-chip-name">Pair Chat</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> A natural, everyday AI conversation. Draft, summarise, brainstorm, or work through uploaded documents just by talking it out.</p>
+            <div class="tool-chip-links">
+              <a href="https://pair.gov.sg/chat" target="_blank" rel="noopener" class="chip-link">Access →</a>
+              <a href="https://desk.ai.tech.gov.sg/chat/e9cca759-544c-4d8e-b2ca-7e4daab6a266#" target="_blank" rel="noopener" class="chip-link ghost">Help &amp; Docs</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M3 12h.01M6.5 8v8M10 5v14M13.5 9v6M17 11v2M20.5 12h.01" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div class="tool-chip-name">Transcribe</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Turning recordings into text, fast. Meetings, interviews, any audio you need written up accurately and quickly.</p>
+            <div class="tool-chip-links">
+              <a href="https://www.transcribe.gov.sg/home" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><rect x="5" y="8" width="14" height="10" rx="3" stroke="var(--lime)" stroke-width="1.5"/><path d="M12 8V5" stroke="var(--lime)" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="4" r="1" fill="var(--lime)"/><circle cx="9" cy="13" r="1.1" fill="var(--lime)"/><circle cx="15" cy="13" r="1.1" fill="var(--lime)"/><path d="M9 16.3h6" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+            <div class="tool-chip-name">AIBots</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Building your own chatbot, no coding required. Train it on your team's documents for FAQ bots, knowledge assistants, or SOP guides.</p>
+            <div class="tool-chip-links">
+              <a href="https://aibots.gov.sg/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+              <a href="https://linktr.ee/aibots.gov.sg" target="_blank" rel="noopener" class="chip-link ghost">Training</a>
+              <a href="https://docs.developer.tech.gov.sg/docs/aibots" target="_blank" rel="noopener" class="chip-link ghost">Docs</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><circle cx="5" cy="6" r="2.1" stroke="var(--lime)" stroke-width="1.5"/><circle cx="19" cy="6" r="2.1" stroke="var(--lime)" stroke-width="1.5"/><circle cx="12" cy="18" r="2.1" stroke="var(--lime)" stroke-width="1.5"/><path d="M7 7.3L11 16M17 7.3L13 16M7.3 6h9.4" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+            <div class="tool-chip-name">Opus</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Automating multi-step workflows without a developer. Drag, drop, and connect, pre-wired into WOG tools from day one.</p>
+            <div class="tool-chip-links">
+              <a href="https://opus.gov.sg/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+              <a href="https://docs.opus.gov.sg/" target="_blank" rel="noopener" class="chip-link ghost">Docs</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M6 3h8l4 4v14H6V3Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 11h6M9 14h6M9 17h3" stroke="var(--lime)" stroke-width="1.3" stroke-linecap="round"/><path d="M14 3v4h4" stroke="var(--lime)" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+            <div class="tool-chip-name">AISAY2</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Pulling structured data out of PDFs and forms at scale. OCR, field extraction, bulk uploads, straight to Excel.</p>
+            <div class="tool-chip-links">
+              <a href="https://aisay.ai.tech.gov.sg/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+              <a href="https://docs.aisay.gov.sg/" target="_blank" rel="noopener" class="chip-link ghost">Docs</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 20l1-4L15.5 5.5a1.5 1.5 0 0 1 2.1 0l.9.9a1.5 1.5 0 0 1 0 2.1L8 19l-4 1Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/><path d="M13.5 7.5l3 3" stroke="var(--lime)" stroke-width="1.3"/></svg></div>
+            <div class="tool-chip-name">SmartCompose</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Faster, more professional replies to citizens. Purpose-built for public-facing written communication.</p>
+            <div class="tool-chip-links">
+              <a href="https://www.smartcompose.gov.sg/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M9 3h6M10 3v5l-5 9a1.5 1.5 0 0 0 1.3 2.2h11.4A1.5 1.5 0 0 0 19 17l-5-9V3" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 14.3h9" stroke="var(--lime)" stroke-width="1.2"/></svg></div>
+            <div class="tool-chip-name">Platform AI Studio</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Exploring what AI can do before you commit. Real-world showcases, hands-on experiments, and proof-of-concept deployments.</p>
+            <div class="tool-chip-links">
+              <a href="https://studio.platform.ai.tech.gov.sg/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="toolkit-panel" data-panel="commercial">
+        <p class="toolkit-intro">Commercially procured, cleared for whole-of-government use up to C(CE) and Sensitive Normal. Data stays in Singapore, procured through GovTech's AI License Portal.</p>
+        <div class="toolkit-grid">
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.3" stroke="var(--lime)" stroke-width="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.3" stroke="var(--lime)" stroke-width="1.5" opacity="0.6"/><rect x="4" y="13" width="7" height="7" rx="1.3" stroke="var(--lime)" stroke-width="1.5" opacity="0.6"/><rect x="13" y="13" width="7" height="7" rx="1.3" stroke="var(--lime)" stroke-width="1.5" opacity="0.3"/></svg></div>
+            <div class="tool-chip-name">Microsoft 365 Copilot</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> AI where you already work. Draft in Word, summarise in Outlook, build slides in PowerPoint, analyse in Excel, and catch up on Teams meetings.</p>
+            <div class="tool-chip-links">
+              <a href="https://www.office.com/" target="_blank" rel="noopener" class="chip-link">Access via M365</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M12 3l9 5-9 5-9-5 9-5Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/><path d="M3 13l9 5 9-5" stroke="var(--lime)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><path d="M3 17.3l9 5 9-5" stroke="var(--lime)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/></svg></div>
+            <div class="tool-chip-name">Gemini Enterprise</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> Big documents, long research. A 1-million-token context window means entire reports or file sets can go in at once. NotebookLM included from July 2026.</p>
+            <div class="tool-chip-links">
+              <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+          <div class="card tool-chip">
+            <div class="tool-chip-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4.5 3.2V16H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="var(--lime)" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1" fill="var(--lime)"/><circle cx="12.5" cy="10.5" r="1" fill="var(--lime)"/><circle cx="16" cy="10.5" r="1" fill="var(--lime)"/></svg></div>
+            <div class="tool-chip-name">ChatGPT Enterprise</div>
+            <p class="tool-chip-desc"><strong>Best for:</strong> The ChatGPT you already know, enterprise-secured. Open-ended tasks, advanced data analysis, and reusable Skills and Projects to capture how your team works. Free for all officers until 31 August 2026.</p>
+            <div class="tool-chip-links">
+              <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="chip-link">Access →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
 
 <div class="container">
   <div class="journey-nav">
-    <a href="launchpad.html" class="journey-link">← Launchpad</a>
+    <a href="think-tank.html" class="journey-link">← Think Tank</a>
     <a href="index.html" class="journey-link home">🏠 Back to Home</a>
-    <a href="toolbox.html" class="journey-link">Toolbox →</a>
+    <a href="in-the-field.html" class="journey-link">In the Field →</a>
   </div>
 </div>
 
@@ -1297,6 +1564,22 @@
       this.addEventListener('animationend', () => this.classList.remove('bounce'), { once: true });
     });
   });
+  /* ─── TOOLKIT: tab switching ──────────────────────────── */
+  const tabPills = document.querySelectorAll('.tab-pill');
+  if (tabPills.length) {
+    tabPills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        document.querySelectorAll('.tab-pill').forEach(b => {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('.toolkit-panel').forEach(panel => {
+          panel.classList.toggle('active', panel.dataset.panel === target);
+        });
+      });
+    });
+  }
 </script>
 
 </body>
