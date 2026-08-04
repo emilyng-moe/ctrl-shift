@@ -1215,7 +1215,8 @@
     <h1 class="hero-title fade-up delay-1">ctrl<span class="accent">+</span>shift</h1>
     <p class="hero-subtitle fade-up delay-2">Your monthly reset for all things digital at MOE</p>
     <p class="hero-intro fade-up delay-3">
-      Welcome to <strong>ctrl+shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead. No jargon. No overwhelm. Just the good stuff.
+      Welcome to <strong>ctrl<span class="plus-accent">+</span>shift</strong>, a space for MOE officers to stay curious, stay connected, and stay ahead.<br>
+      No jargon. No overwhelm. Just the good stuff.
     </p>
     <div class="hero-cta fade-up delay-4">
       <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
@@ -1254,7 +1255,7 @@
           </svg>
         </div>
         <h3>Stay connected to what matters</h3>
-        <p>From MOE-specific updates to WOG announcements, ctrl+shift is your single source of curated AI news.</p>
+        <p>From MOE-specific updates to WOG announcements, ctrl<span class="plus-accent">+</span>shift is your single source of curated AI news.</p>
       </div>
       <div class="card feature-card reveal">
         <div class="feature-icon" aria-hidden="true">
@@ -1469,7 +1470,7 @@
 
     function showFlash(label) {
       const el = document.createElement('div');
-      el.textContent = 'ctrl+shift → ' + label;
+      el.innerHTML = 'ctrl<span class="plus-accent">+</span>shift → ' + label;
       el.setAttribute('aria-live', 'polite');
       Object.assign(el.style, {
         position: 'fixed', top: '50%', left: '50%',

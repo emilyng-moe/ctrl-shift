@@ -135,6 +135,7 @@
       color: var(--white);
     }
     .logo-wordmark span { color: var(--lime); }
+    .plus-accent { color: var(--lime); }
     .topbar-issue {
       font-size: 0.74rem;
       color: var(--muted);
@@ -1121,7 +1122,7 @@
 <main>
 
 <div class="container breadcrumb">
-  <a href="index.html">ctrl+shift</a><span class="sep">/</span><span class="current">Frequency</span>
+  <a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Frequency</span>
 </div>
 
 <section id="frequency" class="section reveal">
@@ -1162,8 +1163,8 @@
           <p class="news-summary">Sorting through a cluttered inbox before you've even had coffee. Pulling the key points out of a 40-page report an hour before a meeting. If either of those sounds familiar, a new wave of M365 Copilot access is worth your attention.</p>
           <div class="news-full" id="article-1-full">
             <p>M365 Copilot is built for the parts of work that quietly eat up the day: sorting email and calendars, pulling key points from documents, getting ready for meetings. It's not here to change how you work. It's here to take the routine pieces off your plate so you have more time for the work that actually needs your judgment.</p>
-            <p>Before you can use it, complete the AI101 AI Literacy Programme on <a href="https://go.gov.sg/glow" target="_blank" rel="noopener">Glow</a> by 14 August. Guides, tips, and training resources are all on the <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener">M365 Copilot onboarding page</a>. There are a series of virtual training sessions too, so do look out for them.</p>
-            <p>If you've been curious about what Copilot can actually do, this is where to start.</p>
+            <p>Before you can use it, complete the AI101 AI Literacy Programme on <a href="https://go.gov.sg/glow" target="_blank" rel="noopener">Glow</a>. Guides, tips, and training resources are all on the <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener">M365 Copilot onboarding page</a>. There are a series of virtual training sessions too, so do look out for them.</p>
+            <p>Not onboarded yet? Access is rolling out in phases, so keep an eye out for the next one. Meanwhile, if you've been curious about what Copilot can actually do, this is where to start.</p>
             <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Start here →</a>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
@@ -1184,8 +1185,8 @@
           <p class="news-summary">Shown up in force. Over 360 MOE officers have signed up for the fourth edition of Prompt Royale, and many are now deep in the thick of it, working through real problem statements.</p>
           <div class="news-full" id="article-2-full">
             <p>To help officers prepare, a series of workshops has been running across the AI product suite, covering Platform AI Studio, AIBots, Desk, and NotebookLM, with more sessions lined up over the next month.</p>
-            <p>Submissions close on 14 August, and the top 5 finalists will be announced end August. They'll face off at the PRxMOE 2026 Live Finals on 11 September, at MOE HQ Buona Vista, Level 24 Function Room. Whether you're one of the 360-plus officers in the running or just cheering from the sidelines, it's worth clearing your calendar for the showdown.</p>
-            <a href="https://promptroyale.gov.sg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Find out more →</a>
+            <p>Submissions close on 14 August, and the top 5 finalists will be announced end August. They'll face off at the PRxMOE 2026 Live Finals on 11 September, at MOE HQ Buona Vista, Function Room. Whether you're one of the 360-plus officers in the running or just cheering from the sidelines, it's worth clearing your calendar for the showdown.</p>
+            <a href="https://www.promptroyale.gov.sg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Find out more →</a>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1209,7 +1210,7 @@
           <p class="news-summary">Whether you're a daily AI user, still finding your footing, or somewhere in between — the Pulse Survey for AI Adoption takes five minutes and tells us exactly where you stand.</p>
           <div class="news-full" id="article-3-full">
             <p>This only works if we're honest about where we stand and willing to help each other along the way. The survey tells us what's working for you, and what's still getting in the way.</p>
-            <p>It's also your first step into something new: Learn &amp; Grow with GovRewards. Starting this September, every survey completed, workshop attended, and in-person training session earns you points toward real milestones. Take the survey now, and you'll bank your first milestone points before September even begins.</p>
+            <p>It's also your first step into something new: <strong style="color:var(--lime);">Learn &amp; Grow with GovRewards</strong>. Starting this September, every survey completed, workshop attended, and in-person training session earns you points toward real milestones. Take the survey now, and you'll bank your first milestone points before September even begins.</p>
             <a href="#" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Take the Pulse Survey →</a>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
@@ -1361,7 +1362,7 @@
 
     function showFlash(label) {
       const el = document.createElement('div');
-      el.textContent = 'ctrl+shift → ' + label;
+      el.innerHTML = 'ctrl<span class="plus-accent">+</span>shift → ' + label;
       el.setAttribute('aria-live', 'polite');
       Object.assign(el.style, {
         position: 'fixed', top: '50%', left: '50%',
