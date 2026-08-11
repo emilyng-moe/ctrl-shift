@@ -72,10 +72,15 @@
     .event-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 20px; align-items: center; text-decoration: none; color: inherit; cursor: pointer; }
     .event-card:hover { border-color: rgba(170,220,50,0.4); transform: translateY(-3px); text-decoration: none; color: inherit; }
     .event-date-box { background: rgba(170,220,50,0.1); border: 1px solid rgba(170,220,50,0.2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .event-date-box .weekday { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(170,220,50,0.65); margin-bottom: 2px; }
     .event-date-box .day { font-size: 1.5rem; font-weight: 900; color: var(--lime); line-height: 1; }
     .event-date-box .month { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
     .event-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .event-info p { font-size: 0.82rem; color: var(--muted); }
+    .event-mode { display: inline-flex; align-items: center; gap: 4px; font-size: 0.66rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; letter-spacing: 0.02em; margin-bottom: 6px; }
+    .mode-online { background: rgba(170,220,50,0.14); color: var(--lime); }
+    .mode-inperson { background: rgba(122,175,255,0.14); color: #7AAFFF; }
+    .mode-tbc { background: rgba(170,170,170,0.14); color: #AAAAAA; }
     .event-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; white-space: nowrap; text-decoration: none; display: inline-block; }
     .badge-open { background: rgba(170,220,50,0.15); color: var(--lime); }
     a.badge-open:hover { background: rgba(170,220,50,0.28); text-decoration: none; }
@@ -116,6 +121,9 @@
     }
     .event-card:hover { transform: translateY(-4px) scale(1.012); box-shadow: 0 8px 32px rgba(170,220,50,0.18), 0 2px 8px rgba(0,0,0,0.3); border-color: rgba(170,220,50,0.45); }
     .event-card:hover::after { opacity: 1; transform: translateY(0); }
+    .event-card.no-cal { cursor: default; }
+    .event-card.no-cal::after { content: none; }
+    .event-card.no-cal:hover { transform: none; box-shadow: none; border-color: var(--border); }
   </style>
 </head>
 <body data-page="launchpad">
@@ -155,80 +163,92 @@
     <div class="section-header">
       <p class="section-label">🚀 Launchpad</p>
       <h2 class="section-title">What&#39;s coming up</h2>
-      <p class="section-desc">Click Open to join on Teams, or click anywhere else on the card to add it to your Outlook calendar.</p>
+      <p class="section-desc">Click through to join an online session, or click the card to save it to your calendar.</p>
     </div>
     <div class="events-list">
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add About Opus workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=About%20Opus%20(Prompt%20Royale%20Workshop)&startdt=2026-08-24T15:00:00&enddt=2026-08-24T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add About Opus workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work%20%28Prompt%20Royale%20Workshop%29&startdt=2026-08-24T15:00:00&enddt=2026-08-24T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
+          <div class="weekday">MON</div>
           <div class="day">24</div>
-          <div class="month">Aug</div>
+          <div class="month">AUG</div>
         </div>
         <div class="event-info">
-          <h3>About Opus</h3>
+          <span class="event-mode mode-online">💻 Online</span>
+          <h3>About Opus: Your AI Productivity Layer for Government Work</h3>
           <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjcyYmE0MzYtMWZiZi00MjE3LThmNzUtMTBjMTU4Y2E2NGVi%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22e916b5d9-93da-4954-b415-221c0792c05c%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join About Opus on Teams">Open</a>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjcyYmE0MzYtMWZiZi00MjE3LThmNzUtMTBjMTU4Y2E2NGVi%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22e916b5d9-93da-4954-b415-221c0792c05c%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join About Opus on Teams">🎥 Join on Teams ↗</a>
       </div>
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add FPD AI Learning Train-The-Trainer to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer&startdt=2026-09-03T09:00:00&enddt=2026-09-03T17:00:00&body=Services%20Wing%3A%20FPD%20AI%20Learning%20Train-The-Trainer.%20Time%20and%20venue%20to%20be%20confirmed.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AIBots workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
-          <div class="day">03</div>
-          <div class="month">Sep</div>
-        </div>
-        <div class="event-info">
-          <h3>Services Wing: FPD AI Learning Train-The-Trainer</h3>
-          <p>Time &amp; venue TBC</p>
-        </div>
-        <span class="event-badge badge-tbc">TBC</span>
-      </div>
-
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add AIBots workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20(Prompt%20Royale%20Workshop)&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
+          <div class="weekday">MON</div>
           <div class="day">07</div>
-          <div class="month">Sep</div>
+          <div class="month">SEP</div>
         </div>
         <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
           <h3>AIBots: How To Create and Optimise Agents</h3>
           <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <a href="https://teams.microsoft.com/meet/43741059047862?p=pGRJm5B7Z9el92Sjai" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join AIBots on Teams">Open</a>
+        <a href="https://teams.microsoft.com/meet/43741059047862?p=pGRJm5B7Z9el92Sjai" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join AIBots on Teams">🎥 Join on Teams ↗</a>
       </div>
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Prompt Royale Finals to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Prompt%20Royale%20x%20MOE%20Finals%20(Live)&startdt=2026-09-11T09:00:00&enddt=2026-09-11T12:00:00&body=Prompt%20Royale%20x%20MOE%20Finals%20(Live).%20MOE%20Buona%20Vista%20L24.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Prompt Royale Finals to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Prompt%20Royale%20x%20MOE%20Finals%20%28Live%29&startdt=2026-09-11T09:00:00&enddt=2026-09-11T12:30:00&body=Prompt%20Royale%20x%20MOE%20Finals%20%28Live%29.%20MOE%20Buona%20Vista%2C%20L24%20Function%20Room.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
+          <div class="weekday">FRI</div>
           <div class="day">11</div>
-          <div class="month">Sep</div>
+          <div class="month">SEP</div>
         </div>
         <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span>
           <h3>Prompt Royale x MOE Finals (Live)</h3>
-          <p>MOE BV L24 · 9:00 AM – 12:00 PM</p>
+          <p>MOE BV, L24 Function Room · 9:00 AM – 12:30 PM</p>
         </div>
         <span class="event-badge badge-open">Open</span>
       </div>
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Coding with AI Agent to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Coding%20with%20AI%20Agent&startdt=2026-09-15T15:00:00&enddt=2026-09-15T16:00:00&body=Coding%20with%20AI%20Agent.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Coding with AI Agent to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Coding%20with%20AI%20Agent%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-15T15:00:00&enddt=2026-09-15T16:00:00&body=Prompt%20Royale%20Workshop%20-%20Coding%20with%20AI%20Agent.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
+          <div class="weekday">TUE</div>
           <div class="day">15</div>
-          <div class="month">Sep</div>
+          <div class="month">SEP</div>
         </div>
         <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
           <h3>Coding with AI Agent</h3>
-          <p>Online via Teams · 3:00 – 4:00 PM</p>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ1YzI1ZWYtM2IwNy00MGQwLWJhZDQtZTg4MmU0MjczYzEz%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Coding with AI Agent on Teams">Open</a>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ1YzI1ZWYtM2IwNy00MGQwLWJhZDQtZTg4MmU0MjczYzEz%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Coding with AI Agent on Teams">🎥 Join on Teams ↗</a>
       </div>
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Getting Started with Pair Chat to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Getting%20Started%20with%20Pair%20Chat&startdt=2026-09-16T15:00:00&enddt=2026-09-16T16:00:00&body=Getting%20Started%20with%20Pair%20Chat.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Getting Started with Pair Chat to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Getting%20Started%20with%20Pair%20Chat%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-16T15:00:00&enddt=2026-09-16T16:00:00&body=Prompt%20Royale%20Workshop%20-%20Getting%20Started%20with%20Pair%20Chat.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
+          <div class="weekday">WED</div>
           <div class="day">16</div>
-          <div class="month">Sep</div>
+          <div class="month">SEP</div>
         </div>
         <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
           <h3>Getting Started with Pair Chat</h3>
-          <p>Online via Teams · 3:00 – 4:00 PM</p>
+          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
-        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDk2MjRjYjktOTA3OC00Mjc0LWE4NjAtMjRjYjlkMzFlOGNl%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Getting Started with Pair Chat on Teams">Open</a>
+        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDk2MjRjYjktOTA3OC00Mjc0LWE4NjAtMjRjYjlkMzFlOGNl%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Getting Started with Pair Chat on Teams">🎥 Join on Teams ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Learn Over Lunch #4 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Learn%20Over%20Lunch%20%234&startdt=2026-10-07T11:00:00&enddt=2026-10-07T14:00:00&body=Learn%20Over%20Lunch%20%234.%20Venue%20to%20be%20confirmed.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">07</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span>
+          <h3>Learn Over Lunch #4</h3>
+          <p>Venue TBC · 11:00 AM – 2:00 PM</p>
+        </div>
+        <span class="event-badge badge-tbc">TBC</span>
       </div>
 
     </div>
