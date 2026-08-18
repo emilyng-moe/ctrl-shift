@@ -345,6 +345,26 @@
       color: rgba(255,255,255,0.65);
       line-height: 1.6;
     }
+    .news-visual-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .news-visual-link:hover, .news-visual-link:focus-visible {
+      border-color: rgba(170,220,50,0.4) !important;
+      background: rgba(170,220,50,0.09) !important;
+      text-decoration: none;
+      outline: none;
+    }
+    .news-visual-link .nv-hint {
+      position: absolute; bottom: 6px; right: 12px;
+      font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted);
+      opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
+    }
+    .news-visual-link:hover .nv-hint, .news-visual-link:focus-visible .nv-hint { opacity: 0.8; }
     .stat-visual {
       margin: 4px 0 14px;
       padding: 18px 20px;
@@ -1160,7 +1180,7 @@
         <div class="news-num" aria-hidden="true">01</div>
         <div class="news-content">
           <h3>Pulse Survey for AI Adoption: Tell Us Where You're At</h3>
-          <div class="pulse-visual">
+          <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="pulse-visual news-visual-link" aria-label="Pulse Survey for AI Adoption — take the survey">
             <svg class="pulse-svg" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
               <path id="pulsePathRef" class="pulse-path" d="M0 40 L50 40 L62 40 L70 12 L80 62 L90 40 L100 40 L300 40" />
               <circle class="pulse-dot" r="4">
@@ -1170,7 +1190,8 @@
               </circle>
             </svg>
             <p class="pulse-caption">Your input counts, and helps us get to know you better</p>
-          </div>
+            <p class="nv-hint">click for details ↗</p>
+          </a>
           <p class="news-summary">The pace of work has picked up, and it's easy for the routine and administrative to crowd out the judgement and creativity the job actually calls for. AI won't change why we do the work, but it might change how much space we have to do it well. The five-minute Pulse Survey for AI Adoption is where Service Wing starts figuring out what that looks like.</p>
           <div class="news-full" id="article-1-full">
             <p>Across a handful of quick sections, the survey covers your role, where you're at with AI day-to-day, and what's getting in the way at both a personal and team level. The findings will help pinpoint where support is needed most right now, and set a baseline to compare against when the pulse repeats in six months.</p>
@@ -1186,7 +1207,7 @@
         <div class="news-num" aria-hidden="true">02</div>
         <div class="news-content">
           <h3>M365 Copilot Access Rolls Out Across MOE HQ</h3>
-          <div class="transform-visual" tabindex="0" role="button" aria-label="Replay animation: cluttered inbox becomes key points">
+          <a href="https://form.gov.sg/6a477293e2c4aa906e571847" target="_blank" rel="noopener" class="transform-visual news-visual-link" aria-label="M365 Copilot: cluttered inbox becomes key points — hover to replay, click to start here">
             <div class="tv-col">
               <p class="tv-label">Cluttered inbox</p>
               <div class="transform-before">
@@ -1207,8 +1228,8 @@
                 <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:66%;"></span></div>
               </div>
             </div>
-            <p class="tv-hint">↻ hover to replay</p>
-          </div>
+            <p class="tv-hint">↻ hover to replay · click ↗</p>
+          </a>
           <p class="news-summary">Sorting through a cluttered inbox before the coffee's even kicked in. Pulling the key points from a 40-page report an hour before a meeting. If either sounds familiar, the next wave of M365 Copilot access is worth clearing your afternoon for.</p>
           <div class="news-full" id="article-2-full">
             <p>M365 Copilot is built for the parts of the job that quietly eat up the day: sorting email and calendars, pulling the key points out of long documents, getting ready for meetings before they start. It isn't here to change how you work. It's here to clear the routine stuff off your plate so there's more time left for the work that actually needs your judgment.</p>
@@ -1224,13 +1245,14 @@
         <div class="news-num" aria-hidden="true">03</div>
         <div class="news-content">
           <h3>The Challenge Is On: Prompt Royale Finals This September</h3>
-          <div class="stat-visual">
+          <a href="https://www.promptroyale.gov.sg" target="_blank" rel="noopener" class="stat-visual news-visual-link" aria-label="Prompt Royale Finals — find out more">
             <div class="stat-number-row">
               <span class="stat-number" data-target="360">0</span><span class="stat-suffix">+</span>
             </div>
             <p class="stat-caption">MOE officers signed up and in the running</p>
             <div class="stat-dots"><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.0s;"></span><span class="stat-dot" style="--dot-op:0.6; transition-delay:0.012s;"></span><span class="stat-dot" style="--dot-op:0.49; transition-delay:0.024s;"></span><span class="stat-dot" style="--dot-op:0.64; transition-delay:0.036s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.048s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.06s;"></span><span class="stat-dot" style="--dot-op:0.26; transition-delay:0.072s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.084s;"></span><span class="stat-dot" style="--dot-op:0.42; transition-delay:0.096s;"></span><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.108s;"></span><span class="stat-dot" style="--dot-op:0.9; transition-delay:0.12s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.132s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.144s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.156s;"></span><span class="stat-dot" style="--dot-op:0.67; transition-delay:0.168s;"></span><span class="stat-dot" style="--dot-op:0.35; transition-delay:0.18s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.192s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.204s;"></span><span class="stat-dot" style="--dot-op:0.59; transition-delay:0.216s;"></span><span class="stat-dot" style="--dot-op:0.73; transition-delay:0.228s;"></span><span class="stat-dot" style="--dot-op:0.69; transition-delay:0.24s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.252s;"></span><span class="stat-dot" style="--dot-op:0.74; transition-delay:0.264s;"></span><span class="stat-dot" style="--dot-op:0.63; transition-delay:0.276s;"></span><span class="stat-dot" style="--dot-op:0.45; transition-delay:0.288s;"></span><span class="stat-dot" style="--dot-op:0.27; transition-delay:0.3s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.312s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.324s;"></span><span class="stat-dot" style="--dot-op:0.72; transition-delay:0.336s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.348s;"></span><span class="stat-dot" style="--dot-op:0.71; transition-delay:0.36s;"></span><span class="stat-dot" style="--dot-op:0.85; transition-delay:0.372s;"></span><span class="stat-dot" style="--dot-op:0.51; transition-delay:0.384s;"></span><span class="stat-dot" style="--dot-op:0.77; transition-delay:0.396s;"></span><span class="stat-dot" style="--dot-op:0.54; transition-delay:0.408s;"></span><span class="stat-dot" style="--dot-op:0.86; transition-delay:0.42s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.432s;"></span><span class="stat-dot" style="--dot-op:0.31; transition-delay:0.444s;"></span><span class="stat-dot" style="--dot-op:0.34; transition-delay:0.456s;"></span><span class="stat-dot" style="--dot-op:0.39; transition-delay:0.468s;"></span><span class="stat-dot" style="--dot-op:0.88; transition-delay:0.48s;"></span><span class="stat-dot" style="--dot-op:0.53; transition-delay:0.492s;"></span></div>
-          </div>
+            <p class="nv-hint">click for details ↗</p>
+          </a>
           <p class="news-summary">More than 360 MOE officers have thrown their hat in the ring for the fourth edition of Prompt Royale, and a good number of them are now knee-deep in real problem statements, prompt drafts in hand.</p>
           <div class="news-full" id="article-3-full">
             <p>To help them get there, a series of workshops has been running across the AI product suite, covering Platform AI Studio, AIBots, Desk, and NotebookLM, with more sessions lined up over the next month.</p>
