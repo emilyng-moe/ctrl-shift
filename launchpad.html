@@ -77,6 +77,8 @@
     .event-date-box .month { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
     .event-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .event-info p { font-size: 0.82rem; color: var(--muted); }
+    .event-info .event-desc { margin-top: 5px; color: rgba(255,255,255,0.65); line-height: 1.45; font-style: italic; font-size: 0.8rem; }
+    .event-reg-note { font-size: 0.72rem; font-weight: 500; color: var(--muted); }
     .event-mode { display: inline-flex; align-items: center; gap: 4px; font-size: 0.66rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; letter-spacing: 0.02em; margin-bottom: 6px; }
     .mode-online { background: rgba(170,220,50,0.14); color: var(--lime); }
     .mode-inperson { background: rgba(122,175,255,0.14); color: #7AAFFF; }
@@ -175,10 +177,11 @@
         </div>
         <div class="event-info">
           <span class="event-mode mode-inperson">📍 In-Person</span>
-          <h3>AI-First Accelerator</h3>
+          <h3>AI-First Accelerator <span class="event-reg-note">(Registration closed)</span></h3>
           <p>Venue: SEAB · 8:30 AM – 5:30 PM</p>
+          <p class="event-desc">Bring a real work challenge, spend the day building with AI, and walk away with a working prototype and a solution you can actually use.</p>
         </div>
-        <span class="event-badge badge-open">Open</span>
+        <span class="event-badge badge-tbc">Closed</span>
       </div>
 
       <div class="card event-card" role="button" tabindex="0" aria-label="Add About Opus workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=About%20Opus%3A%20Your%20AI%20Productivity%20Layer%20for%20Government%20Work%20%28Prompt%20Royale%20Workshop%29&startdt=2026-08-24T15:00:00&enddt=2026-08-24T16:00:00&body=Prompt%20Royale%20Workshop%20-%20About%20Opus.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
@@ -193,6 +196,20 @@
           <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
         </div>
         <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjcyYmE0MzYtMWZiZi00MjE3LThmNzUtMTBjMTU4Y2E2NGVi%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22e916b5d9-93da-4954-b415-221c0792c05c%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join About Opus on Teams">🎥 Join on Teams ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AI Champions Meet Up #2 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AI%20Champions%20Meet%20Up%20%232&startdt=2026-09-03T14:00:00&enddt=2026-09-03T15:30:00&body=AI%20Champions%20Meet%20Up%20%232.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">THU</div>
+          <div class="day">03</div>
+          <div class="month">SEP</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
+          <h3>AI Champions Meet Up #2</h3>
+          <p>Online via Teams · 2:00 – 3:30 PM</p>
+        </div>
+        <span class="event-badge badge-open">Open</span>
       </div>
 
       <div class="card event-card" role="button" tabindex="0" aria-label="Add AIBots workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-07T15:00:00&enddt=2026-09-07T16:00:00&body=Prompt%20Royale%20Workshop%20-%20AIBots%3A%20How%20To%20Create%20and%20Optimise%20Agents.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
@@ -219,6 +236,7 @@
           <span class="event-mode mode-inperson">📍 In-Person</span>
           <h3>Prompt Royale x MOE Finals (Live)</h3>
           <p>MOE BV, L24 Function Room · 9:00 AM – 12:30 PM</p>
+          <p class="event-desc">MOE's top Prompt Royale contenders face off live, with the winner advancing to the Whole-of-Government semi-finals at GovTech HQ.</p>
         </div>
         <span class="event-badge badge-open">Open</span>
       </div>
@@ -259,8 +277,9 @@
         </div>
         <div class="event-info">
           <span class="event-mode mode-inperson">📍 In-Person</span>
-          <h3>Learn Over Lunch #4</h3>
+          <h3>Learn Over Lunch #4 <span class="event-reg-note">(Registration opens soon)</span></h3>
           <p>Venue TBC · 11:00 AM – 2:00 PM</p>
+          <p class="event-desc">Bring your appetite and your curiosity — a casual lunch session on tools that can sharpen your everyday work.</p>
         </div>
         <span class="event-badge badge-tbc">TBC</span>
       </div>
