@@ -1,0 +1,19 @@
+{
+  "name": "ctrl-shift",
+  "version": "1.0.0",
+  "description": "ctrl+shift — MOE Service Wing's AI newsletter, a static 6-page site (Home, Frequency, Launchpad, Think Tank, Toolbox, In the Field) deployed via GitHub Pages.",
+  "private": true,
+  "homepage": "https://emilyng-moe.github.io/ctrl-shift/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emilyng-moe/ctrl-shift.git"
+  },
+  "scripts": {
+    "start": "npx http-server . -p 8080 -c-1",
+    "dev": "npx http-server . -p 8080 -c-1 -o"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "license": "UNLICENSED"
+}
