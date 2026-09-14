@@ -136,6 +136,16 @@
     }
     .logo-wordmark span { color: var(--lime); }
     .plus-accent { color: var(--lime); }
+        .issue-switcher { position: relative; }
+    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--muted); font-size: 0.74rem; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .issue-switcher-btn:hover { border-color: rgba(170,220,50,0.4); color: var(--white); }
+    .issue-caret { font-size: 0.6rem; opacity: 0.7; }
+    .issue-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px; min-width: 210px; box-shadow: 0 12px 32px rgba(0,0,0,0.4); z-index: 200; }
+    .issue-menu.open { display: block; }
+    .issue-menu-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 0.82rem; color: var(--white); text-decoration: none; }
+    .issue-menu-item:hover { background: rgba(170,220,50,0.1); text-decoration: none; }
+    .issue-menu-item.active { color: var(--lime); font-weight: 700; }
+    .issue-current-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); background: var(--lime); padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
     .topbar-issue {
       font-size: 0.74rem;
       color: var(--muted);
@@ -365,6 +375,54 @@
       opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
     }
     .news-visual-link:hover .nv-hint, .news-visual-link:focus-visible .nv-hint { opacity: 0.8; }
+    /* ─── PROBLEM VISUAL (scribble -> blueprint) ─────────── */
+    .problem-visual { margin: 4px 0 14px; padding: 20px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; gap: 16px; position: relative; cursor: pointer; transition: border-color 0.25s ease, background 0.25s ease; opacity: 0; transform: translateY(16px); }
+    .problem-visual.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s ease, background 0.25s ease; }
+    .problem-visual:hover, .problem-visual:focus-visible { border-color: rgba(170,220,50,0.4); background: rgba(170,220,50,0.09); outline: none; }
+    .pv-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .pv-label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .pv-box { width: 64px; height: 64px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.04); border: 1px solid var(--border); }
+    .pv-arrow { flex-shrink: 0; opacity: 0.7; }
+    .pv-draw { stroke-dasharray: 140; stroke-dashoffset: 140; }
+    .problem-visual.visible .pv-draw { animation: pvDrawLine 1s ease forwards; }
+    @keyframes pvDrawLine { to { stroke-dashoffset: 0; } }
+    .pv-blueprint-svg { opacity: 0; transform: scale(0.85); }
+    .problem-visual.visible .pv-blueprint-svg { animation: pvPopIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.9s forwards; }
+    @keyframes pvPopIn { to { opacity: 1; transform: scale(1); } }
+    .pv-hint { position: absolute; bottom: 6px; right: 12px; font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
+    .problem-visual:hover .pv-hint, .problem-visual:focus-visible .pv-hint { opacity: 0.8; }
+
+    /* ─── PODIUM VISUAL (Prompt Royale winners) ──────────── */
+    .podium-visual { margin: 4px 0 14px; padding: 20px 20px 14px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); display: flex; align-items: flex-end; justify-content: center; gap: 14px; cursor: pointer; position: relative; transition: border-color 0.25s ease, background 0.25s ease; opacity: 0; transform: translateY(16px); }
+    .podium-visual.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s ease, background 0.25s ease; }
+    .podium-visual:hover, .podium-visual:focus-visible { border-color: rgba(170,220,50,0.4); background: rgba(170,220,50,0.09); outline: none; }
+    .podium-block { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 30%; max-width: 100px; }
+    .podium-medal { font-size: 1.3rem; opacity: 0; transform: translateY(8px) scale(0.7); }
+    .podium-visual.visible .podium-2 .podium-medal { animation: podiumPop 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.15s forwards; }
+    .podium-visual.visible .podium-1 .podium-medal { animation: podiumPop 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.4s forwards; }
+    .podium-visual.visible .podium-3 .podium-medal { animation: podiumPop 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.55s forwards; }
+    @keyframes podiumPop { to { opacity: 1; transform: translateY(0) scale(1); } }
+    .podium-names { font-size: 0.68rem; font-weight: 700; text-align: center; color: var(--white); line-height: 1.25; min-height: 2.2em; }
+    .podium-bar { width: 100%; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, rgba(170,220,50,0.55), rgba(170,220,50,0.15)); height: 0; }
+    @keyframes podiumGrow { to { height: var(--h); } }
+    .podium-visual.visible .podium-2 .podium-bar { animation: podiumGrow 0.5s ease 0.05s forwards; }
+    .podium-visual.visible .podium-1 .podium-bar { animation: podiumGrow 0.5s ease 0.3s forwards; }
+    .podium-visual.visible .podium-3 .podium-bar { animation: podiumGrow 0.5s ease 0.45s forwards; }
+    .podium-hint { position: absolute; bottom: 6px; right: 12px; font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
+    .podium-visual:hover .podium-hint, .podium-visual:focus-visible .podium-hint { opacity: 0.8; }
+
+    /* ─── STREAK VISUAL (12-week tracker) ────────────────── */
+    .streak-visual { margin: 4px 0 14px; padding: 20px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); text-align: center; cursor: pointer; position: relative; transition: border-color 0.25s ease, background 0.25s ease; opacity: 0; transform: translateY(16px); }
+    .streak-visual.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s ease, background 0.25s ease; }
+    .streak-visual:hover, .streak-visual:focus-visible { border-color: rgba(170,220,50,0.4); background: rgba(170,220,50,0.09); outline: none; }
+    .streak-row { display: flex; justify-content: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .streak-block { width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
+    .streak-visual.visible .streak-block { animation: streakLight 0.35s ease forwards; animation-delay: var(--d); }
+    @keyframes streakLight { to { background: var(--lime); border-color: var(--lime); box-shadow: 0 0 10px rgba(170,220,50,0.5); } }
+    .streak-caption { font-size: 0.78rem; color: var(--muted); }
+    .streak-hint { position: absolute; bottom: 6px; right: 12px; font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
+    .streak-visual:hover .streak-hint, .streak-visual:focus-visible .streak-hint { opacity: 0.8; }
+
     .stat-visual {
       margin: 4px 0 14px;
       padding: 18px 20px;
@@ -1149,7 +1207,13 @@
         </div>
         <div class="logo-wordmark">ctrl<span>+</span>shift</div>
       </a>
-      <span class="topbar-issue">Issue 01 · Aug 2026</span>
+      <div class="issue-switcher">
+        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 02 &middot; Sep 2026 <span class="issue-caret">&#9662;</span></button>
+        <div class="issue-menu" role="menu">
+          <a href="frequency.html" class="issue-menu-item active" role="menuitem">Issue 02 &middot; Sep 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="archive/aug-2026/frequency.html" class="issue-menu-item" role="menuitem">Issue 01 &middot; Aug 2026</a>
+        </div>
+      </div>
     </div>
     <ul class="topbar-nav" role="list">
       <li><a href="frequency.html" data-page="frequency">📡 Frequency</a></li>
@@ -1179,25 +1243,39 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">01</div>
         <div class="news-content">
-          <h3>Pulse Survey for AI Adoption: Tell Us Where You're At</h3>
-          <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="pulse-visual news-visual-link" aria-label="Pulse Survey for AI Adoption — take the survey">
-            <svg class="pulse-svg" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
-              <path id="pulsePathRef" class="pulse-path" d="M0 40 L50 40 L62 40 L70 12 L80 62 L90 40 L100 40 L300 40" />
-              <circle class="pulse-dot" r="4">
-                <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.1s">
-                  <mpath href="#pulsePathRef" xlink:href="#pulsePathRef"></mpath>
-                </animateMotion>
-              </circle>
-            </svg>
-            <p class="pulse-caption">Your input counts, and helps us get to know you better</p>
-            <p class="nv-hint">click for details ↗</p>
-          </a>
-          <p class="news-summary">The pace of work has picked up, and it's easy for the routine and administrative to crowd out the judgement and creativity the job actually calls for. AI won't change why we do the work, but it might change how much space we have to do it well. The five-minute Pulse Survey for AI Adoption is where Service Wing starts figuring out what that looks like.</p>
+          <h3>From Work Problems to Working Prototypes</h3>
+          <div class="problem-visual" tabindex="0" role="img" aria-label="A messy work problem becomes a clean prototype">
+            <div class="pv-col">
+              <p class="pv-label">Work problem</p>
+              <div class="pv-box">
+                <svg width="40" height="40" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <path class="pv-draw" d="M14 20 L34 16 L18 26 L44 22 L20 34 L40 30 L22 44 L38 40" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="pv-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="var(--lime)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="pv-col">
+              <p class="pv-label">Prototype</p>
+              <div class="pv-box">
+                <svg class="pv-blueprint-svg" width="40" height="40" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <circle cx="16" cy="20" r="3" fill="var(--lime)"/>
+                  <line x1="24" y1="20" x2="48" y2="20" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="16" cy="32" r="3" fill="var(--lime)"/>
+                  <line x1="24" y1="32" x2="48" y2="32" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="16" cy="44" r="3" fill="var(--lime)"/>
+                  <line x1="24" y1="44" x2="42" y2="44" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            <p class="pv-hint">↻ hover to replay</p>
+          </div>
+          <p class="news-summary">What happens when officers are given time to step away from day-to-day work and focus on one real problem with AI? At the AI-First Accelerator Community Day on 24 August, 261 officers did just that, creating 47 AI-assisted solutions across areas such as staffing, audit planning, email checking, invoicing, and subsidy monitoring.</p>
           <div class="news-full" id="article-1-full">
-            <p>Across a handful of quick sections, the survey covers your role, where you're at with AI day-to-day, and what's getting in the way at both a personal and team level. The findings will help pinpoint where support is needed most right now, and set a baseline to compare against when the pulse repeats in six months.</p>
-            <p>It's also your first step into something new: <strong style="color:var(--lime);">Learn &amp; Grow with GovRewards</strong>. Complete the survey to earn your first 10 points and kick-start your AI learning journey, with more milestones to unlock as you attend workshops and training sessions through September.</p>
-            <p>Wherever you're at on this journey, this is one small step worth taking.</p>
-            <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Take the Pulse Survey →</a>
+            <p>The day was designed to move teams beyond talking about AI and into building with it. Officers worked through real work challenges, sharpened their problem statements, and developed early prototypes that could be tested and improved.</p>
+            <p>One lesson stood out: the strongest ideas started with a clear understanding of the work problem, not with the AI tool. Teams that were able to define the problem well could move more quickly into designing and testing possible solutions.</p>
+            <p>Seven top-voted teams are now receiving further support to strengthen their prototypes ahead of the Gallery Walk on 30 September. For everyone else, the takeaway is just as relevant: before asking what AI can do, start by asking which part of your work is worth rethinking.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1206,36 +1284,31 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">02</div>
         <div class="news-content">
-          <h3>M365 Copilot Access Rolls Out Across MOE HQ</h3>
-          <a href="https://go.gov.sg/moehqcopilot" target="_blank" rel="noopener" class="transform-visual news-visual-link" aria-label="M365 Copilot: cluttered inbox becomes key points — hover to replay, click to start here">
-            <div class="tv-col">
-              <p class="tv-label">Cluttered inbox</p>
-              <div class="transform-before">
-                <span class="tv-bar" style="width:88%;"></span>
-                <span class="tv-bar" style="width:64%;"></span>
-                <span class="tv-bar" style="width:95%;"></span>
-                <span class="tv-bar" style="width:72%;"></span>
-              </div>
+          <h3>Prompt Royale x MOE Finals: 10 Minutes to Tackle Real School Challenges</h3>
+          <div class="podium-visual" tabindex="0" role="img" aria-label="Podium: Kenny and Wee Lin champions, Ee Jun and Frederick first runners-up, Eugene and Jin Wee second runners-up">
+            <div class="podium-block podium-2">
+              <div class="podium-medal">🥈</div>
+              <div class="podium-names">Ee Jun &amp; Frederick</div>
+              <div class="podium-bar" style="--h:54px;"></div>
             </div>
-            <div class="transform-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 12h14m0 0-5-5m5 5-5 5" stroke="var(--lime)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="podium-block podium-1">
+              <div class="podium-medal">🥇</div>
+              <div class="podium-names">Kenny &amp; Wee Lin</div>
+              <div class="podium-bar" style="--h:76px;"></div>
             </div>
-            <div class="tv-col">
-              <p class="tv-label">Key points</p>
-              <div class="transform-after">
-                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:78%;"></span></div>
-                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:55%;"></span></div>
-                <div class="tv-point"><span class="tv-dot"></span><span class="tv-line" style="width:66%;"></span></div>
-              </div>
+            <div class="podium-block podium-3">
+              <div class="podium-medal">🥉</div>
+              <div class="podium-names">Eugene &amp; Jin Wee</div>
+              <div class="podium-bar" style="--h:40px;"></div>
             </div>
-            <p class="tv-hint">↻ hover to replay · click ↗</p>
-          </a>
-          <p class="news-summary">Sorting through a cluttered inbox before the coffee's even kicked in. Pulling the key points from a 40-page report an hour before a meeting. If either sounds familiar, the next wave of M365 Copilot access is worth clearing your afternoon for.</p>
+            <p class="podium-hint">↻ hover to replay</p>
+          </div>
+          <p class="news-summary">What happens when HQ and school officers come together to tackle real school challenges, with just 10 minutes and AI at their side?</p>
           <div class="news-full" id="article-2-full">
-            <p>M365 Copilot is built for the parts of the job that quietly eat up the day: sorting email and calendars, pulling the key points out of long documents, getting ready for meetings before they start. It isn't here to change how you work. It's here to clear the routine stuff off your plate so there's more time left for the work that actually needs your judgment.</p>
-            <p>Before you can use it, complete the AI101 AI Literacy Programme on <a href="https://go.gov.sg/glow" target="_blank" rel="noopener">Glow</a>. Guides, tips, and training resources are all on the <a href="https://go.gov.sg/moehqcopilot" target="_blank" rel="noopener">M365 Copilot onboarding page</a>, and a series of virtual training sessions is on the way too, so keep an eye out.</p>
-            <p>Haven't been onboarded yet? Access is rolling out in phases, so your turn is coming. In the meantime, if you've been curious about what Copilot can actually do, this is where to start.</p>
-            <a href="https://go.gov.sg/moehqcopilot" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Start here →</a>
+            <p>At the Prompt Royale x MOE Finals on 11 September, five finalist duos took on three challenges drawn from real school contexts. They had to make sense of the problem quickly, decide what the AI needed to know, test their approach, and refine it on the spot, using only four approved tools: Pair, Desk, AISAY, and Opus.</p>
+            <p>What made the finals especially interesting was the mix of perspectives in the room. HQ officers brought one view of the system, while school officers brought the realities of day-to-day practice. Together, they showed how AI can become more useful when different experiences are brought to the same problem.</p>
+            <p>And if 10 minutes, four tools, and a clear challenge were enough to surface useful ideas and new approaches, it raises a bigger question: what could we achieve if teams had more time to explore, test, and build around the challenges that matter most?</p>
+            <p>Kenny and Wee Lin emerged as this year's champions, with Ee Jun and Frederick taking first runners-up, and Eugene and Jin Wee placing second runners-up. But the bigger takeaway from the finals was not just who won. It was what became possible when real problems, different perspectives, and AI came together.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1244,21 +1317,19 @@
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">03</div>
         <div class="news-content">
-          <h3>The Challenge Is On: Prompt Royale Finals This September</h3>
-          <a href="https://www.promptroyale.gov.sg" target="_blank" rel="noopener" class="stat-visual news-visual-link" aria-label="Prompt Royale Finals — find out more">
-            <div class="stat-number-row">
-              <span class="stat-number" data-target="360">0</span><span class="stat-suffix">+</span>
-            </div>
-            <p class="stat-caption">MOE officers signed up and in the running</p>
-            <div class="stat-dots"><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.0s;"></span><span class="stat-dot" style="--dot-op:0.6; transition-delay:0.012s;"></span><span class="stat-dot" style="--dot-op:0.49; transition-delay:0.024s;"></span><span class="stat-dot" style="--dot-op:0.64; transition-delay:0.036s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.048s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.06s;"></span><span class="stat-dot" style="--dot-op:0.26; transition-delay:0.072s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.084s;"></span><span class="stat-dot" style="--dot-op:0.42; transition-delay:0.096s;"></span><span class="stat-dot" style="--dot-op:0.4; transition-delay:0.108s;"></span><span class="stat-dot" style="--dot-op:0.9; transition-delay:0.12s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.132s;"></span><span class="stat-dot" style="--dot-op:0.79; transition-delay:0.144s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.156s;"></span><span class="stat-dot" style="--dot-op:0.67; transition-delay:0.168s;"></span><span class="stat-dot" style="--dot-op:0.35; transition-delay:0.18s;"></span><span class="stat-dot" style="--dot-op:0.66; transition-delay:0.192s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.204s;"></span><span class="stat-dot" style="--dot-op:0.59; transition-delay:0.216s;"></span><span class="stat-dot" style="--dot-op:0.73; transition-delay:0.228s;"></span><span class="stat-dot" style="--dot-op:0.69; transition-delay:0.24s;"></span><span class="stat-dot" style="--dot-op:0.29; transition-delay:0.252s;"></span><span class="stat-dot" style="--dot-op:0.74; transition-delay:0.264s;"></span><span class="stat-dot" style="--dot-op:0.63; transition-delay:0.276s;"></span><span class="stat-dot" style="--dot-op:0.45; transition-delay:0.288s;"></span><span class="stat-dot" style="--dot-op:0.27; transition-delay:0.3s;"></span><span class="stat-dot" style="--dot-op:0.81; transition-delay:0.312s;"></span><span class="stat-dot" style="--dot-op:0.56; transition-delay:0.324s;"></span><span class="stat-dot" style="--dot-op:0.72; transition-delay:0.336s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.348s;"></span><span class="stat-dot" style="--dot-op:0.71; transition-delay:0.36s;"></span><span class="stat-dot" style="--dot-op:0.85; transition-delay:0.372s;"></span><span class="stat-dot" style="--dot-op:0.51; transition-delay:0.384s;"></span><span class="stat-dot" style="--dot-op:0.77; transition-delay:0.396s;"></span><span class="stat-dot" style="--dot-op:0.54; transition-delay:0.408s;"></span><span class="stat-dot" style="--dot-op:0.86; transition-delay:0.42s;"></span><span class="stat-dot" style="--dot-op:0.82; transition-delay:0.432s;"></span><span class="stat-dot" style="--dot-op:0.31; transition-delay:0.444s;"></span><span class="stat-dot" style="--dot-op:0.34; transition-delay:0.456s;"></span><span class="stat-dot" style="--dot-op:0.39; transition-delay:0.468s;"></span><span class="stat-dot" style="--dot-op:0.88; transition-delay:0.48s;"></span><span class="stat-dot" style="--dot-op:0.53; transition-delay:0.492s;"></span></div>
-            <p class="nv-hint">click for details ↗</p>
-          </a>
-          <p class="news-summary">More than 360 MOE officers have thrown their hat in the ring for the fourth edition of Prompt Royale, and a good number of them are now knee-deep in real problem statements, prompt drafts in hand.</p>
+          <h3>What Could One Hour a Week Change?</h3>
+          <div class="streak-visual" tabindex="0" role="img" aria-label="Twelve week streak tracker, one hour a week">
+            <div class="streak-row"><span class="streak-block" style="--d:0.03s"></span><span class="streak-block" style="--d:0.06s"></span><span class="streak-block" style="--d:0.09s"></span><span class="streak-block" style="--d:0.12s"></span><span class="streak-block" style="--d:0.15s"></span><span class="streak-block" style="--d:0.18s"></span><span class="streak-block" style="--d:0.21s"></span><span class="streak-block" style="--d:0.24s"></span><span class="streak-block" style="--d:0.27s"></span><span class="streak-block" style="--d:0.30s"></span><span class="streak-block" style="--d:0.33s"></span><span class="streak-block" style="--d:0.36s"></span></div>
+            <p class="streak-caption">One hour a week. Twelve weeks running.</p>
+            <p class="streak-hint">↻ hover to replay</p>
+          </div>
+          <p class="news-summary">AI doesn't have to be something you cram in all at once. The 12-Week Learning Plan asks for just one hour a week — and builds learning straight into how you already work.</p>
           <div class="news-full" id="article-3-full">
-            <p>Prompt Royale is an agency-anchored competition that fields officers, across all levels, to build their AI and prompt engineering capabilities through a gamified challenge.</p>
-            <p>To help them get there, a series of workshops has been running across the AI product suite, covering Platform AI Studio, AIBots, Desk, and NotebookLM, with more sessions lined up over the next month.</p>
-            <p>Submissions close end August, and the top five finalists will face off at the PRxMOE 2026 Live Finals on 11 September, at MOE HQ Buona Vista, Function Room. Whether you're one of the 360-plus in the running or just there to cheer, it's worth clearing your calendar for the showdown.</p>
-            <a href="https://www.promptroyale.gov.sg" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Find out more →</a>
+            <p>AI can feel like something you need to catch up on overnight. The 12-Week Learning Plan takes the opposite approach: start small, stay consistent, and learn through the work you're already doing.</p>
+            <p>Teams set aside just one hour a week to learn, experiment, and apply AI to a real work challenge — no separate course, no one-off workshop, just learning built into the rhythm of work.</p>
+            <p>Over 12 weeks, teams move from understanding the problem and using AI responsibly, to testing it on real tasks and rethinking the wider workflow. The goal isn't to know more about AI — it's to have improved one piece of work, and found a habit worth keeping.</p>
+            <p>Start with one problem. Give it one hour a week. See where the small changes add up. The plan is simple — the harder part is just making the space to begin.</p>
+            <a href="https://www.idg.gov.sg/articles/12-week-learning-plan/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Explore the 12-Week Learning Plan →</a>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1369,7 +1440,7 @@
   }
 
   /* ─── TRANSFORM / PULSE VISUAL REVEAL ────────────────── */
-  const revealVisuals = document.querySelectorAll('.transform-visual, .pulse-visual');
+  const revealVisuals = document.querySelectorAll('.transform-visual, .pulse-visual, .problem-visual, .podium-visual, .streak-visual');
   if (revealVisuals.length) {
     const visualObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1383,7 +1454,7 @@
   }
 
   /* ─── COPILOT TRANSFORM VISUAL: replay on hover / focus ── */
-  document.querySelectorAll('.transform-visual').forEach(el => {
+  document.querySelectorAll('.transform-visual, .problem-visual, .podium-visual, .streak-visual').forEach(el => {
     function replay() {
       el.classList.remove('visible');
       void el.offsetWidth; // force reflow so the animation can restart
@@ -1457,6 +1528,17 @@
       ctrlDown = false; shiftDown = false; fired = false;
     });
   })();
+
+  function toggleIssueMenu(btn) {
+    const menu = btn.nextElementSibling;
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.issue-menu.open').forEach(menu => {
+      if (!menu.parentElement.contains(e.target)) menu.classList.remove('open');
+    });
+  });
 </script>
 
 </body>
