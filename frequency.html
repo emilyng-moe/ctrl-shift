@@ -383,6 +383,14 @@
     .pv-photo-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px; background: linear-gradient(to top, rgba(6,12,30,0.88), rgba(6,12,30,0)); color: #fff; }
     .pv-photo-caption strong { display: block; font-size: 0.92rem; }
     .pv-photo-caption span { display: block; font-size: 0.76rem; color: rgba(255,255,255,0.72); margin-top: 2px; }
+    .pr-reflections { margin: 20px 0 4px; padding: 18px 20px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); }
+    .pr-reflections-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime2); margin-bottom: 14px; }
+    .pr-reflection-item { display: flex; gap: 12px; align-items: flex-start; }
+    .pr-reflection-item + .pr-reflection-item { margin-top: 12px; }
+    .pr-reflection-num { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; background: rgba(170,220,50,0.15); border: 1px solid rgba(170,220,50,0.35); color: var(--lime2); font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .pr-reflection-item h5 { font-size: 0.9rem; font-weight: 700; color: #fff; margin: 0 0 4px; }
+    .pr-reflection-item p { font-size: 0.86rem; color: rgba(255,255,255,0.78); line-height: 1.5; margin: 0; }
+    .pr-reflection-item p strong { color: #fff; }
 
     /* ─── PODIUM VISUAL (Prompt Royale winners) ──────────── */
     .podium-visual { margin: 4px 0 14px; padding: 20px 20px 14px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); display: flex; align-items: flex-end; justify-content: center; gap: 14px; cursor: pointer; position: relative; transition: border-color 0.25s ease, background 0.25s ease; opacity: 0; transform: translateY(16px); }
@@ -1288,7 +1296,7 @@
             <p>The day was designed to move teams beyond talking about AI and into building with it. Officers worked through real work challenges, sharpened their problem statements, and developed early prototypes that could be tested and improved.</p>
             <p>The day was opened by 2PS, who reminded officers that going AI-first is ultimately about people — building the confidence, capability and mindset to work differently, not just adopting new tools. Officers then got hands-on with ChatGPT Enterprise’s Projects and Skills, and rapid-prototyping tools Rabbit Deploy and Viber Studio, to bring their ideas to life.</p>
             <p>One lesson stood out: the strongest ideas started with a clear understanding of the work problem, not with the AI tool. Teams that were able to define the problem well could move more quickly into designing and testing possible solutions.</p>
-            <p>Seven top-voted teams are now receiving further support to strengthen their prototypes ahead of the Gallery Walk on 30 September. For everyone else, the takeaway is just as relevant: before asking what AI can do, start by asking which part of your work is worth rethinking.</p>
+            <p>Eight top-voted teams are now receiving further support to strengthen their prototypes ahead of the Gallery Walk on 30 September. For everyone else, the takeaway is just as relevant: before asking what AI can do, start by asking which part of your work is worth rethinking.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1323,10 +1331,34 @@
           </div>
           <p class="news-summary">What happens when HQ and school officers come together to tackle real school challenges, with just 10 minutes and AI at their side?</p>
           <div class="news-full" id="article-2-full">
-            <p>At the Prompt Royale x MOE Finals on 11 September, five finalist duos took on three challenges drawn from real school contexts. They had to make sense of the problem quickly, decide what the AI needed to know, test their approach, and refine it on the spot, using only four approved tools: Pair, Desk, AISAY, and Opus.</p>
-            <p>What made the finals especially interesting was the mix of perspectives in the room. HQ officers brought one view of the system, while school officers brought the realities of day-to-day practice. Together, they showed how AI can become more useful when different experiences are brought to the same problem.</p>
-            <p>And if 10 minutes, four tools, and a clear challenge were enough to surface useful ideas and new approaches, it raises a bigger question: what could we achieve if teams had more time to explore, test, and build around the challenges that matter most?</p>
-            <p>Kenny and Wee Lin emerged as this year's champions, with Ee Jun and Frederick taking first runners-up, and Eugene and Jin Wee placing second runners-up. But the bigger takeaway from the finals was not just who won. It was what became possible when real problems, different perspectives, and AI came together.</p>
+            <p>At the Prompt Royale x MOE Finals on 11 September, five finalist duos took on three challenges drawn from real school contexts — making sense of the problem, deciding what the AI needed to know, and refining their approach on the spot, using only four approved tools: Pair, Desk, AISAY, and Opus.</p>
+            <p>What made the finals interesting was the mix of perspectives in the room. HQ officers brought one view of the system, school officers brought the realities of day-to-day practice, and together they showed how AI becomes more useful when different experiences meet the same problem.</p>
+            <p>And if 10 minutes and four tools were enough to surface real ideas, it raises a bigger question: what could we achieve with more time to explore, test, and build around the challenges that matter most?</p>
+            <p>Kenny and Wee Lin emerged as this year's champions, with Ee Jun and Frederick taking first runners-up, and Eugene and Jin Wee placing second runners-up. But the bigger takeaway wasn't who won — it was what became possible when real problems, different perspectives, and AI came together.</p>
+            <div class="pr-reflections">
+              <p class="pr-reflections-label">3 things worth taking away</p>
+              <div class="pr-reflection-item">
+                <span class="pr-reflection-num">1</span>
+                <div>
+                  <h5>Confidence is built by doing.</h5>
+                  <p>For many finalists, prompting under pressure was new. But with each challenge, they became quicker at figuring out where to start, what to ask and what to do when the first attempt fell short. The more they tried, the more naturally it came.</p>
+                </div>
+              </div>
+              <div class="pr-reflection-item">
+                <span class="pr-reflection-num">2</span>
+                <div>
+                  <h5>Good prompting is about iteration, not perfection.</h5>
+                  <p>With just 10 minutes per challenge, there was no time to craft the “perfect” prompt. Teams had to start, see what came back, then refine, redirect and try again. The lesson? You do not need the perfect prompt to begin — you need to know how to build on what you get.</p>
+                </div>
+              </div>
+              <div class="pr-reflection-item">
+                <span class="pr-reflection-num">3</span>
+                <div>
+                  <h5>Knowing the work matters as much as knowing the AI.</h5>
+                  <p>Prompting skills only got teams so far. They still had to understand the problem, decide what mattered and judge whether the AI's response actually made sense. AI can help you do the work, but your context and judgement are what make the output useful.</p>
+                </div>
+              </div>
+            </div>
                     </div>
           <button class="read-toggle" onclick="toggleArticle('article-2-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
