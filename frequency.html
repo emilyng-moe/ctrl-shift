@@ -137,8 +137,8 @@
     .logo-wordmark span { color: var(--lime); }
     .plus-accent { color: var(--lime); }
         .issue-switcher { position: relative; }
-    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--muted); font-size: 0.74rem; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-    .issue-switcher-btn:hover { border-color: rgba(170,220,50,0.4); color: var(--white); }
+    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: none; background: var(--lime); color: var(--navy); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .issue-switcher-btn:hover { background: var(--lime2); }
     .issue-caret { font-size: 0.6rem; opacity: 0.7; }
     .issue-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px; min-width: 210px; box-shadow: 0 12px 32px rgba(0,0,0,0.4); z-index: 200; }
     .issue-menu.open { display: block; }
@@ -148,10 +148,11 @@
     .issue-current-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); background: var(--lime); padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
     .topbar-issue {
       font-size: 0.74rem;
-      color: var(--muted);
+      color: var(--navy);
+      font-weight: 700;
       letter-spacing: 0.06em;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
+      background: var(--lime);
+      border: none;
       padding: 6px 14px;
       border-radius: 100px;
       white-space: nowrap;
@@ -1041,6 +1042,9 @@
 .breadcrumb a:hover { color: var(--lime); }
 .breadcrumb .sep { margin: 0 6px; opacity: 0.5; }
 .breadcrumb .current { color: rgba(255,255,255,0.6); }
+.breadcrumb-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.breadcrumb-archive-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.76rem; font-weight: 700; color: var(--lime); border: 1px solid rgba(170,220,50,0.4); padding: 5px 12px; border-radius: 100px; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+.breadcrumb-archive-btn:hover { background: rgba(170,220,50,0.15); border-color: var(--lime); text-decoration: none; }
 
 /* ─── PAGE HERO (section pages, compact) ─────────────── */
 .page-hero {
@@ -1271,8 +1275,13 @@
 <main>
 
 <div class="container breadcrumb">
-  <a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Frequency</span>
+  <div class="breadcrumb-row">
+    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Frequency</span></div>
+    <a href="archive/aug-2026/frequency.html" class="breadcrumb-archive-btn">View Aug Issue &rarr;</a>
+  </div>
 </div>
+
+
 
 <section id="frequency" class="section reveal">
   <div class="container">

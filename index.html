@@ -145,8 +145,8 @@
     }
     .logo-wordmark span { color: var(--lime); }
         .issue-switcher { position: relative; }
-    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--muted); font-size: 0.74rem; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
-    .issue-switcher-btn:hover { border-color: rgba(170,220,50,0.4); color: var(--white); }
+    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: none; background: var(--lime); color: var(--navy); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .issue-switcher-btn:hover { background: var(--lime2); }
     .issue-caret { font-size: 0.6rem; opacity: 0.7; }
     .issue-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px; min-width: 210px; box-shadow: 0 12px 32px rgba(0,0,0,0.4); z-index: 200; }
     .issue-menu.open { display: block; }
@@ -156,10 +156,11 @@
     .issue-current-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); background: var(--lime); padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
     .topbar-issue {
       font-size: 0.74rem;
-      color: var(--muted);
+      color: var(--navy);
+      font-weight: 700;
       letter-spacing: 0.06em;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
+      background: var(--lime);
+      border: none;
       padding: 6px 14px;
       border-radius: 100px;
       white-space: nowrap;
@@ -1280,6 +1281,8 @@
 </header>
 
 <main>
+
+
 
 <!-- INTRODUCTION -->
 <section class="intro-section section">

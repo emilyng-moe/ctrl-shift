@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Previous-issue callout — sample</title>
+<style>
+  :root {
+    --navy: #16244F; --navy2: #1F335F; --lime: #AADC32; --lime2: #C5E85A;
+    --white: #FFFFFF; --muted: #A7B2C7; --border: rgba(255,255,255,0.14);
+    --radius: 16px; --radius-sm: 10px;
+    --font: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: #f4f4f2; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 1.2rem; color: #222; margin-bottom: 30px; }
+  .frame { max-width: 760px; margin: 0 auto 44px; background: var(--navy); border-radius: 16px; padding: 28px 32px 36px; }
+  .label { text-align: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+  .label.current { color: #b3401f; }
+  .label.proposed { color: #1f7a4d; }
+
+  /* current topbar pill, subtle */
+  .topbar-row { display: flex; justify-content: flex-end; margin-bottom: 24px; }
+  .issue-pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--muted); font-size: 0.74rem; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; }
+
+  /* proposed callout */
+  .callout { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: rgba(170,220,50,0.09); border: 1px solid rgba(170,220,50,0.3); border-radius: var(--radius-sm); padding: 14px 20px; margin-bottom: 28px; flex-wrap: wrap; }
+  .callout-text { display: flex; align-items: center; gap: 12px; color: var(--white); font-size: 0.88rem; }
+  .callout-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .callout-text strong { color: var(--lime2); }
+  .callout-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--lime); color: var(--navy); font-size: 0.8rem; font-weight: 700; padding: 9px 18px; border-radius: 100px; white-space: nowrap; text-decoration: none; }
+
+  .section-header h2 { color: var(--white); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
+  .section-header p { color: var(--muted); margin-top: 8px; font-size: 0.9rem; }
+
+  /* refined: slim, single-line, subtle */
+  .callout-slim { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px 9px 14px; margin-bottom: 24px; background: rgba(170,220,50,0.05); border-left: 3px solid var(--lime); border-radius: 0 8px 8px 0; }
+  .callout-slim-text { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); }
+  .callout-slim-text .ic { font-size: 0.95em; }
+  .callout-slim-text strong { color: var(--white); font-weight: 600; }
+  .callout-slim-btn { display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(170,220,50,0.4); color: var(--lime); background: transparent; font-size: 0.74rem; font-weight: 700; padding: 5px 12px; border-radius: 100px; white-space: nowrap; text-decoration: none; }
+  .callout-slim-btn:hover { background: rgba(170,220,50,0.15); border-color: var(--lime); }
+</style>
+</head>
+<body>
+  <h1>How readers currently find past issues vs. the proposed callout</h1>
+
+  <div class="frame">
+    <div class="label current">Current — easy to miss</div>
+    <div class="topbar-row">
+      <span class="issue-pill">Issue 02 · Sep 2026 ▾</span>
+    </div>
+    <div class="section-header">
+      <h2>Ideas worth exploring</h2>
+      <p>A use case, a thought experiment, or a question worth sitting with.</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="label current">First draft — a bit too bold</div>
+    <div class="topbar-row">
+      <span class="issue-pill">Issue 02 · Sep 2026 ▾</span>
+    </div>
+    <div class="callout">
+      <div class="callout-text">
+        <span class="callout-icon">🗂️</span>
+        <span>You're reading <strong>Issue 02 · Sep 2026</strong>. Curious what changed since last month?</span>
+      </div>
+      <a href="#" class="callout-btn">Browse Aug issue →</a>
+    </div>
+    <div class="section-header">
+      <h2>Ideas worth exploring</h2>
+      <p>A use case, a thought experiment, or a question worth sitting with.</p>
+    </div>
+  </div>
+
+  <div class="frame">
+    <div class="label proposed">Refined — one line, quieter, still a real button</div>
+    <div class="topbar-row">
+      <span class="issue-pill">Issue 02 · Sep 2026 ▾</span>
+    </div>
+    <div class="callout-slim">
+      <div class="callout-slim-text">
+        <span class="ic">🗂️</span>
+        <span>Now reading <strong>Issue 02 · Sep 2026</strong></span>
+      </div>
+      <a href="#" class="callout-slim-btn">View Aug issue →</a>
+    </div>
+    <div class="section-header">
+      <h2>Ideas worth exploring</h2>
+      <p>A use case, a thought experiment, or a question worth sitting with.</p>
+    </div>
+  </div>
+</body>
+</html>
