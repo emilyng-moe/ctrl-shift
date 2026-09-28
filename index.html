@@ -735,6 +735,12 @@
     .poll-note { font-size: 0.78rem; color: var(--muted); margin-top: 20px; }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
+    .pulse-callout { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 18px 26px; margin: 32px auto 0; max-width: 780px; background: linear-gradient(135deg, rgba(170,220,50,0.1), rgba(170,220,50,0.03)); border: 1px solid rgba(170,220,50,0.25); border-radius: var(--radius-sm); text-align: left; box-shadow: 0 6px 24px rgba(170,220,50,0.08); }
+    .pulse-callout-text { display: flex; align-items: center; gap: 16px; font-size: 0.88rem; line-height: 1.5; color: var(--muted); flex: 1; min-width: 260px; }
+    .pulse-icon-badge { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; flex-shrink: 0; font-size: 1.3rem; background: rgba(170,220,50,0.14); border-radius: 50%; }
+    .pulse-callout-text strong { color: var(--white); font-weight: 700; }
+    .pulse-callout-btn { display: inline-flex; align-items: center; gap: 4px; border: none; color: var(--navy); background: var(--lime); font-size: 0.8rem; font-weight: 700; padding: 10px 22px; border-radius: 100px; white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: background 0.2s ease, transform 0.2s ease; }
+    .pulse-callout-btn:hover { background: var(--lime2); transform: translateY(-1px); text-decoration: none; }
     .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; text-align: center; }
     .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; }
     .footer-logo span { color: var(--lime); }
@@ -1276,6 +1282,13 @@
     </p>
     <div class="hero-cta fade-up delay-4">
       <a href="#get-started" class="btn btn-primary">Get Started ↓</a>
+    </div>
+    <div class="pulse-callout fade-up delay-4">
+      <div class="pulse-callout-text">
+        <span class="pulse-icon-badge" aria-hidden="true">📋</span>
+        <span>Haven't completed the 5-min <strong>Pulse Survey for AI Adoption</strong> yet? Share where you are in your AI journey and earn <strong>10 GovRewards points</strong> while you're at it.</span>
+      </div>
+      <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="pulse-callout-btn">Take the Survey →</a>
     </div>
   </div>
 </header>
