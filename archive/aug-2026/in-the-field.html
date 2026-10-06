@@ -90,6 +90,9 @@
     .breadcrumb a:hover { color: var(--lime); }
     .breadcrumb .sep { margin: 0 6px; opacity: 0.5; }
     .breadcrumb .current { color: rgba(255,255,255,0.6); }
+    .breadcrumb-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .breadcrumb-archive-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.76rem; font-weight: 700; color: var(--lime); border: 1px solid rgba(170,220,50,0.4); padding: 5px 12px; border-radius: 100px; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+    .breadcrumb-archive-btn:hover { background: rgba(170,220,50,0.15); border-color: var(--lime); text-decoration: none; }
     .journey-nav { display: flex; justify-content: space-between; align-items: center; margin: 70px 0 30px; gap: 16px; flex-wrap: wrap; }
     .journey-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border: 1px solid var(--border); border-radius: 100px; color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition); }
     .journey-link:hover { border-color: var(--lime); color: var(--lime); text-decoration: none; background: rgba(170,220,50,0.06); }
@@ -115,7 +118,8 @@
       <div class="issue-switcher">
         <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 01 &middot; Aug 2026 <span class="issue-caret">&#9662;</span></button>
         <div class="issue-menu" role="menu">
-          <a href="../../in-the-field.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
+          <a href="../../in-the-field.html" class="issue-menu-item" role="menuitem">Issue 03 &middot; Oct 2026</a>
+          <a href="../sep-2026/in-the-field.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
           <a href="in-the-field.html" class="issue-menu-item active" role="menuitem">Issue 01 &middot; Aug 2026 <span class="issue-current-tag">Current</span></a>
         </div>
       </div>
@@ -133,7 +137,10 @@
 <main>
 
 <div class="container breadcrumb">
-  <a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">In the Field</span>
+  <div class="breadcrumb-row">
+    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">In the Field</span></div>
+    <a href="../sep-2026/in-the-field.html" class="breadcrumb-archive-btn">View Sep Issue &rarr;</a>
+  </div>
 </div>
 
 <section id="in-the-field" class="section reveal">

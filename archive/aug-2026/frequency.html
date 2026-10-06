@@ -953,6 +953,9 @@
 .breadcrumb a:hover { color: var(--lime); }
 .breadcrumb .sep { margin: 0 6px; opacity: 0.5; }
 .breadcrumb .current { color: rgba(255,255,255,0.6); }
+.breadcrumb-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.breadcrumb-archive-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.76rem; font-weight: 700; color: var(--lime); border: 1px solid rgba(170,220,50,0.4); padding: 5px 12px; border-radius: 100px; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+.breadcrumb-archive-btn:hover { background: rgba(170,220,50,0.15); border-color: var(--lime); text-decoration: none; }
 
 /* ─── PAGE HERO (section pages, compact) ─────────────── */
 .page-hero {
@@ -1162,7 +1165,8 @@
       <div class="issue-switcher">
         <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 01 &middot; Aug 2026 <span class="issue-caret">&#9662;</span></button>
         <div class="issue-menu" role="menu">
-          <a href="../../frequency.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
+          <a href="../../frequency.html" class="issue-menu-item" role="menuitem">Issue 03 &middot; Oct 2026</a>
+          <a href="../sep-2026/frequency.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
           <a href="frequency.html" class="issue-menu-item active" role="menuitem">Issue 01 &middot; Aug 2026 <span class="issue-current-tag">Current</span></a>
         </div>
       </div>
@@ -1180,7 +1184,10 @@
 <main>
 
 <div class="container breadcrumb">
-  <a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Frequency</span>
+  <div class="breadcrumb-row">
+    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Frequency</span></div>
+    <a href="../sep-2026/frequency.html" class="breadcrumb-archive-btn">View Sep Issue &rarr;</a>
+  </div>
 </div>
 
 <section id="frequency" class="section reveal">

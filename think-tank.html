@@ -73,6 +73,16 @@
     .try-box { background: rgba(170,220,50,0.06); border-left: 3px solid var(--lime); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin-top: 24px; }
     .try-box .try-label { font-size: 0.72rem; font-weight: 700; color: var(--lime); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
     .try-box p { font-size: 0.88rem; color: rgba(255,255,255,0.8); font-style: italic; }
+    .tt-p { font-size: 0.92rem; color: rgba(255,255,255,0.8); margin-bottom: 12px; line-height: 1.65; }
+    .tt-h { font-size: 0.95rem; font-weight: 800; color: var(--lime); margin: 26px 0 10px; }
+    .tt-list { margin: 0 0 14px 20px; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+    .tt-list li::marker { color: var(--lime); }
+    .tt-shift { display: grid; gap: 6px; margin: 4px 0 16px; text-align: center; }
+    .tt-shift-from, .tt-shift-to { padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; line-height: 1.5; }
+    .tt-shift-from { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--muted); }
+    .tt-shift-to { background: rgba(170,220,50,0.08); border: 1px solid rgba(170,220,50,0.3); color: var(--white); font-weight: 600; }
+    .tt-shift span { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin-bottom: 4px; }
+    .tt-shift-arrow { color: var(--lime); font-size: 1.2rem; line-height: 1; }
     .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; text-align: center; }
     .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; }
     .footer-logo span { color: var(--lime); }
@@ -115,9 +125,10 @@
         <div class="logo-wordmark">ctrl<span>+</span>shift</div>
       </a>
       <div class="issue-switcher">
-        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 02 &middot; Sep 2026 <span class="issue-caret">&#9662;</span></button>
+        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 03 &middot; Oct 2026 <span class="issue-caret">&#9662;</span></button>
         <div class="issue-menu" role="menu">
-          <a href="think-tank.html" class="issue-menu-item active" role="menuitem">Issue 02 &middot; Sep 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="think-tank.html" class="issue-menu-item active" role="menuitem">Issue 03 &middot; Oct 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="archive/sep-2026/think-tank.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
           <a href="archive/aug-2026/think-tank.html" class="issue-menu-item" role="menuitem">Issue 01 &middot; Aug 2026</a>
         </div>
       </div>
@@ -137,7 +148,7 @@
 <div class="container breadcrumb">
   <div class="breadcrumb-row">
     <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Think Tank</span></div>
-    <a href="archive/aug-2026/think-tank.html" class="breadcrumb-archive-btn">View Aug Issue &rarr;</a>
+    <a href="archive/sep-2026/think-tank.html" class="breadcrumb-archive-btn">View Sep Issue &rarr;</a>
   </div>
 </div>
 
@@ -152,53 +163,80 @@
     </div>
     <div class="spotlight-card">
       <p class="spotlight-label">Use Case of the Month</p>
-      <h3 class="spotlight-title">Spreadsheet to Story: Analysing Data with ChatGPT</h3>
-      <p style="font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:16px;">
-        You've got a spreadsheet full of data, but turning it into something decision-ready takes time — what to analyse, which patterns actually matter, what goes into the PivotTable, and how to turn findings into something useful for a meeting. Instead of figuring it out from scratch, try using ChatGPT as your data analysis partner, all the way from first look to what to do next.
-      </p>
+      <h3 class="spotlight-title">Don’t Just Automate the Task. Rethink the Workflow.</h3>
+      <p class="tt-p">AI is often used to make an existing task faster. But sometimes the bigger opportunity is to step back and ask whether the workflow itself could be designed differently.</p>
+      <p class="tt-p">For this month’s Think Tank, we look at <strong>Smarter Invoicing</strong>, one of the prototypes developed through AI First. The team started with a familiar work problem and explored how AI could take on more of the routine coordination, while keeping officers focused on the parts that require judgement and accountability.</p>
+      <h4 class="tt-h">1. The Challenge</h4>
+      <p class="tt-p">Processing an invoice can involve far more than checking the invoice itself.</p>
+      <p class="tt-p">Officers may need to extract information, contact Project Managers, gather supporting documents, check whether everything is complete, follow up on missing items and route the case through different stages for verification and approval.</p>
+      <p class="tt-p">The work is not necessarily complex at every step. But there are many handoffs, checks and follow-ups that take time.</p>
+      <p class="tt-p">That was the challenge the team set out to tackle with Smarter Invoicing.</p>
+      <h4 class="tt-h">2. How the Team Rethought the Workflow</h4>
+      <p class="tt-p">Instead of asking, “How can AI help us check invoices faster?”, the team looked at the full process and asked which parts truly needed an officer.</p>
+      <p class="tt-p">They identified routine steps that could potentially be handled by AI, such as:</p>
+      <ul class="tt-list">
+        <li>extracting key information from an e-Invoice</li>
+        <li>generating and sending verification requests</li>
+        <li>collecting supporting documents</li>
+        <li>checking whether submissions are complete</li>
+        <li>flagging exceptions</li>
+        <li>routing the case to the next officer</li>
+        <li>sending reminders for overdue responses</li>
+      </ul>
+      <p class="tt-p">The idea was to let the system handle more of the coordination, while bringing officers in where judgement and accountability were still needed.</p>
+      <h4 class="tt-h">3. What Changed</h4>
+      <p class="tt-p">The shift was not simply from manual invoice checking to AI-assisted invoice checking. It was from:</p>
+      <div class="tt-shift">
+        <div class="tt-shift-from"><span>From</span>Officers managing every handoff, check and follow-up</div>
+        <div class="tt-shift-arrow" aria-hidden="true">&darr;</div>
+        <div class="tt-shift-to"><span>To</span>AI coordinating routine steps, surfacing exceptions and bringing officers in when a decision is needed</div>
+      </div>
+      <p class="tt-p">Sometimes the opportunity is not to automate one task. It is to redesign the workflow so officers spend less time moving information around and more time on the parts that require judgement.</p>
+      <h4 class="tt-h">4. Try This With Your Own Work</h4>
+      <p class="tt-p">Pick one recurring workflow your team manages and map it from start to finish.</p>
       <div class="case-steps">
         <div class="case-step">
           <div class="step-icon" aria-hidden="true">1</div>
           <div>
-            <h4>Drop in your spreadsheet</h4>
-            <p>Upload your Excel or CSV file and say what you're trying to understand, not just what's in it. Prompt: <em>"I want to understand participation in this programme. Review the dataset, explain what each column contains, flag missing values or inconsistencies, and suggest five useful questions the data could help me answer."</em> This catches issues early and gives you a clearer starting point.</p>
+            <h4>Map the workflow</h4>
+            <p>What happens from the moment the work starts until it is completed?</p>
           </div>
         </div>
         <div class="case-step">
           <div class="step-icon" aria-hidden="true">2</div>
           <div>
-            <h4>Ask what stands out</h4>
-            <p>Instead of deciding upfront what to analyse, let ChatGPT explore first. Prompt: <em>"Analyse this dataset and identify the most significant trends, differences and outliers. Break down the results by relevant groups or time periods, and tell me what deserves a closer look."</em> Then interrogate it further — which groups show the biggest differences, what's driving the overall trend, does the data support your initial assumption.</p>
+            <h4>Spot the friction</h4>
+            <p>Where are people repeatedly copying information, checking documents, routing items or chasing responses?</p>
           </div>
         </div>
         <div class="case-step">
           <div class="step-icon" aria-hidden="true">3</div>
           <div>
-            <h4>Build the PivotTable with it</h4>
-            <p>Once you know what to investigate, let it work out the structure instead of experimenting manually. Prompt: <em>"I want to compare participation rates across divisions and see how they changed by month. Recommend the PivotTable structure — Rows, Columns, Values and Filters — and explain why."</em> It can also help with calculated fields, grouping or percentages when a standard PivotTable isn't enough.</p>
+            <h4>Separate routine from judgement</h4>
+            <p>Which steps genuinely need an officer’s expertise or decision? Which are mainly administrative?</p>
           </div>
         </div>
         <div class="case-step">
           <div class="step-icon" aria-hidden="true">4</div>
           <div>
-            <h4>Turn the analysis into a dashboard</h4>
-            <p>Ask ChatGPT to decide what's worth showing, rather than putting every metric on the page. Prompt: <em>"Design a one-page dashboard for senior management. Recommend 3–4 headline metrics and the most useful charts. For each visual, explain the question it answers and the key takeaway."</em> From there, it can help create the charts and write insight-led titles.</p>
+            <h4>Ask what AI could handle</h4>
+            <p>Could AI help extract, summarise, check, route, remind or flag exceptions?</p>
           </div>
         </div>
         <div class="case-step">
           <div class="step-icon" aria-hidden="true">5</div>
           <div>
-            <h4>Turn the dashboard into decisions</h4>
-            <p>A dashboard tells you what's happening — the next step is deciding what deserves attention. Prompt: <em>"Based only on what the data supports, identify the three findings that matter most. For each, explain what the data shows, why it matters, what we still don't know, and what we should investigate or consider doing next."</em> Ask it to turn that into a management brief, talking points, or slide headlines.</p>
+            <h4>Redesign and test</h4>
+            <p>Sketch a simpler workflow, then test one small part before trying to automate the whole process.</p>
           </div>
         </div>
       </div>
       <div class="try-box">
-        <p class="try-label">Try it end to end</p>
-        <p>"Act as my data analysis partner. Review the spreadsheet I've uploaded and help me understand what matters. First, explain the dataset and flag any data quality issues. Suggest useful questions to investigate, then identify significant trends, differences and outliers. Recommend the PivotTables or calculations needed to investigate them further. Based on the findings, propose a one-page dashboard with the right KPIs and charts. Finally, identify the three most important findings — why they matter, what we still don't know, and what to investigate or consider next. Clearly distinguish between what the data shows and your interpretation."</p>
+        <p class="try-label">The question to start with</p>
+        <p>Which parts of this workflow really need a person, and which parts could work differently?</p>
       </div>
       <div class="prev-issue-link">
-        <a href="archive/aug-2026/think-tank.html#think-tank">↳ View other use case →</a>
+        <a href="archive/sep-2026/think-tank.html#think-tank">↳ View other use case →</a>
       </div>
     </div>
   </div>
