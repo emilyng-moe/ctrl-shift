@@ -98,6 +98,9 @@
     a.badge-open:hover { background: rgba(170,220,50,0.28); text-decoration: none; }
     .badge-soon { background: rgba(255,200,50,0.15); color: #FFC832; }
     .badge-tbc { background: rgba(170,170,170,0.15); color: #AAAAAA; }
+    .month-heading { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin: 12px 0 0; }
+    .month-heading:first-child { margin-top: 0; }
+    .mode-champ { background: rgba(180,140,255,0.15); color: #C4A8FF; }
     .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; text-align: center; }
     .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; }
     .footer-logo span { color: var(--lime); }
@@ -197,132 +200,163 @@
     </div>
     <div class="events-list">
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Coding with AI Agent to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Coding%20with%20AI%20Agent%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-15T15:00:00&enddt=2026-09-15T16:00:00&body=Prompt%20Royale%20Workshop%20-%20Coding%20with%20AI%20Agent.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
-          <div class="weekday">TUE</div>
-          <div class="day">15</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <span class="event-mode mode-online">💻 Online</span>
-          <h3>Coding with AI Agent</h3>
-          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
-        </div>
-        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ1YzI1ZWYtM2IwNy00MGQwLWJhZDQtZTg4MmU0MjczYzEz%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Coding with AI Agent on Teams">🎥 Join on Teams ↗</a>
-      </div>
-
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Getting Started with Pair Chat to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Getting%20Started%20with%20Pair%20Chat%20%28Prompt%20Royale%20Workshop%29&startdt=2026-09-16T15:00:00&enddt=2026-09-16T16:00:00&body=Prompt%20Royale%20Workshop%20-%20Getting%20Started%20with%20Pair%20Chat.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+      <h3 class="month-heading">October 2026</h3>
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Riding the Wave of M365 Copilot to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Riding%20the%20Wave%20of%20M365%20Copilot&startdt=2026-10-21T11:00:00&enddt=2026-10-21T11:30:00&body=Riding%20the%20Wave%20of%20M365%20Copilot.%20DXD%20Brownbag%20Session.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
           <div class="weekday">WED</div>
-          <div class="day">16</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <span class="event-mode mode-online">💻 Online</span>
-          <h3>Getting Started with Pair Chat</h3>
-          <p>Online via Teams · 3:00 – 4:00 PM · Prompt Royale Workshop</p>
-        </div>
-        <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDk2MjRjYjktOTA3OC00Mjc0LWE4NjAtMjRjYjlkMzFlOGNl%40thread.v2/0?context=%7b%22Tid%22%3a%220b11c524-9a1c-4e1b-84cb-6336aefc2243%22%2c%22Oid%22%3a%22d4a2ba4c-16da-4fab-a510-cc838c80016f%22%7d" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join Getting Started with Pair Chat on Teams">🎥 Join on Teams ↗</a>
-      </div>
-
-      <div class="card event-card no-cal">
-        <div class="event-date-box">
-          <div class="weekday">FRI</div>
-          <div class="day">18</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <h3>AI Learning Journey for Educators #6 (GAINS)</h3>
-          <p class="event-desc">A hands-on session for educators covering practical AI tools for the classroom, where AI is heading beyond education, and an activity chosen by the room.</p>
-        </div>
-        <a href="https://luma.com/hxc61pdy" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="Register for AI Learning Journey for Educators #6">🔗 Register ↗</a>
-      </div>
-
-      <div class="card event-card no-cal">
-        <div class="event-date-box">
-          <div class="weekday">FRI</div>
-          <div class="day">18</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <h3>Institute of Digital Government (IDG) AI Tech Festival: AIgniting Action</h3>
-          <p class="event-desc">Try AI tools and applications hands-on, alongside officers from across the public service. No experience needed, just curiosity.</p>
-        </div>
-        <a href="https://www.idg.gov.sg/community/" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="Register for IDG AI Tech Festival: AIgniting Action">🔗 Register ↗</a>
-      </div>
-
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add IDG Brown Bag with Principal Tung Kian to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=IDG%20Brown%20Bag%20with%20Principal%20Tung%20Kian&startdt=2026-09-25T10:00:00&enddt=2026-09-25T11:00:00&body=IDG%20Brown%20Bag%20with%20Principal%20Tung%20Kian.%203%20Myths%2C%202%20Truths%2C%201%20Outcome%3A%20Principal%20Tung%20Kian%20shares%20his%20leadership%20perspective%20on%20AI.%20Online%20via%20SG-Zoom%20Meeting%3A%20https%3A//go.gov.sg/idgbrownba')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
-          <div class="weekday">FRI</div>
-          <div class="day">25</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <span class="event-mode mode-online">💻 Online</span>
-          <h3>IDG Brown Bag with Principal Tung Kian</h3>
-          <p>Online via SG-Zoom Meeting · 10:00 – 11:00 AM</p>
-          <p class="event-desc">3 Myths, 2 Truths, 1 Outcome. Tung Kian, Principal of Compassvale Secondary School, shares his leadership perspective on AI, taking us inside his school's AI journey with real stories and real lessons.</p>
-        </div>
-        <a href="https://go.gov.sg/idgbrownba" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Join IDG Brown Bag with Principal Tung Kian on Zoom">🎥 Join on Zoom ↗</a>
-      </div>
-
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add AI-First Gallery Walk Showcase to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AI-First%20Gallery%20Walk%20Showcase&startdt=2026-09-30T13:00:00&enddt=2026-09-30T17:00:00&body=AI-First%20Gallery%20Walk%20Showcase.%20Venue%3A%20MOE%20BV%2C%20ER%40P2-4%20%28E4%29%2C%20Podium%20Level%202.')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
-          <div class="weekday">WED</div>
-          <div class="day">30</div>
-          <div class="month">SEP</div>
-        </div>
-        <div class="event-info">
-          <span class="event-mode mode-inperson">📍 In-Person</span>
-          <h3>AI-First Gallery Walk Showcase</h3>
-          <p>MOE BV, ER@P2-4 (E4), Podium Level 2 · 1:00 – 5:00 PM</p>
-          <p class="event-desc">Come see what a day of building can produce. Walk through the prototypes and solutions teams built at AI-First Accelerator, straight from the people who made them.</p>
-        </div>
-        <span class="event-badge badge-open">Open</span>
-      </div>
-
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add AI Champions Meet Up #3 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AI%20Champions%20Meet%20Up%20%233&startdt=2026-10-02T09:00:00&enddt=2026-10-02T10:30:00&body=AI%20Champions%20Meet%20Up%20%233.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
-          <div class="weekday">FRI</div>
-          <div class="day">02</div>
+          <div class="day">21</div>
           <div class="month">OCT</div>
         </div>
         <div class="event-info">
           <span class="event-mode mode-online">💻 Online</span>
-          <h3>AI Champions Meet Up #3</h3>
-          <p>Online via Teams · 9:00 – 10:30 AM</p>
+          <h3>Riding the Wave of M365 Copilot</h3>
+          <p>DXD Brownbag Session · Microsoft Teams · 11:00 – 11:30 AM</p>
+          <p class="event-desc">A short session with Naomi Tay from the AI Programme team to kick-start the M365 Copilot journey and preview what is coming next.</p>
         </div>
-        <span class="event-badge badge-open">For AI Champions only</span>
       </div>
 
-      <div class="card event-card" role="button" tabindex="0" aria-label="Add Prompt Royale Agency League Semi-Finals to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Prompt%20Royale%20Agency%20League%20Semi-Finals&startdt=2026-10-02T12:00:00&enddt=2026-10-02T17:00:00&body=Prompt%20Royale%20Agency%20League%20Semi-Finals.%20Venue%3A%20The%20Big%20Place%2C%20GovTech%2C%20Mapletree%20Business%20City%20Blk%2010.')" onkeydown="if(event.key==='Enter'){this.click();}">
-        <div class="event-date-box">
-          <div class="weekday">FRI</div>
-          <div class="day">02</div>
-          <div class="month">OCT</div>
-        </div>
-        <div class="event-info">
-          <span class="event-mode mode-inperson">📍 In-Person</span>
-          <h3>Prompt Royale Agency League Semi-Finals</h3>
-          <p>The Big Place, GovTech, Mapletree Business City Blk 10 · 12:00 – 5:00 PM</p>
-          <p class="event-desc">Our Prompt Royale champions go up against the best from other government agencies. Root for them as they battle for a spot in the Finals.</p>
-        </div>
-        <span class="event-badge badge-open">By Invitation Only</span>
-      </div>
-
-      <div class="card event-card no-cal">
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Accelerate Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Accelerate%20Workshop&startdt=2026-10-22T09:00:00&enddt=2026-10-22T12:00:00&body=Copilot%20Accelerate%20Workshop.%20Venue%3A%20BA%20TR%20D4-9.')" onkeydown="if(event.key==='Enter'){this.click();}">
         <div class="event-date-box">
           <div class="weekday">THU</div>
-          <div class="day">05</div>
+          <div class="day">22</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Accelerate Workshop</h3>
+          <p>BA TR D4-9 · 9:00 AM – 12:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Accelerate Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Agent Build Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Agent%20Build%20Workshop&startdt=2026-10-26T14:00:00&enddt=2026-10-26T17:00:00&body=Copilot%20Agent%20Build%20Workshop.%20Venue%3A%20Microsoft%20Office.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">MON</div>
+          <div class="day">26</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Agent Build Workshop</h3>
+          <p>Microsoft Office · 2:00 – 5:00 PM</p>
+          <p class="event-desc">A hands-on session to explore how to build and work with AI agents.</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Agent Build Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add More Than Bots: AI Agents Are Here. Now What? to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=More%20Than%20Bots%3A%20AI%20Agents%20Are%20Here.%20Now%20What%3F&startdt=2026-10-28&enddt=2026-10-28&allday=true&body=More%20Than%20Bots%3A%20AI%20Agents%20Are%20Here.%20Now%20What%3F.%20Webinar.%20Register%20at%20the%20link%20on%20the%20Launchpad%20page.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">28</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
+          <h3>More Than Bots: AI Agents Are Here. Now What?</h3>
+          <p class="event-desc">A webinar exploring what AI agents mean for the way we work, and how we can move beyond one-off prompts to more capable AI-assisted workflows.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/CSC-IPAM/AI%20Ignite/SitePages/MoreThanPromptsWebinar.aspx?web=1&isSPOFile=1&TeamsCID=c28469ee-60ff-4644-aca1-c7b6ffc22cd8&OR=Teams-HL&CT=1790675224110&linkOpenTime=1790675224112" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: More Than Bots: AI Agents Are Here. Now What?">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card no-cal">
+        <div class="event-date-box">
+          <div class="weekday">OCT</div>
+          <div class="day">•••</div>
+          <div class="month">2026</div>
+        </div>
+        <div class="event-info">
+          <h3>M365 Copilot Training Sessions (IDG)</h3>
+          <p>Multiple sessions this month</p>
+          <p class="event-desc">Government-wide training sessions covering different M365 Copilot topics.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/GOVTECH-digitalgov/digitalworkplaceproducts/Copilot/SitePages/M365-Copilot-Training-Sessions.aspx" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="🔗 View sessions: M365 Copilot Training Sessions (IDG)">🔗 View sessions ↗</a>
+      </div>
+
+      <div class="card event-card no-cal">
+        <div class="event-date-box">
+          <div class="weekday">OCT</div>
+          <div class="day">•••</div>
+          <div class="month">2026</div>
+        </div>
+        <div class="event-info">
+          <h3>ChatGPT Training Sessions (IDG)</h3>
+          <p>Multiple sessions this month</p>
+          <p class="event-desc">Government-wide training sessions covering practical ChatGPT skills.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/GOVTECH-digitalgov/digitalworkplaceproducts/ChatGPT/SitePages/Training.aspx" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="🔗 View sessions: ChatGPT Training Sessions (IDG)">🔗 View sessions ↗</a>
+      </div>
+
+      <h3 class="month-heading">November 2026</h3>
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AI Champions Online Meet Up #4 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AI%20Champions%20Online%20Meet%20Up%20%234&startdt=2026-11-06T09:00:00&enddt=2026-11-06T10:30:00&body=AI%20Champions%20Online%20Meet%20Up%20%234.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">FRI</div>
+          <div class="day">06</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>AI Champions Online Meet Up #4</h3>
+          <p>Microsoft Teams · 9:00 – 10:30 AM</p>
+          <p class="event-desc">A community session for AI Champions to continue learning, sharing and exchanging practical experiences. More details to follow.</p>
+        </div>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Xperience 2026 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Xperience%202026&startdt=2026-11-11T12:30:00&enddt=2026-11-11T17:00:00&body=Xperience%202026.%20Venue%3A%20MOE%20HQ%2C%20Buona%20Vista.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">11</div>
           <div class="month">NOV</div>
         </div>
         <div class="event-info">
           <span class="event-mode mode-inperson">📍 In-Person</span>
-          <h3>Prompt Royale Agency League Finals</h3>
-          <p>STACK Conference 2026, Marina Bay Sands · Time to be confirmed</p>
-          <p class="event-desc">STACK is GovTech's flagship conference, bringing together public sector officers and tech leaders to explore what's next in digital government.</p>
+          <h3>Xperience 2026</h3>
+          <p>MOE HQ, Buona Vista · 12:30 – 5:00 PM</p>
+          <p class="event-desc">MOE’s annual Product Showcase, where school leaders can discover and try practical digital solutions, get a preview of upcoming MOE products and explore opportunities to work with DXD through pilots, trials and co-development.</p>
         </div>
-        <span class="event-badge badge-open">By Invitation Only</span>
+        <a href="https://go.gov.sg/xperience2026" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Secure your slot: Xperience 2026">🔗 Secure your slot ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add DXD Cybersecurity &amp; Governance Day to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=DXD%20Cybersecurity%20%26%20Governance%20Day&startdt=2026-11-23T14:00:00&enddt=2026-11-23T17:00:00&body=DXD%20Cybersecurity%20%26%20Governance%20Day.%20Venue%3A%20MOE%20HQ%2C%20Edutorium%2C%20Level%204.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">MON</div>
+          <div class="day">23</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span>
+          <h3>DXD Cybersecurity &amp; Governance Day</h3>
+          <p>MOE HQ, Edutorium, Level 4 · 2:00 – 5:00 PM</p>
+          <p class="event-desc">A half-day session on cybersecurity, governance and responsible digital practices, including topics relevant to how we manage and use digital and AI solutions.</p>
+        </div>
+        <a href="https://dxd-cybergovday.app.entry.gov.sg/form/3ed682f3-0c43-4105-ac43-99e9e1ec1ab7" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Register for DXD Cybersecurity and Governance Day">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Agent Build Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Agent%20Build%20Workshop&startdt=2026-11-24T14:00:00&enddt=2026-11-24T17:00:00&body=Copilot%20Agent%20Build%20Workshop.%20Venue%3A%20Microsoft%20Office.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">TUE</div>
+          <div class="day">24</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Agent Build Workshop</h3>
+          <p>Microsoft Office · 2:00 – 5:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Agent Build Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Accelerate Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Accelerate%20Workshop&startdt=2026-11-26T09:00:00&enddt=2026-11-26T12:00:00&body=Copilot%20Accelerate%20Workshop.%20Venue%3A%20MOE%20Buona%20Vista%2C%20Level%2024%20Function%20Room.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">THU</div>
+          <div class="day">26</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Accelerate Workshop</h3>
+          <p>MOE Buona Vista, Level 24 Function Room · 9:00 AM – 12:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Accelerate Workshop">🔗 Register ↗</a>
       </div>
 
     </div>
