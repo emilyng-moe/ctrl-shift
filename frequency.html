@@ -673,6 +673,32 @@
     .pls-result a { font-weight: 700; }
     .pls-cta { display: inline-flex; margin-top: 10px; background: var(--lime); color: var(--navy); font-weight: 700; font-size: 0.8rem; padding: 9px 20px; border-radius: 100px; text-decoration: none; }
     .pls-cta:hover { background: var(--lime2); text-decoration: none; }
+    .reflect-box { margin: 16px 0; padding: 16px 20px; background: linear-gradient(135deg, rgba(170,220,50,0.1), rgba(170,220,50,0.03)); border: 1px solid rgba(170,220,50,0.25); border-left: 4px solid var(--lime); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: rgba(255,255,255,0.88); }
+    .reflect-box p + p { margin-top: 10px; }
+    .reflect-box .reflect-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lime); margin: 0 0 8px; }
+    .abq { margin: 6px 0 16px; padding: 18px 20px; background: rgba(170,220,50,0.05); border: 1px solid rgba(170,220,50,0.15); border-radius: var(--radius-sm); }
+    .abq-top { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 14px; }
+    .abq-deadline { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; color: var(--navy); background: var(--lime); padding: 4px 12px; border-radius: 100px; }
+    .abq-sub { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.8); line-height: 1.5; }
+    .abq-q { font-size: 0.9rem; font-weight: 700; margin: 0 0 10px; }
+    .abq-q span { font-weight: 500; font-size: 0.75rem; color: var(--muted); margin-left: 6px; }
+    .abq-opts { display: flex; flex-wrap: nowrap; gap: 8px; }
+    .abq-opts .abq-opt { flex: 1 1 0; min-width: 0; white-space: nowrap; text-align: center; padding: 8px 10px; }
+    @media (max-width: 560px) { .abq-opts { flex-wrap: wrap; } .abq-opts .abq-opt { flex: 1 1 100%; } }
+    .abq-opt { font-family: inherit; font-size: 0.8rem; font-weight: 600; color: var(--white); background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding: 8px 14px; border-radius: 100px; cursor: pointer; transition: all 0.2s ease; }
+    .abq-opt:hover { border-color: var(--lime); transform: translateY(-1px); }
+    .abq-opt.active { background: var(--lime); border-color: var(--lime); color: var(--navy); }
+    .abq-result { margin-top: 14px; padding: 12px 14px; font-size: 0.86rem; line-height: 1.55; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.04); border-left: 3px solid var(--lime); border-radius: 0 8px 8px 0; }
+    .abq-result:empty { display: none; }
+    .abq-result strong { color: var(--white); }
+    .ab-list { margin: 0 0 12px 20px; display: grid; gap: 8px; line-height: 1.55; }
+    .ab-list li::marker { color: var(--lime); }
+    @media (max-width: 480px) { .ab-line { flex-basis: 10px; } }
+    .pls-card { border-color: rgba(170,220,50,0.3); background: linear-gradient(135deg, rgba(170,220,50,0.08), rgba(170,220,50,0.02)); }
+    .pls-eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); margin-bottom: 8px; }
+    .pls-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 8px; }
+    .pls-copy { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 14px; }
+    .pls-card .pls-visual { background: rgba(255,255,255,0.03); }
     .news-full {
       overflow: hidden;
       max-height: 0;
@@ -1358,10 +1384,14 @@
             <p>What stood out was not simply how much the prototypes had changed, but how quickly teams had moved through the cycle of identifying a problem, building something, testing it, learning from feedback and improving it.</p>
             <p>Some assumptions changed. Features were adjusted. Ideas that seemed promising on paper had to be tested against the realities of the work itself. In the process, early concepts became more tangible solutions.</p>
             <p>It was also encouraging to see strong support from MOE’s leadership team. Senior management and Division Directors came by to understand the ideas firsthand, ask questions and share feedback with the teams. Their engagement helped make the Gallery Walk more than a showcase. It became a space for teams to test their thinking, hear different perspectives and consider how their ideas might develop further.</p>
-            <p>The conversations extended beyond the teams themselves. Colleagues explored how the solutions could apply in other contexts, exchanged ideas and discussed where AI could genuinely improve the way we work.</p>
-            <p>One reflection shared during the session, including by 2PS, was how quickly an idea can move forward when officers have the opportunity to experiment and learn by doing.</p>
+            <p>The conversations extended beyond the teams themselves. The event also created an opportunity for AI Champions and colleagues across different divisions to see what others were working on, connect ideas and learn from one another. Solutions developed for one context prompted conversations about how similar approaches might apply elsewhere, opening up new possibilities for how AI could improve the way we work.</p>
+            <div class="reflect-box">
+              <p class="reflect-label">💬 A reflection from 2PS</p>
+              <p>2PS Kenneth shared that he was heartened by the strong turnout and what it represented: when colleagues come together, there is a kind of synergy that gives everyone a broader view of what others are working on. Beyond the prototypes themselves, these connections create energy and momentum for continuous learning.</p>
+              <p>He reflected that this may be even more important than the individual solutions developed through the initiative. One of the most encouraging things to see was how quickly ideas could move forward when officers had the opportunity to experiment, learn by doing and learn from one another.</p>
+            </div>
             <p>That is also a useful reminder for any team exploring AI: you do not need to have a fully formed solution before you begin. Start with a real problem, build something small, put it in front of people and use what you learn to make the next version better.</p>
-            <p>From 260 officers → 47 initial solutions → 8 teams → three weeks of testing and refinement, the Gallery Walk showed how quickly ideas can develop when there is space to test, learn and iterate.</p>
+            <p>From 260 officers → 47 initial solutions → 8 teams → three weeks of testing and refinement, the Gallery Walk showed how quickly ideas can develop when there is space to test, learn and iterate. More importantly, it showed how bringing people together can create the energy and momentum for that learning to continue.</p>
           </div>
           <button class="read-toggle" onclick="toggleArticle('article-1-full', this)" aria-expanded="false">Read more ↓</button>
         </div>
@@ -1369,6 +1399,37 @@
 
       <article class="card news-item">
         <div class="news-num" aria-hidden="true">02</div>
+        <div class="news-content">
+          <h3>Reminder: Your AIBots Bots Are Moving to Desk</h3>
+          <div class="abq" id="abq">
+            <div class="abq-top"><span class="abq-deadline">⏰ Deadline: 31 October</span></div>
+            <p class="abq-q">If you're an AIBots user, what describes your bot? <span>Tap one to see what to do.</span></p>
+            <div class="abq-opts" role="group" aria-label="Select your bot situation">
+              <button type="button" class="abq-opt" data-i="0">🗓️ Seasonal bot</button>
+              <button type="button" class="abq-opt" data-i="1">🗑️ Do not want it moved</button>
+              <button type="button" class="abq-opt" data-i="2">✨ Need a new bot</button>
+            </div>
+            <div class="abq-result" id="abqResult" aria-live="polite"></div>
+          </div>
+          <p class="news-summary">Quick reminder: all active bots on AIBots will be migrated to Desk between November and December. If a bot has been used at least once in October, it is included. Take a minute this month to check yours.</p>
+          <div class="news-full" id="article-aibots-full">
+            <p><strong style="color:var(--lime);">Your checklist</strong></p>
+            <ul class="ab-list">
+              <li><strong>Seasonal bot you still need:</strong> start at least one chat with it in October so it counts as active.</li>
+              <li><strong>Active bot you do not want moved:</strong> delete it by 31 October.</li>
+              <li><strong>New bot:</strong> do not create it on AIBots after 31 October. Create it directly on Desk as a Chat Assistant.</li>
+            </ul>
+            <p><strong style="color:var(--lime);">What happens to your bots</strong></p>
+            <p>The migration creates a duplicate of your bot on Desk. Your original bot on AIBots is not deleted, and stays available until the migration has stabilised and users have transitioned smoothly to Desk.</p>
+            <p>We will keep you updated as the migration progresses. Thank you for your support as we make this transition to Desk.</p>
+            <a href="https://desk.tech.gov.sg/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Go to Desk →</a>
+          </div>
+          <button class="read-toggle" onclick="toggleArticle('article-aibots-full', this)" aria-expanded="false">Read more ↓</button>
+        </div>
+      </article>
+
+      <article class="card news-item">
+        <div class="news-num" aria-hidden="true">03</div>
         <div class="news-content">
           <h3>Rethink the Work: Turn a Work Problem into an AI-Powered Solution</h3>
           <div class="fbc-visual" id="fbcVisual" role="group" aria-label="AI Build 301 pathway: Frame, Build, Capstone Project">
@@ -1405,11 +1466,11 @@
         </div>
       </article>
 
-      <article class="card news-item">
-        <div class="news-num" aria-hidden="true">03</div>
-        <div class="news-content">
-          <h3>Where Are You on Your AI Journey?</h3>
-          <div class="pls-visual" id="plsVisual">
+      <aside class="card pls-card" aria-label="Pulse Survey for AI Adoption">
+        <p class="pls-eyebrow">📋 Pulse Survey for AI Adoption</p>
+        <h3>Where Are You on Your AI Journey?</h3>
+        <p class="pls-copy">Tell us where you are with AI. It takes about five minutes, earns you 10 GovRewards points, and helps shape the support officers get next, from AI Aware 101 to AI Build 301.</p>
+        <div class="pls-visual" id="plsVisual">
             <div class="pls-points">
               <div class="pls-points-top"><span class="pls-points-label">🎯 Your first GovRewards milestone</span><span class="pls-points-val">0 / 10 pts</span></div>
               <div class="pls-bar" aria-hidden="true"><span id="plsBarFill"></span></div>
@@ -1423,17 +1484,8 @@
             </div>
             <div class="pls-result" id="plsResult" aria-live="polite"></div>
           </div>
-          <p class="news-summary">There is no single right place to start with AI. Some of us are still curious, some are testing it on everyday tasks, and some are already building. IDG's learning pathways meet you where you are, and the Pulse Survey for AI Adoption helps us understand where that is. Take five minutes, and earn 10 GovRewards points while you're at it.</p>
-          <div class="news-full" id="article-3-full">
-            <p>IDG's AI learning pathways are designed as steps, not hurdles. <strong>AI Aware 101</strong> is for anyone new to AI who wants to get hands-on with the basics. <strong>AI Apply 201</strong> helps you put AI to work across the tasks you already do and build good habits along the way. <strong>AI Build 301</strong> is for officers ready to design and prototype AI-powered solutions. Pick the one that fits today, and move on when you're ready.</p>
-            <p>The Pulse Survey for AI Adoption is how we find out which step most of us are on. It covers your role, where you are with AI day to day, and what gets in the way for you and your team. Your answers help pinpoint where support is needed most right now, and set a baseline to compare against when the pulse repeats in six months.</p>
-            <p>It is also a natural first step into <strong style="color:var(--lime);">Learn &amp; Grow with GovRewards</strong>: completing the survey earns your first 10 points. Start a pathway, tell us how it goes, and keep going from there.</p>
-            <p>Tap an option above to see a pathway that fits, then add your voice.</p>
-            <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:14px;">Take the Pulse Survey →</a>
-          </div>
-          <button class="read-toggle" onclick="toggleArticle('article-3-full', this)" aria-expanded="false">Read more ↓</button>
-        </div>
-      </article>
+        <a href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Take the 5-min Pulse Survey →</a>
+      </aside>
 
     </div>
     <div class="prev-issue-link">
@@ -1799,6 +1851,22 @@
     opts.forEach((o, k) => o.addEventListener('click', () => {
       opts.forEach(x => x.classList.toggle('active', x === o));
       res.innerHTML = msgs[k] + '<br>Now tell us the full picture: <a class="pls-cta" href="https://go.gov.sg/aipulsesurvey" target="_blank" rel="noopener">Add your voice in the 5-min survey, earn 10 pts &rarr;</a>';
+    }));
+  })();
+
+  /* ─── AIBOTS REMINDER CHECKER ─── */
+  (function () {
+    const root = document.getElementById('abq'); if (!root) return;
+    const res = document.getElementById('abqResult');
+    const opts = root.querySelectorAll('.abq-opt');
+    const msgs = [
+      '<strong>Start at least one chat with it in October.</strong> That marks it as active and includes it in the migration to Desk.',
+      '<strong>Delete it by 31 October.</strong> Bots that are active but deleted before the migration will not be moved.',
+      '<strong>Create it on Desk, not AIBots.</strong> New bots made on AIBots after 31 October may not be migrated. On Desk, create it as a Chat Assistant.'
+    ];
+    opts.forEach((o, k) => o.addEventListener('click', () => {
+      opts.forEach(x => x.classList.toggle('active', x === o));
+      res.innerHTML = '✅ ' + msgs[k];
     }));
   })();
 
