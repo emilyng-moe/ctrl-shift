@@ -142,7 +142,48 @@
     .event-card.no-cal { cursor: default; }
     .event-card.no-cal::after { content: none; }
     .event-card.no-cal:hover { transform: none; box-shadow: none; border-color: var(--border); }
-  </style>
+  
+/* ===== LIGHT BANDS (sample) ===== */
+.light { background: #F4F7FB; color: #16244F; --white: #16244F; --muted: #5B6B85; --lime: #4B7F0B; --border: rgba(22,36,79,0.14); --card-bg: #FFFFFF; }
+.light .card, .light .spotlight-card, .light .story-card { box-shadow: 0 4px 18px rgba(22,36,79,0.07); }
+.light .card:hover { border-color: rgba(75,127,11,0.45); }
+.light .btn-primary, .light .tag, .light .event-current-tag, .light .pls-cta, .light .pls-opt.active, .light .abq-opt.active, .light .abq-deadline, .light .ab-dot, .light .opus-new-badge { background: #AADC32; color: #16244F; }
+.light .btn-primary:hover { background: #C5E85A; }
+.light .btn-ghost { color: #16244F; border-color: rgba(22,36,79,0.25); background: transparent; }
+.light [style*="rgba(255,255,255"] { color: #33415F !important; }
+.light [style*="var(--lime)"] { color: #4B7F0B !important; }
+.light [style*="var(--white)"] { color: #16244F !important; }
+.light .section-label, .light .spotlight-label, .light .tip-label { color: #4B7F0B; }
+.light .event-date-box .day { color: #16244F; }
+.light .badge-open { background: rgba(75,127,11,0.12); color: #3F6B00; }
+.light .prompt-box, .light .tip-card { background: #EEF3F9; }
+.light ::selection { background: #AADC32; }
+.light .tag { background: #AADC32; }
+.light .logo-wordmark { color: rgb(22,36,79); }
+.light .issue-switcher-btn { background: #AADC32; }
+.light .issue-menu-item { color: rgb(22,36,79); }
+.light .issue-current-tag { background: #AADC32; }
+.light .btn-primary { background: #AADC32; }
+.light .btn-ghost { color: rgb(22,36,79); }
+.light .event-info .event-desc { color: rgba(22,36,79,0.78); }
+.light .breadcrumb .current { color: rgba(22,36,79,0.78); }
+.light .journey-link { color: rgb(22,36,79); }
+.light .journey-link.home { background: #AADC32; }
+.light.has-bc { padding-top: 0; }
+.light.has-bc > .breadcrumb { padding-top: 28px; padding-bottom: 44px; }
+.light .breadcrumb a { color: #5B6B85; }
+.light .breadcrumb a:hover { color: #3F6B00; }
+.light .breadcrumb .current { color: #16244F; font-weight: 600; }
+.light .breadcrumb-archive-btn { color: #3F6B00; border-color: rgba(63,107,0,0.45); background: #FFFFFF; }
+.light .breadcrumb-archive-btn:hover { background: #AADC32; border-color: #AADC32; color: #16244F; }
+
+.light .event-date-box .weekday { color: #4B7F0B; }
+.light .mode-champ { background: rgba(107,63,196,0.1); color: #5B33B0; }
+.light .mode-inperson { background: rgba(43,99,196,0.1); color: #2556B0; }
+.light .mode-tbc { color: #5B6B85; }
+.light .chip-note, .light .rename-note { color: #8A5A00; background: rgba(255,200,50,0.2); border-color: rgba(200,140,0,0.4); }
+.light .rename-note strong { color: #8A5A00; }
+</style>
 </head>
 <body data-page="launchpad">
 
@@ -161,7 +202,8 @@
       <div class="issue-switcher">
         <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 02 &middot; Sep 2026 <span class="issue-caret">&#9662;</span></button>
         <div class="issue-menu" role="menu">
-          <a href="../../launchpad.html" class="issue-menu-item" role="menuitem">Issue 03 &middot; Oct 2026</a>
+          <a href="../../launchpad.html" class="issue-menu-item" role="menuitem">Issue 04 &middot; Nov 2026</a>
+          <a href="../oct-2026/launchpad.html" class="issue-menu-item" role="menuitem">Issue 03 &middot; Oct 2026</a>
           <a href="launchpad.html" class="issue-menu-item active" role="menuitem">Issue 02 &middot; Sep 2026 <span class="issue-current-tag">Current</span></a>
           <a href="../aug-2026/launchpad.html" class="issue-menu-item" role="menuitem">Issue 01 &middot; Aug 2026</a>
         </div>
@@ -179,16 +221,17 @@
 
 <main>
 
+
+
+
+
+<section id="launchpad" class="section reveal light has-bc">
 <div class="container breadcrumb">
   <div class="breadcrumb-row">
     <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Launchpad</span></div>
     <a href="../aug-2026/launchpad.html" class="breadcrumb-archive-btn">View Aug Issue &rarr;</a>
   </div>
 </div>
-
-
-
-<section id="launchpad" class="section reveal">
   <div class="container">
     <div class="section-header">
       <p class="section-label">🚀 Launchpad</p>

@@ -73,6 +73,42 @@
     .try-box { background: rgba(170,220,50,0.06); border-left: 3px solid var(--lime); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 16px 20px; margin-top: 24px; }
     .try-box .try-label { font-size: 0.72rem; font-weight: 700; color: var(--lime); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
     .try-box p { font-size: 0.88rem; color: rgba(255,255,255,0.8); font-style: italic; }
+    .tt-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 22px; counter-reset: pill; }
+    .tt-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--card-bg); font-size: 0.8rem; font-weight: 700; color: var(--white); }
+    .tt-pill b { width: 22px; height: 22px; border-radius: 50%; background: #AADC32; color: #16244F; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; }
+    .tt-scenario { margin: 6px 0 22px; padding: 20px 22px; border-radius: var(--radius-sm); background: rgba(170,220,50,0.09); border: 1px dashed rgba(170,220,50,0.55); }
+    .tt-scenario-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin-bottom: 10px; }
+    .tt-scenario .tt-p:last-child { margin-bottom: 0; font-weight: 700; }
+    .tt-step { margin: 18px 0; padding: 20px 22px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--card-bg); }
+    .tt-step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .tt-step-num { flex-shrink: 0; width: 38px; height: 38px; border-radius: 12px; background: #AADC32; color: #16244F; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.05rem; }
+    .tt-step-title { font-size: 1.02rem; font-weight: 800; color: var(--white); line-height: 1.25; }
+    .tt-step-title span { display: block; margin-top: 2px; font-size: 0.84rem; font-weight: 600; color: var(--muted); }
+    .tt-step .tt-p:last-child { margin-bottom: 0; }
+    .tt-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 16px; }
+    .tt-level { padding: 14px 14px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); text-align: center; background: rgba(22,36,79,0.03); }
+    .tt-level .ico { font-size: 1.5rem; line-height: 1; margin-bottom: 8px; }
+    .tt-level strong { display: block; font-size: 0.86rem; color: var(--white); margin-bottom: 4px; }
+    .tt-level span { display: block; font-size: 0.8rem; line-height: 1.5; color: var(--muted); }
+    .tt-level.l1 { border-top: 4px solid #4B7F0B; }
+    .tt-level.l2 { border-top: 4px solid #E0A100; }
+    .tt-level.l3 { border-top: 4px solid #C0392B; }
+    .tt-quad { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 6px 0 16px; }
+    .tt-tile { padding: 14px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: rgba(22,36,79,0.03); display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+    .tt-tile .ico { font-size: 1.3rem; line-height: 1.2; }
+    .tt-tile strong { display: block; font-size: 0.86rem; color: var(--white); margin-bottom: 2px; }
+    .tt-tile span { font-size: 0.82rem; line-height: 1.5; color: var(--muted); }
+    .tt-verdicts { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+    .tt-verdict { padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
+    .tt-verdict.v1 { background: rgba(75,127,11,0.14); color: #3F6B00; }
+    .tt-verdict.v2 { background: rgba(224,161,0,0.18); color: #8A5A00; }
+    .tt-verdict.v3 { background: rgba(192,57,43,0.12); color: #A12B1F; }
+    .tt-closing { margin-top: 30px; padding: 26px 28px; border-radius: var(--radius); background: #16244F; color: #fff; }
+    .tt-closing h4 { font-size: 1.1rem; font-weight: 800; color: #AADC32; margin: 0 0 12px; }
+    .tt-closing p { font-size: 0.92rem; line-height: 1.65; color: rgba(255,255,255,0.88); margin: 0 0 12px; }
+    .tt-closing p:last-child { margin-bottom: 0; }
+    .tt-closing strong { color: #C5E85A; }
+    @media (max-width: 640px) { .tt-levels, .tt-quad { grid-template-columns: 1fr; } }
     .tt-p { font-size: 0.92rem; color: rgba(255,255,255,0.8); margin-bottom: 12px; line-height: 1.65; }
     .tt-h { font-size: 0.95rem; font-weight: 800; color: var(--lime); margin: 26px 0 10px; }
     .tt-list { margin: 0 0 14px 20px; font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
@@ -108,7 +144,51 @@
     .journey-link:hover { border-color: var(--lime); color: var(--lime); text-decoration: none; background: rgba(170,220,50,0.06); }
     .journey-link.home { background: var(--lime); color: var(--navy); border-color: var(--lime); }
     .journey-link.home:hover { background: var(--lime2); color: var(--navy); }
-  </style>
+  
+/* ===== LIGHT BANDS (sample) ===== */
+.light { background: #F4F7FB; color: #16244F; --white: #16244F; --muted: #5B6B85; --lime: #4B7F0B; --border: rgba(22,36,79,0.14); --card-bg: #FFFFFF; }
+.light .card, .light .spotlight-card, .light .story-card { box-shadow: 0 4px 18px rgba(22,36,79,0.07); }
+.light .card:hover { border-color: rgba(75,127,11,0.45); }
+.light .btn-primary, .light .tag, .light .event-current-tag, .light .pls-cta, .light .pls-opt.active, .light .abq-opt.active, .light .abq-deadline, .light .ab-dot, .light .opus-new-badge { background: #AADC32; color: #16244F; }
+.light .btn-primary:hover { background: #C5E85A; }
+.light .btn-ghost { color: #16244F; border-color: rgba(22,36,79,0.25); background: transparent; }
+.light [style*="rgba(255,255,255"] { color: #33415F !important; }
+.light [style*="var(--lime)"] { color: #4B7F0B !important; }
+.light [style*="var(--white)"] { color: #16244F !important; }
+.light .section-label, .light .spotlight-label, .light .tip-label { color: #4B7F0B; }
+.light .event-date-box .day { color: #16244F; }
+.light .badge-open { background: rgba(75,127,11,0.12); color: #3F6B00; }
+.light .prompt-box, .light .tip-card { background: #EEF3F9; }
+.light ::selection { background: #AADC32; }
+.light .tag { background: #AADC32; }
+.light .logo-wordmark { color: rgb(22,36,79); }
+.light .issue-switcher-btn { background: #AADC32; }
+.light .issue-menu-item { color: rgb(22,36,79); }
+.light .issue-current-tag { background: #AADC32; }
+.light .case-step p { color: rgba(22,36,79,0.78); }
+.light .try-box p { color: rgba(22,36,79,0.9); }
+.light .tt-p { color: rgba(22,36,79,0.9); }
+.light .tt-list { color: rgba(22,36,79,0.78); }
+.light .tt-shift-from { background: rgba(22,36,79,0.05); }
+.light .tt-shift-to { color: rgb(22,36,79); }
+.light .breadcrumb .current { color: rgba(22,36,79,0.78); }
+.light .journey-link { color: rgb(22,36,79); }
+.light .journey-link.home { background: #AADC32; }
+.light.has-bc { padding-top: 0; }
+.light.has-bc > .breadcrumb { padding-top: 28px; padding-bottom: 44px; }
+.light .breadcrumb a { color: #5B6B85; }
+.light .breadcrumb a:hover { color: #3F6B00; }
+.light .breadcrumb .current { color: #16244F; font-weight: 600; }
+.light .breadcrumb-archive-btn { color: #3F6B00; border-color: rgba(63,107,0,0.45); background: #FFFFFF; }
+.light .breadcrumb-archive-btn:hover { background: #AADC32; border-color: #AADC32; color: #16244F; }
+
+.light .event-date-box .weekday { color: #4B7F0B; }
+.light .mode-champ { background: rgba(107,63,196,0.1); color: #5B33B0; }
+.light .mode-inperson { background: rgba(43,99,196,0.1); color: #2556B0; }
+.light .mode-tbc { color: #5B6B85; }
+.light .chip-note, .light .rename-note { color: #8A5A00; background: rgba(255,200,50,0.2); border-color: rgba(200,140,0,0.4); }
+.light .rename-note strong { color: #8A5A00; }
+</style>
 </head>
 <body data-page="think-tank">
 
@@ -125,9 +205,10 @@
         <div class="logo-wordmark">ctrl<span>+</span>shift</div>
       </a>
       <div class="issue-switcher">
-        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 03 &middot; Oct 2026 <span class="issue-caret">&#9662;</span></button>
+        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 04 &middot; Nov 2026 <span class="issue-caret">&#9662;</span></button>
         <div class="issue-menu" role="menu">
-          <a href="think-tank.html" class="issue-menu-item active" role="menuitem">Issue 03 &middot; Oct 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="think-tank.html" class="issue-menu-item active" role="menuitem">Issue 04 &middot; Nov 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="archive/oct-2026/think-tank.html" class="issue-menu-item" role="menuitem">Issue 03 &middot; Oct 2026</a>
           <a href="archive/sep-2026/think-tank.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
           <a href="archive/aug-2026/think-tank.html" class="issue-menu-item" role="menuitem">Issue 01 &middot; Aug 2026</a>
         </div>
@@ -145,16 +226,17 @@
 
 <main>
 
+
+
+
+
+<section id="think-tank" class="section reveal light has-bc">
 <div class="container breadcrumb">
   <div class="breadcrumb-row">
     <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Think Tank</span></div>
-    <a href="archive/sep-2026/think-tank.html" class="breadcrumb-archive-btn">View Sep Issue &rarr;</a>
+    <a href="archive/oct-2026/think-tank.html" class="breadcrumb-archive-btn">View Oct Issue &rarr;</a>
   </div>
 </div>
-
-
-
-<section id="think-tank" class="section reveal">
   <div class="container">
     <div class="section-header">
       <p class="section-label">💡 Think Tank</p>
@@ -163,80 +245,67 @@
     </div>
     <div class="spotlight-card">
       <p class="spotlight-label">Use Case of the Month</p>
-      <h3 class="spotlight-title">Don’t Just Automate the Task. Rethink the Workflow.</h3>
-      <p class="tt-p">AI is often used to make an existing task faster. But sometimes the bigger opportunity is to step back and ask whether the workflow itself could be designed differently.</p>
-      <p class="tt-p">For this month’s Think Tank, we look at <strong>Smarter Invoicing</strong>, one of the prototypes developed through AI First. The team started with a familiar work problem and explored how AI could take on more of the routine coordination, while keeping officers focused on the parts that require judgement and accountability.</p>
-      <h4 class="tt-h">1. The Challenge</h4>
-      <p class="tt-p">Processing an invoice can involve far more than checking the invoice itself.</p>
-      <p class="tt-p">Officers may need to extract information, contact Project Managers, gather supporting documents, check whether everything is complete, follow up on missing items and route the case through different stages for verification and approval.</p>
-      <p class="tt-p">The work is not necessarily complex at every step. But there are many handoffs, checks and follow-ups that take time.</p>
-      <p class="tt-p">That was the challenge the team set out to tackle with Smarter Invoicing.</p>
-      <h4 class="tt-h">2. How the Team Rethought the Workflow</h4>
-      <p class="tt-p">Instead of asking, “How can AI help us check invoices faster?”, the team looked at the full process and asked which parts truly needed an officer.</p>
-      <p class="tt-p">They identified routine steps that could potentially be handled by AI, such as:</p>
-      <ul class="tt-list">
-        <li>extracting key information from an e-Invoice</li>
-        <li>generating and sending verification requests</li>
-        <li>collecting supporting documents</li>
-        <li>checking whether submissions are complete</li>
-        <li>flagging exceptions</li>
-        <li>routing the case to the next officer</li>
-        <li>sending reminders for overdue responses</li>
-      </ul>
-      <p class="tt-p">The idea was to let the system handle more of the coordination, while bringing officers in where judgement and accountability were still needed.</p>
-      <h4 class="tt-h">3. What Changed</h4>
-      <p class="tt-p">The shift was not simply from manual invoice checking to AI-assisted invoice checking. It was from:</p>
-      <div class="tt-shift">
-        <div class="tt-shift-from"><span>From</span>Officers managing every handoff, check and follow-up</div>
-        <div class="tt-shift-arrow" aria-hidden="true">&darr;</div>
-        <div class="tt-shift-to"><span>To</span>AI coordinating routine steps, surfacing exceptions and bringing officers in when a decision is needed</div>
+                  <h3 class="spotlight-title">AI helped create it. Is it ready to go out?</h3>
+      <p class="tt-p">An AI-generated draft, image or translation may look ready for publication. But before it reaches officers, parents or students, what should we check?</p>
+      <div class="tt-scenario">
+        <p class="tt-scenario-label">🧐 The scenario</p>
+      <p class="tt-p">Imagine a supplier submits a parent-facing guide for publication. The cover image was generated using AI, and a language model produced the first draft. The supplier has edited both, and the guide is now seeking approval.</p>
+      <p class="tt-p">The content may look complete, but is it accurate? Can the image be used? And who is responsible if something goes wrong?</p>
       </div>
-      <p class="tt-p">Sometimes the opportunity is not to automate one task. It is to redesign the workflow so officers spend less time moving information around and more time on the parts that require judgement.</p>
-      <h4 class="tt-h">4. Try This With Your Own Work</h4>
-      <p class="tt-p">Pick one recurring workflow your team manages and map it from start to finish.</p>
-      <div class="case-steps">
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">1</div>
-          <div>
-            <h4>Map the workflow</h4>
-            <p>What happens from the moment the work starts until it is completed?</p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">2</div>
-          <div>
-            <h4>Spot the friction</h4>
-            <p>Where are people repeatedly copying information, checking documents, routing items or chasing responses?</p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">3</div>
-          <div>
-            <h4>Separate routine from judgement</h4>
-            <p>Which steps genuinely need an officer’s expertise or decision? Which are mainly administrative?</p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">4</div>
-          <div>
-            <h4>Ask what AI could handle</h4>
-            <p>Could AI help extract, summarise, check, route, remind or flag exceptions?</p>
-          </div>
-        </div>
-        <div class="case-step">
-          <div class="step-icon" aria-hidden="true">5</div>
-          <div>
-            <h4>Redesign and test</h4>
-            <p>Sketch a simpler workflow, then test one small part before trying to automate the whole process.</p>
-          </div>
-        </div>
+      <p class="tt-p">These questions were explored in an AI knowledge workshop by the AI Programme Team, which focused on AI in everyday work and the risks, ethics and governance considerations surrounding publication and intellectual property (IP) work.</p>
+      <p class="tt-p">Here are six practical steps drawn from the workshop to help officers review AI-generated content.</p>
+      <div class="tt-pills" aria-label="The six steps"><span class="tt-pill"><b>1</b>Classify</span><span class="tt-pill"><b>2</b>Decide oversight</span><span class="tt-pill"><b>3</b>Assess</span><span class="tt-pill"><b>4</b>Check</span><span class="tt-pill"><b>5</b>Name the owner</span><span class="tt-pill"><b>6</b>Record the decision</span></div>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">1</div><div class="tt-step-title">Classify<span>What was AI used for?</span></div></div>
+      <p class="tt-p">First, understand how AI contributed to the work. Was it used to check grammar, summarise information or translate content? Or did it generate the first draft, artwork or other original material?</p>
+      <p class="tt-p">Also consider where the output will be used and who will see it. An internal working document carries different risks from an official resource published for parents or students.</p>
       </div>
-      <div class="try-box">
-        <p class="try-label">The question to start with</p>
-        <p>Which parts of this workflow really need a person, and which parts could work differently?</p>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">2</div><div class="tt-step-title">Decide oversight<span>How much human review is needed?</span></div></div>
+      <p class="tt-p">The workshop outlines three levels of human oversight:</p>
+        <div class="tt-levels">
+          <div class="tt-level l1"><div class="ico" aria-hidden="true">🧑‍💻</div><strong>In the loop</strong><span>A person reviews and approves every output before release.</span></div>
+          <div class="tt-level l2"><div class="ico" aria-hidden="true">👀</div><strong>Over the loop</strong><span>A person monitors outputs and intervenes when necessary.</span></div>
+          <div class="tt-level l3"><div class="ico" aria-hidden="true">🚦</div><strong>Out of the loop</strong><span>Outputs reach the audience without human review.</span></div>
+        </div>
+      <p class="tt-p">For content published under the MOE name, human review is essential. AI-generated content can sound convincing while containing errors, so officers should verify facts, check translations and assess whether the material is suitable for its audience.</p>
+      </div>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">3</div><div class="tt-step-title">Assess<span>Could the content raise ethical or disclosure concerns?</span></div></div>
+      <p class="tt-p">Consider four questions:</p>
+        <div class="tt-quad">
+          <div class="tt-tile"><div class="ico" aria-hidden="true">⚖️</div><div><strong>Fairness</strong><span>Who is represented, and who might be left out?</span></div></div>
+          <div class="tt-tile"><div class="ico" aria-hidden="true">🔍</div><div><strong>Transparency</strong><span>Would readers expect to know AI was involved?</span></div></div>
+          <div class="tt-tile"><div class="ico" aria-hidden="true">🧾</div><div><strong>Accountability</strong><span>Who is answerable if something goes wrong?</span></div></div>
+          <div class="tt-tile"><div class="ico" aria-hidden="true">✍️</div><div><strong>Authorship</strong><span>Who created the content, and does it matter?</span></div></div>
+        </div>
+      <p class="tt-p">Not every use of AI needs to be disclosed. Grammar checks and formatting, for example, may not require it. But realistic AI-generated images, synthetic voices or content where authorship and authenticity matter may warrant disclosure.</p>
+      <p class="tt-p">When in doubt, consider whether telling the audience would build trust, or seek advice.</p>
+      </div>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">4</div><div class="tt-step-title">Check<span>Can we use the output?</span></div></div>
+      <p class="tt-p">AI-generated content may resemble existing copyrighted work. Before publishing, check whether the output reproduces or closely imitates an existing work, and whether there is sufficient human creative or editorial contribution.</p>
+      <p class="tt-p">When working with vendors, ask whether AI was used, who owns the final output, where the content came from and who is responsible if copyright issues arise.</p>
+      </div>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">5</div><div class="tt-step-title">Name the owner<span>Who takes responsibility?</span></div></div>
+      <p class="tt-p">AI may contribute to the work, but accountability remains with people.</p>
+      <p class="tt-p">Identify the officer responsible for reviewing the final output and addressing any gaps. A vendor’s use of AI does not remove its responsibility for the work it delivers.</p>
+      <p class="tt-p">The key is to ensure someone can explain what AI contributed, what checks were carried out and why the content is ready to proceed.</p>
+      </div>
+      <div class="tt-step">
+        <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">6</div><div class="tt-step-title">Record the decision<span>Is it ready to proceed?</span></div></div>
+      <p class="tt-p">Before giving the green light, decide whether the work is ready, ready with conditions, or not ready yet.</p>
+        <div class="tt-verdicts"><span class="tt-verdict v1">✅ Ready</span><span class="tt-verdict v2">🟡 Ready with conditions</span><span class="tt-verdict v3">⛔ Not ready yet</span></div>
+      <p class="tt-p">Record any checks completed, missing information and actions required before publication. This creates a clear record of the decision and who is responsible for it.</p>
+      </div>
+      <div class="tt-closing">
+        <h4>Keeping human judgement at the centre</h4>
+        <p>AI can help officers work more efficiently and explore new ways of doing things. But when its outputs are used in our work, we still need to ask the right questions, assess the risks and take responsibility for the final result.</p>
+        <p>The aim is not to avoid using AI, but to use it thoughtfully — with the right checks and human oversight in place. As the workshop reminds us: <strong>we cannot outsource judgement, but we can structure it.</strong></p>
       </div>
       <div class="prev-issue-link">
-        <a href="archive/sep-2026/think-tank.html#think-tank">↳ View other use case →</a>
+        <a href="archive/oct-2026/think-tank.html#think-tank">↳ View other use case →</a>
       </div>
     </div>
   </div>

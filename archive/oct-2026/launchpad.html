@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launchpad | ctrl+shift</title>
+  <style>
+    :root {
+      --navy:   #16244F;
+      --navy2:  #1F335F;
+      --lime:   #AADC32;
+      --lime2:  #C5E85A;
+      --white:  #FFFFFF;
+      --offwhite: #F5F7FA;
+      --muted:  #A7B2C7;
+      --border: rgba(255,255,255,0.14);
+      --card-bg: rgba(255,255,255,0.07);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--navy); color: var(--white); line-height: 1.65; overflow-x: hidden; }
+    a { color: var(--lime); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--lime); border-radius: 3px; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--lime); padding: 4px 12px; border-radius: 100px; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin-bottom: 10px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .topbar { position: sticky; top: 0; z-index: 100; background: rgba(22,36,79,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .topbar .container { max-width: 1240px; }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: nowrap; }
+    .topbar-brand { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .topbar-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+    .topbar-logo:hover { text-decoration: none; }
+    .logo-mark { width: 40px; height: 40px; }
+    .logo-mark svg { width: 100%; height: 100%; }
+    .logo-wordmark { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+    .logo-wordmark span { color: var(--lime); }
+    .plus-accent { color: var(--lime); }
+        .issue-switcher { position: relative; }
+    .issue-switcher-btn { cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; border: none; background: var(--lime); color: var(--navy); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .issue-switcher-btn:hover { background: var(--lime2); }
+    .issue-caret { font-size: 0.6rem; opacity: 0.7; }
+    .issue-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px; min-width: 210px; box-shadow: 0 12px 32px rgba(0,0,0,0.4); z-index: 200; }
+    .issue-menu.open { display: block; }
+    .issue-menu-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; border-radius: 8px; font-size: 0.82rem; color: var(--white); text-decoration: none; }
+    .issue-menu-item:hover { background: rgba(170,220,50,0.1); text-decoration: none; }
+    .issue-menu-item.active { color: var(--lime); font-weight: 700; }
+    .issue-current-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); background: var(--lime); padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
+    .topbar-issue { font-size: 0.74rem; color: var(--navy); font-weight: 700; letter-spacing: 0.06em; background: var(--lime); border: none; padding: 6px 14px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+    .topbar-nav { display: flex; align-items: center; gap: 6px; list-style: none; flex-wrap: nowrap; flex-shrink: 1; min-width: 0; }
+    .topbar-nav a { font-size: 0.88rem; font-weight: 600; color: var(--muted); transition: color var(--transition), background var(--transition), transform var(--transition); padding: 10px 18px; border-radius: 100px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .topbar-nav a:hover { color: var(--lime); background: rgba(170,220,50,0.1); transform: translateY(-1px); text-decoration: none; }
+    .topbar-nav a.active { color: var(--navy); background: var(--lime); font-weight: 700; }
+    .section { padding: 72px 0; }
+    .section-header { margin-bottom: 40px; }
+    .section-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
+    .section-desc { color: var(--muted); margin-top: 10px; font-size: 0.95rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: border-color var(--transition), transform var(--transition); }
+    .card:hover { border-color: rgba(170,220,50,0.3); transform: translateY(-3px); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 100px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all var(--transition); border: none; }
+    .btn-primary { background: var(--lime); color: var(--navy); }
+    .btn-primary:hover { background: var(--lime2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(170,220,50,0.3); text-decoration: none; }
+    .btn-ghost { background: transparent; color: var(--white); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--lime); color: var(--lime); text-decoration: none; }
+    .btn-sm { padding: 9px 20px; font-size: 0.8rem; }
+    .events-list { display: grid; gap: 16px; }
+    .event-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 20px; align-items: center; text-decoration: none; color: inherit; cursor: pointer; }
+    .event-card:hover { border-color: rgba(170,220,50,0.4); transform: translateY(-3px); text-decoration: none; color: inherit; }
+    .event-date-box { background: rgba(170,220,50,0.1); border: 1px solid rgba(170,220,50,0.2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .event-date-box .weekday { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(170,220,50,0.65); margin-bottom: 2px; }
+    .event-date-box .day { font-size: 1.5rem; font-weight: 900; color: var(--lime); line-height: 1; }
+    .event-date-box .month { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .event-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .event-info p { font-size: 0.82rem; color: var(--muted); }
+    .event-info .event-desc { margin-top: 5px; color: rgba(255,255,255,0.65); line-height: 1.45; font-style: italic; font-size: 0.8rem; }
+    .event-reg-note { font-size: 0.72rem; font-weight: 500; color: var(--muted); }
+    .event-mode { display: inline-flex; align-items: center; gap: 4px; font-size: 0.66rem; font-weight: 700; padding: 3px 9px; border-radius: 100px; letter-spacing: 0.02em; margin-bottom: 6px; }
+    .mode-online { background: rgba(170,220,50,0.14); color: var(--lime); }
+    .mode-inperson { background: rgba(122,175,255,0.14); color: #7AAFFF; }
+    .mode-tbc { background: rgba(170,170,170,0.14); color: #AAAAAA; }
+    .event-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; white-space: nowrap; text-decoration: none; display: inline-block; }
+    .badge-open { background: rgba(170,220,50,0.15); color: var(--lime); }
+    a.badge-open:hover { background: rgba(170,220,50,0.28); text-decoration: none; }
+    .badge-soon { background: rgba(255,200,50,0.15); color: #FFC832; }
+    .badge-tbc { background: rgba(170,170,170,0.15); color: #AAAAAA; }
+    .month-heading { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin: 12px 0 0; }
+    .month-heading:first-child { margin-top: 0; }
+    .mode-champ { background: rgba(180,140,255,0.15); color: #C4A8FF; }
+    .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; text-align: center; }
+    .footer-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--lime); }
+    .footer-tagline { font-size: 0.85rem; color: var(--muted); margin-bottom: 28px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; list-style: none; margin-bottom: 32px; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--lime); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    @media (max-width: 640px) {
+      .topbar-nav { display: none; }
+      .event-card { grid-template-columns: 60px 1fr; }
+      .event-badge { display: none; }
+    }
+    .breadcrumb { padding-top: 32px; font-size: 0.8rem; color: var(--muted); }
+    .breadcrumb a { color: var(--muted); }
+    .breadcrumb a:hover { color: var(--lime); }
+    .breadcrumb .sep { margin: 0 6px; opacity: 0.5; }
+    .breadcrumb .current { color: rgba(255,255,255,0.6); }
+    .breadcrumb-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .breadcrumb-archive-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.76rem; font-weight: 700; color: var(--lime); border: 1px solid rgba(170,220,50,0.4); padding: 5px 12px; border-radius: 100px; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+    .breadcrumb-archive-btn:hover { background: rgba(170,220,50,0.15); border-color: var(--lime); text-decoration: none; }
+    .journey-nav { display: flex; justify-content: space-between; align-items: center; margin: 70px 0 30px; gap: 16px; flex-wrap: wrap; }
+    .prev-issue-link { margin-top: 18px; text-align: center; }
+    .prev-issue-link a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+    .prev-issue-link a:hover { color: var(--lime2); }
+    .journey-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border: 1px solid var(--border); border-radius: 100px; color: var(--white); font-size: 0.85rem; font-weight: 600; transition: all var(--transition); }
+    .journey-link:hover { border-color: var(--lime); color: var(--lime); text-decoration: none; background: rgba(170,220,50,0.06); }
+    .journey-link.home { background: var(--lime); color: var(--navy); border-color: var(--lime); }
+    .journey-link.home:hover { background: var(--lime2); color: var(--navy); }
+    .journey-link.disabled { opacity: 0.3; pointer-events: none; }
+    .event-card { cursor: pointer; transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; position: relative; overflow: hidden; }
+    .event-card::after {
+      content: '📅 Add to calendar';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(170,220,50,0.18) 0%, transparent 100%);
+      color: #aadc32; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; text-align: center;
+      padding: 10px 0 8px; opacity: 0; transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none;
+    }
+    .event-card:hover { transform: translateY(-4px) scale(1.012); box-shadow: 0 8px 32px rgba(170,220,50,0.18), 0 2px 8px rgba(0,0,0,0.3); border-color: rgba(170,220,50,0.45); }
+    .event-card:hover::after { opacity: 1; transform: translateY(0); }
+    .event-card.no-cal { cursor: default; }
+    .event-card.no-cal::after { content: none; }
+    .event-card.no-cal:hover { transform: none; box-shadow: none; border-color: var(--border); }
+  
+/* ===== LIGHT BANDS (sample) ===== */
+.light { background: #F4F7FB; color: #16244F; --white: #16244F; --muted: #5B6B85; --lime: #4B7F0B; --border: rgba(22,36,79,0.14); --card-bg: #FFFFFF; }
+.light .card, .light .spotlight-card, .light .story-card { box-shadow: 0 4px 18px rgba(22,36,79,0.07); }
+.light .card:hover { border-color: rgba(75,127,11,0.45); }
+.light .btn-primary, .light .tag, .light .event-current-tag, .light .pls-cta, .light .pls-opt.active, .light .abq-opt.active, .light .abq-deadline, .light .ab-dot, .light .opus-new-badge { background: #AADC32; color: #16244F; }
+.light .btn-primary:hover { background: #C5E85A; }
+.light .btn-ghost { color: #16244F; border-color: rgba(22,36,79,0.25); background: transparent; }
+.light [style*="rgba(255,255,255"] { color: #33415F !important; }
+.light [style*="var(--lime)"] { color: #4B7F0B !important; }
+.light [style*="var(--white)"] { color: #16244F !important; }
+.light .section-label, .light .spotlight-label, .light .tip-label { color: #4B7F0B; }
+.light .event-date-box .day { color: #16244F; }
+.light .badge-open { background: rgba(75,127,11,0.12); color: #3F6B00; }
+.light .prompt-box, .light .tip-card { background: #EEF3F9; }
+.light ::selection { background: #AADC32; }
+.light .tag { background: #AADC32; }
+.light .logo-wordmark { color: rgb(22,36,79); }
+.light .issue-switcher-btn { background: #AADC32; }
+.light .issue-menu-item { color: rgb(22,36,79); }
+.light .issue-current-tag { background: #AADC32; }
+.light .btn-primary { background: #AADC32; }
+.light .btn-ghost { color: rgb(22,36,79); }
+.light .event-info .event-desc { color: rgba(22,36,79,0.78); }
+.light .breadcrumb .current { color: rgba(22,36,79,0.78); }
+.light .journey-link { color: rgb(22,36,79); }
+.light .journey-link.home { background: #AADC32; }
+.light.has-bc { padding-top: 0; }
+.light.has-bc > .breadcrumb { padding-top: 28px; padding-bottom: 44px; }
+.light .breadcrumb a { color: #5B6B85; }
+.light .breadcrumb a:hover { color: #3F6B00; }
+.light .breadcrumb .current { color: #16244F; font-weight: 600; }
+.light .breadcrumb-archive-btn { color: #3F6B00; border-color: rgba(63,107,0,0.45); background: #FFFFFF; }
+.light .breadcrumb-archive-btn:hover { background: #AADC32; border-color: #AADC32; color: #16244F; }
+
+.light .event-date-box .weekday { color: #4B7F0B; }
+.light .mode-champ { background: rgba(107,63,196,0.1); color: #5B33B0; }
+.light .mode-inperson { background: rgba(43,99,196,0.1); color: #2556B0; }
+.light .mode-tbc { color: #5B6B85; }
+.light .chip-note, .light .rename-note { color: #8A5A00; background: rgba(255,200,50,0.2); border-color: rgba(200,140,0,0.4); }
+.light .rename-note strong { color: #8A5A00; }
+</style>
+</head>
+<body data-page="launchpad">
+
+<nav class="topbar" role="navigation" aria-label="Main navigation">
+  <div class="container topbar-inner">
+    <div class="topbar-brand">
+      <a href="index.html" class="topbar-logo" aria-label="ctrl+shift home">
+        <div class="logo-mark">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="28" height="28" rx="6" fill="#AADC32"/>
+            <text x="4" y="20" font-family="monospace" font-size="13" font-weight="900" fill="#0D1B3E">&gt;_</text>
+          </svg>
+        </div>
+        <div class="logo-wordmark">ctrl<span>+</span>shift</div>
+      </a>
+      <div class="issue-switcher">
+        <button type="button" class="topbar-issue issue-switcher-btn" aria-haspopup="true" aria-expanded="false" onclick="toggleIssueMenu(this)">Issue 03 &middot; Oct 2026 <span class="issue-caret">&#9662;</span></button>
+        <div class="issue-menu" role="menu">
+          <a href="../../launchpad.html" class="issue-menu-item" role="menuitem">Issue 04 &middot; Nov 2026</a>
+          <a href="launchpad.html" class="issue-menu-item active" role="menuitem">Issue 03 &middot; Oct 2026 <span class="issue-current-tag">Current</span></a>
+          <a href="../sep-2026/launchpad.html" class="issue-menu-item" role="menuitem">Issue 02 &middot; Sep 2026</a>
+          <a href="../aug-2026/launchpad.html" class="issue-menu-item" role="menuitem">Issue 01 &middot; Aug 2026</a>
+        </div>
+      </div>
+    </div>
+    <ul class="topbar-nav" role="list">
+      <li><a href="frequency.html" data-page="frequency">📡 Frequency</a></li>
+      <li><a href="launchpad.html" data-page="launchpad">🚀 Launchpad</a></li>
+      <li><a href="think-tank.html" data-page="think-tank">💡 Think Tank</a></li>
+      <li><a href="toolbox.html" data-page="toolbox">🧰 Toolbox</a></li>
+      <li><a href="in-the-field.html" data-page="in-the-field">💬 In the Field</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+
+
+
+
+<section id="launchpad" class="section reveal light has-bc">
+<div class="container breadcrumb">
+  <div class="breadcrumb-row">
+    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Launchpad</span></div>
+    <a href="../sep-2026/launchpad.html" class="breadcrumb-archive-btn">View Sep Issue &rarr;</a>
+  </div>
+</div>
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">🚀 Launchpad</p>
+      <h2 class="section-title">What&#39;s coming up</h2>
+      <p class="section-desc">Click through to join an online session, or click the card to save it to your calendar.</p>
+    </div>
+    <div class="events-list">
+
+      <h3 class="month-heading">October 2026</h3>
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Riding the Wave of M365 Copilot to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Riding%20the%20Wave%20of%20M365%20Copilot&startdt=2026-10-21T11:00:00&enddt=2026-10-21T11:30:00&body=Riding%20the%20Wave%20of%20M365%20Copilot.%20DXD%20Brownbag%20Session.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">21</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
+          <h3>Riding the Wave of M365 Copilot</h3>
+          <p>DXD Brownbag Session · Microsoft Teams · 11:00 – 11:30 AM</p>
+          <p class="event-desc">A short session with Naomi Tay from the AI Programme team to kick-start the M365 Copilot journey and preview what is coming next.</p>
+        </div>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Accelerate Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Accelerate%20Workshop&startdt=2026-10-22T09:00:00&enddt=2026-10-22T12:00:00&body=Copilot%20Accelerate%20Workshop.%20Venue%3A%20BA%20TR%20D4-9.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">THU</div>
+          <div class="day">22</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Accelerate Workshop</h3>
+          <p>BA TR D4-9 · 9:00 AM – 12:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Accelerate Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Agent Build Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Agent%20Build%20Workshop&startdt=2026-10-26T14:00:00&enddt=2026-10-26T17:00:00&body=Copilot%20Agent%20Build%20Workshop.%20Venue%3A%20Microsoft%20Office.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">MON</div>
+          <div class="day">26</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Agent Build Workshop</h3>
+          <p>Microsoft Office · 2:00 – 5:00 PM</p>
+          <p class="event-desc">A hands-on session to explore how to build and work with AI agents.</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Agent Build Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add More Than Bots: AI Agents Are Here. Now What? to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=More%20Than%20Bots%3A%20AI%20Agents%20Are%20Here.%20Now%20What%3F&startdt=2026-10-28&enddt=2026-10-28&allday=true&body=More%20Than%20Bots%3A%20AI%20Agents%20Are%20Here.%20Now%20What%3F.%20Webinar.%20Register%20at%20the%20link%20on%20the%20Launchpad%20page.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">28</div>
+          <div class="month">OCT</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span>
+          <h3>More Than Bots: AI Agents Are Here. Now What?</h3>
+          <p class="event-desc">A webinar exploring what AI agents mean for the way we work, and how we can move beyond one-off prompts to more capable AI-assisted workflows.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/CSC-IPAM/AI%20Ignite/SitePages/MoreThanPromptsWebinar.aspx?web=1&isSPOFile=1&TeamsCID=c28469ee-60ff-4644-aca1-c7b6ffc22cd8&OR=Teams-HL&CT=1790675224110&linkOpenTime=1790675224112" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: More Than Bots: AI Agents Are Here. Now What?">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card no-cal">
+        <div class="event-date-box">
+          <div class="weekday">OCT</div>
+          <div class="day">•••</div>
+          <div class="month">2026</div>
+        </div>
+        <div class="event-info">
+          <h3>M365 Copilot Training Sessions (IDG)</h3>
+          <p>Multiple sessions this month</p>
+          <p class="event-desc">Government-wide training sessions covering different M365 Copilot topics.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/GOVTECH-digitalgov/digitalworkplaceproducts/Copilot/SitePages/M365-Copilot-Training-Sessions.aspx" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="🔗 View sessions: M365 Copilot Training Sessions (IDG)">🔗 View sessions ↗</a>
+      </div>
+
+      <div class="card event-card no-cal">
+        <div class="event-date-box">
+          <div class="weekday">OCT</div>
+          <div class="day">•••</div>
+          <div class="month">2026</div>
+        </div>
+        <div class="event-info">
+          <h3>ChatGPT Training Sessions (IDG)</h3>
+          <p>Multiple sessions this month</p>
+          <p class="event-desc">Government-wide training sessions covering practical ChatGPT skills.</p>
+        </div>
+        <a href="https://gccprod.sharepoint.com/sites/GOVTECH-digitalgov/digitalworkplaceproducts/ChatGPT/SitePages/Training.aspx" target="_blank" rel="noopener" class="event-badge badge-open" aria-label="🔗 View sessions: ChatGPT Training Sessions (IDG)">🔗 View sessions ↗</a>
+      </div>
+
+      <h3 class="month-heading">November 2026</h3>
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add AI Champions Online Meet Up #4 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=AI%20Champions%20Online%20Meet%20Up%20%234&startdt=2026-11-06T09:00:00&enddt=2026-11-06T10:30:00&body=AI%20Champions%20Online%20Meet%20Up%20%234.%20Online%20via%20Microsoft%20Teams.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">FRI</div>
+          <div class="day">06</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-online">💻 Online</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>AI Champions Online Meet Up #4</h3>
+          <p>Microsoft Teams · 9:00 – 10:30 AM</p>
+          <p class="event-desc">A community session for AI Champions to continue learning, sharing and exchanging practical experiences. More details to follow.</p>
+        </div>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Xperience 2026 to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Xperience%202026&startdt=2026-11-11T12:30:00&enddt=2026-11-11T17:00:00&body=Xperience%202026.%20Venue%3A%20MOE%20HQ%2C%20Buona%20Vista.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">WED</div>
+          <div class="day">11</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span>
+          <h3>Xperience 2026</h3>
+          <p>MOE HQ, Buona Vista · 12:30 – 5:00 PM</p>
+          <p class="event-desc">MOE’s annual Product Showcase, where school leaders can discover and try practical digital solutions, get a preview of upcoming MOE products and explore opportunities to work with DXD through pilots, trials and co-development.</p>
+        </div>
+        <a href="https://go.gov.sg/xperience2026" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Secure your slot: Xperience 2026">🔗 Secure your slot ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add DXD Cybersecurity &amp; Governance Day to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=DXD%20Cybersecurity%20%26%20Governance%20Day&startdt=2026-11-23T14:00:00&enddt=2026-11-23T17:00:00&body=DXD%20Cybersecurity%20%26%20Governance%20Day.%20Venue%3A%20MOE%20HQ%2C%20Edutorium%2C%20Level%204.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">MON</div>
+          <div class="day">23</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span>
+          <h3>DXD Cybersecurity &amp; Governance Day</h3>
+          <p>MOE HQ, Edutorium, Level 4 · 2:00 – 5:00 PM</p>
+          <p class="event-desc">A half-day session on cybersecurity, governance and responsible digital practices, including topics relevant to how we manage and use digital and AI solutions.</p>
+        </div>
+        <a href="https://dxd-cybergovday.app.entry.gov.sg/form/3ed682f3-0c43-4105-ac43-99e9e1ec1ab7" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="Register for DXD Cybersecurity and Governance Day">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Agent Build Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Agent%20Build%20Workshop&startdt=2026-11-24T14:00:00&enddt=2026-11-24T17:00:00&body=Copilot%20Agent%20Build%20Workshop.%20Venue%3A%20Microsoft%20Office.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">TUE</div>
+          <div class="day">24</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Agent Build Workshop</h3>
+          <p>Microsoft Office · 2:00 – 5:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Agent Build Workshop">🔗 Register ↗</a>
+      </div>
+
+      <div class="card event-card" role="button" tabindex="0" aria-label="Add Copilot Accelerate Workshop to calendar" onclick="addToCalendar('https://outlook.office.com/calendar/action/compose?subject=Copilot%20Accelerate%20Workshop&startdt=2026-11-26T09:00:00&enddt=2026-11-26T12:00:00&body=Copilot%20Accelerate%20Workshop.%20Venue%3A%20MOE%20Buona%20Vista%2C%20Level%2024%20Function%20Room.')" onkeydown="if(event.key==='Enter'){this.click();}">
+        <div class="event-date-box">
+          <div class="weekday">THU</div>
+          <div class="day">26</div>
+          <div class="month">NOV</div>
+        </div>
+        <div class="event-info">
+          <span class="event-mode mode-inperson">📍 In-Person</span> <span class="event-mode mode-champ">⭐ For AI Champions</span>
+          <h3>Copilot Accelerate Workshop</h3>
+          <p>MOE Buona Vista, Level 24 Function Room · 9:00 AM – 12:00 PM</p>
+        </div>
+        <a href="https://go.gov.sg/moecopilotforaichampions" target="_blank" rel="noopener" class="event-badge badge-open" onclick="event.stopPropagation()" aria-label="🔗 Register: Copilot Accelerate Workshop">🔗 Register ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="journey-nav">
+    <a href="frequency.html" class="journey-link">← Frequency</a>
+    <a href="index.html" class="journey-link home">🏠 Back to Home</a>
+    <a href="think-tank.html" class="journey-link">Think Tank →</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-logo">ctrl<span>+</span>shift</div>
+    <p class="footer-tagline">Your monthly reset for all things digital at MOE</p>
+    <ul class="footer-links" role="list">
+      <li><a href="frequency.html">Frequency</a></li>
+      <li><a href="launchpad.html">Launchpad</a></li>
+      <li><a href="think-tank.html">Think Tank</a></li>
+      <li><a href="toolbox.html">Toolbox</a></li>
+      <li><a href="in-the-field.html">In the Field</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 MOE Digital Excellence &amp; Products Division (DXD)</p>
+  </div>
+</footer>
+
+<script>
+  function addToCalendar(url) {
+    window.open(url, '_blank', 'noopener');
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  const currentPage = document.body.dataset.page;
+  if (currentPage) {
+    const activeLink = document.querySelector(`.topbar-nav a[data-page="${currentPage}"]`);
+    if (activeLink) activeLink.classList.add('active');
+  }
+
+  /* ─── CTRL+SHIFT: press the shortcut, jump to the next stop ── */
+  (function () {
+    const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'toolbox.html', 'in-the-field.html'];
+    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'toolbox.html': 'Toolbox', 'in-the-field.html': 'In the Field' };
+    const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'toolbox.html', 'in-the-field': 'in-the-field.html' };
+    const currentFile = pageMap[document.body.dataset.page] || 'index.html';
+    const nextFile = journey[(journey.indexOf(currentFile) + 1) % journey.length];
+
+    let ctrlDown = false, shiftDown = false, fired = false;
+
+    function showFlash(label) {
+      const el = document.createElement('div');
+      el.innerHTML = 'ctrl<span class="plus-accent">+</span>shift → ' + label;
+      el.setAttribute('aria-live', 'polite');
+      Object.assign(el.style, {
+        position: 'fixed', top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%) scale(0.9)',
+        background: 'rgba(170,220,50,0.95)', color: '#0D1B3E',
+        fontWeight: '800', fontSize: '1rem', letterSpacing: '-0.01em',
+        padding: '16px 28px', borderRadius: '100px',
+        boxShadow: '0 12px 40px rgba(0,0,0,0.35)', zIndex: '9999',
+        opacity: '0', transition: 'opacity 0.18s ease, transform 0.18s ease',
+        pointerEvents: 'none', fontFamily: "'Inter', system-ui, -apple-system, sans-serif"
+      });
+      document.body.appendChild(el);
+      requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    }
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Control') ctrlDown = true;
+      if (e.key === 'Shift') shiftDown = true;
+      if (ctrlDown && shiftDown && !fired) {
+        fired = true;
+        showFlash(labels[nextFile]);
+        setTimeout(() => { window.location.href = nextFile; }, 420);
+      }
+    });
+    window.addEventListener('keyup', function (e) {
+      if (e.key === 'Control') ctrlDown = false;
+      if (e.key === 'Shift') shiftDown = false;
+      if (!ctrlDown || !shiftDown) fired = false;
+    });
+    window.addEventListener('blur', function () {
+      ctrlDown = false; shiftDown = false; fired = false;
+    });
+  })();
+
+  function toggleIssueMenu(btn) {
+    const menu = btn.nextElementSibling;
+    const isOpen = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.issue-menu.open').forEach(menu => {
+      if (!menu.parentElement.contains(e.target)) menu.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
