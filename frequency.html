@@ -342,6 +342,23 @@
       gap: 20px;
       align-items: start;
     }
+    .pr-carousel-caption, .pr-carousel-scrim, .pr-lightbox-caption { display: none !important; }
+    .sm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 18px; }
+    .sm-stat { padding: 14px 12px; border-radius: 12px; text-align: center; background: rgba(170,220,50,0.12); border: 1px solid rgba(170,220,50,0.45); }
+    .sm-stat b { display: block; font-size: 1.5rem; font-weight: 800; line-height: 1.1; color: var(--white); }
+    .sm-stat span { display: block; margin-top: 4px; font-size: 0.74rem; line-height: 1.35; color: var(--muted); }
+    .sm-flow { display: grid; gap: 10px; margin: 6px 0 18px; }
+    .sm-flow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); }
+    .sm-flow-row.before { background: rgba(22,36,79,0.04); }
+    .sm-flow-row.after { background: rgba(170,220,50,0.12); border-color: rgba(170,220,50,0.55); }
+    .sm-flow-tag { flex-basis: 100%; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); }
+    .sm-node { font-size: 0.78rem; font-weight: 600; line-height: 1.3; padding: 7px 10px; border-radius: 8px; background: var(--card-bg); border: 1px solid var(--border); color: var(--white); }
+    .sm-flow i { font-style: normal; font-weight: 800; color: var(--lime); }
+    .sm-tip { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; margin: 10px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--card-bg); }
+    .sm-tip-num { width: 36px; height: 36px; border-radius: 10px; background: #AADC32; color: #16244F; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .sm-tip .sm-tip-title { margin: 0 0 4px; font-weight: 800; font-size: 0.95rem; color: var(--white); }
+    .sm-tip .sm-tip-body { margin: 0; font-size: 0.86rem; line-height: 1.6; }
+    @media (max-width: 640px) { .sm-stats { grid-template-columns: 1fr; } }
     .news-num {
       font-size: 2rem;
       font-weight: 900;
@@ -1559,6 +1576,11 @@
         <div class="news-num" aria-hidden="true">03</div>
         <div class="news-content">
           <h3>A Smoother Xperience, One Less Task to Chase</h3>
+          <div class="sm-stats" role="group" aria-label="Key numbers">
+            <div class="sm-stat"><b>400+</b><span>invitations sent</span></div>
+            <div class="sm-stat"><b>~10 min</b><span>saved each working day</span></div>
+            <div class="sm-stat"><b>5 min</b><span>between automatic checks for new sign-ups</span></div>
+          </div>
           <p class="news-summary">How much time do we spend on tasks that are necessary, but repetitive? Sending emails, updating spreadsheets, tracking submissions and following up with people are all part of the workday. Individually, these tasks may take only a few minutes. But when repeated day after day, they can quietly add up — taking time and attention away from other priorities.</p>
           <div class="news-full" id="article-3-full">
             <p>For Ameline from DIVA, managing registrations for Xperience 2026 was one such task. As participants signed up through FormSG, their details had to be downloaded, organised in a spreadsheet and checked against those who had already received calendar invitations. New participants then had to be sent invitations individually through Outlook, with the spreadsheet updated to keep track of who had been contacted.</p>
@@ -1567,24 +1589,39 @@
             <p><strong style="color:var(--lime);">Turning a repetitive task into a smoother workflow</strong></p>
             <p>The idea was simple: instead of manually checking for new registrations and sending each invitation, let an automated workflow handle the repetitive steps.</p>
             <p>Using Power Automate, Ameline connected the registration data in Excel to a workflow that checked for new sign-ups every five minutes. When a new participant was detected, the workflow automatically sent a calendar invitation through Outlook and updated the spreadsheet to show that the invitation had been sent.</p>
+            <div class="sm-flow" role="group" aria-label="Before and after workflow">
+              <div class="sm-flow-row before">
+                <span class="sm-flow-tag">Before</span>
+                <span class="sm-node">📥 Download FormSG details</span><i aria-hidden="true">›</i>
+                <span class="sm-node">📑 Update spreadsheet</span><i aria-hidden="true">›</i>
+                <span class="sm-node">🔎 Check who has been invited</span><i aria-hidden="true">›</i>
+                <span class="sm-node">✉️ Send each invite in Outlook</span>
+              </div>
+              <div class="sm-flow-row after">
+                <span class="sm-flow-tag">After</span>
+                <span class="sm-node">📝 Participant signs up</span><i aria-hidden="true">›</i>
+                <span class="sm-node">⏱️ Power Automate checks every 5 min</span><i aria-hidden="true">›</i>
+                <span class="sm-node">📅 Invite sent via Outlook</span><i aria-hidden="true">›</i>
+                <span class="sm-node">✅ Spreadsheet updated</span>
+              </div>
+            </div>
             <p>This meant participants could receive their invitations shortly after registering, without someone having to constantly monitor the registration list. The spreadsheet also became a useful reference for checking which participants had been invited.</p>
             <p>Getting the workflow to run smoothly, however, took some experimentation. Early versions encountered a few hiccups, including repeated notifications and slower-than-expected processing. Instead of giving up, Ameline tested different approaches, used AI tools to help troubleshoot issues and refined the workflow along the way.</p>
             <p>The result was a more reliable process that has since sent more than 400 invitations and saves about 10 minutes each working day. More importantly, it has reduced the need for repeated manual checks and given the team greater peace of mind that new registrations are being followed up.</p>
             <p><strong style="color:var(--lime);">Start with the task that keeps coming back</strong></p>
             <p>The value of this experience goes beyond automating calendar invitations. It shows that improving the way we work does not always require a major project, a technical background or an entirely new system. Sometimes, it starts with noticing a small frustration in our daily routine and being curious enough to explore a better way.</p>
             <p>For officers looking to do the same, here are a few ways to get started:</p>
-            <p><strong>1. Spot the repetitive tasks.</strong></p>
-            <p>Look out for work that involves repeating the same steps regularly — such as sending reminders, consolidating information, updating trackers, copying data between spreadsheets or following up on submissions. These are often good places to start exploring improvements.</p>
-            <p><strong>2. Understand the problem before choosing a tool.</strong></p>
-            <p>Before jumping into a new application, take a moment to map out the existing process. What information needs to move from one place to another? Which steps are repeated? Where do delays or manual errors tend to happen? Understanding the process helps identify what can realistically be simplified or automated.</p>
-            <p><strong>3. Start small and build on what you already have.</strong></p>
-            <p>You don’t need to automate an entire process from the outset. Pick one repetitive step and explore whether tools already available to you, such as Power Automate or other approved digital tools, can help. A small improvement that works reliably is often more useful than an ambitious solution that is difficult to maintain.</p>
-            <p><strong>4. Experiment, test and refine.</strong></p>
-            <p>The first attempt may not work perfectly, and that’s part of the learning process. Test your solution with a small number of cases before using it more widely. Check that the results are accurate, consider what might go wrong, and make adjustments where needed. AI tools can also be useful sounding boards for understanding errors, exploring ideas and working through possible solutions.</p>
-            <p><strong>5. Keep people in the loop.</strong></p>
-            <p>Automation can take care of repetitive steps, but it does not replace human judgement. Continue checking that the process is working as intended, especially when it involves important information or communications. Think of automation as a way to support the work, not remove the need for oversight.</p>
+            <div class="sm-tip"><div class="sm-tip-num" aria-hidden="true">1</div><div><p class="sm-tip-title">Spot the repetitive tasks.</p><p class="sm-tip-body">Look out for work that involves repeating the same steps regularly — such as sending reminders, consolidating information, updating trackers, copying data between spreadsheets or following up on submissions. These are often good places to start exploring improvements.</p></div></div>
+            <div class="sm-tip"><div class="sm-tip-num" aria-hidden="true">2</div><div><p class="sm-tip-title">Understand the problem before choosing a tool.</p><p class="sm-tip-body">Before jumping into a new application, take a moment to map out the existing process. What information needs to move from one place to another? Which steps are repeated? Where do delays or manual errors tend to happen? Understanding the process helps identify what can realistically be simplified or automated.</p></div></div>
+            <div class="sm-tip"><div class="sm-tip-num" aria-hidden="true">3</div><div><p class="sm-tip-title">Start small and build on what you already have.</p><p class="sm-tip-body">You don’t need to automate an entire process from the outset. Pick one repetitive step and explore whether tools already available to you, such as Power Automate or other approved digital tools, can help. A small improvement that works reliably is often more useful than an ambitious solution that is difficult to maintain.</p></div></div>
+            <div class="sm-tip"><div class="sm-tip-num" aria-hidden="true">4</div><div><p class="sm-tip-title">Experiment, test and refine.</p><p class="sm-tip-body">The first attempt may not work perfectly, and that’s part of the learning process. Test your solution with a small number of cases before using it more widely. Check that the results are accurate, consider what might go wrong, and make adjustments where needed. AI tools can also be useful sounding boards for understanding errors, exploring ideas and working through possible solutions.</p></div></div>
+            <div class="sm-tip"><div class="sm-tip-num" aria-hidden="true">5</div><div><p class="sm-tip-title">Keep people in the loop.</p><p class="sm-tip-body">Automation can take care of repetitive steps, but it does not replace human judgement. Continue checking that the process is working as intended, especially when it involves important information or communications. Think of automation as a way to support the work, not remove the need for oversight.</p></div></div>
             <p><strong style="color:var(--lime);">Small changes can make a difference</strong></p>
-            <p>Ameline’s experience with Xperience 2026 is a reminder that digital transformation does not always begin with a big idea or a sophisticated solution. It can start with a simple question: <strong>Is there a better way to do something we do every day?</strong></p>
+            <p>Ameline’s experience with Xperience 2026 is a reminder that digital transformation does not always begin with a big idea or a sophisticated solution. It can start with a simple question:</p>
+            <div class="reflect-box">
+              <p class="reflect-label">💬 Worth asking</p>
+              <p class="reflect-quote">Is there a better way to do something we do every day?</p>
+            </div>
             <p>The next time a routine task feels unnecessarily repetitive, take a moment to look at the process. Could a step be simplified? Could information be brought together more easily? Could a reminder or update happen automatically?</p>
             <p>You don’t have to have all the answers before getting started. Be curious, try something small, and learn along the way. One less task to chase may seem like a small win, but many small improvements can add up to a smoother and more productive workday.</p>
           </div>
