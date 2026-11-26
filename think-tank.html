@@ -103,6 +103,30 @@
     .tt-verdict.v1 { background: rgba(75,127,11,0.14); color: #3F6B00; }
     .tt-verdict.v2 { background: rgba(224,161,0,0.18); color: #8A5A00; }
     .tt-verdict.v3 { background: rgba(192,57,43,0.12); color: #A12B1F; }
+    .tt-res { margin-top: 26px; padding: 22px 24px; border-radius: var(--radius); background: var(--card-bg); border: 1px solid var(--border); }
+    .tt-res-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lime); margin: 0 0 8px; }
+    .tt-res-title { font-size: 1.1rem; font-weight: 800; color: var(--white); margin: 0 0 10px; line-height: 1.3; }
+    .tt-res-lead { font-size: 0.9rem; line-height: 1.65; color: var(--white); margin: 0 0 16px; }
+    .tt-res-sub { font-size: 0.95rem; font-weight: 800; color: var(--white); margin: 0 0 10px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .tt-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .tt-res-col { padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); }
+    .tt-res-col.do { background: rgba(75,127,11,0.09); border-top: 4px solid #4B7F0B; }
+    .tt-res-col.dont { background: rgba(192,57,43,0.08); border-top: 4px solid #C0392B; }
+    .tt-res-h { font-size: 0.86rem; font-weight: 800; color: var(--white); margin: 0 0 6px; }
+    .tt-res-col ul { margin: 0; padding-left: 18px; font-size: 0.84rem; line-height: 1.6; color: var(--white); }
+    .tt-res-col li { margin-bottom: 4px; }
+    .tt-res-more summary { cursor: pointer; list-style: none; display: inline-block; font-size: 0.82rem; font-weight: 700; color: var(--lime); padding: 6px 0; }
+    .tt-res-more summary::-webkit-details-marker { display: none; }
+    .tt-res-more summary:hover { text-decoration: underline; }
+    .tt-res-more .when-open { display: none; }
+    .tt-res-more[open] .when-open { display: inline; }
+    .tt-res-more[open] .when-closed { display: none; }
+    .tt-res-body { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--border); }
+    .tt-res-body p { font-size: 0.86rem; line-height: 1.65; color: var(--white); margin: 0 0 10px; }
+    .tt-res-body .tt-res-h { margin-top: 14px; color: var(--lime); }
+    .tt-res-source { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted); }
+    .tt-res-source a { color: var(--lime); text-decoration: underline; }
+    @media (max-width: 640px) { .tt-res-grid { grid-template-columns: 1fr; } }
     .tt-closing { margin-top: 30px; padding: 26px 28px; border-radius: var(--radius); background: #16244F; color: #fff; }
     .tt-closing h4 { font-size: 1.1rem; font-weight: 800; color: #AADC32; margin: 0 0 12px; }
     .tt-closing p { font-size: 0.92rem; line-height: 1.65; color: rgba(255,255,255,0.88); margin: 0 0 12px; }
@@ -268,7 +292,7 @@
           <div class="tt-level l2"><div class="ico" aria-hidden="true">👀</div><strong>Over the loop</strong><span>A person monitors outputs and intervenes when necessary.</span></div>
           <div class="tt-level l3"><div class="ico" aria-hidden="true">🚦</div><strong>Out of the loop</strong><span>Outputs reach the audience without human review.</span></div>
         </div>
-      <p class="tt-p">For content published under the MOE name, human review is essential. AI-generated content can sound convincing while containing errors, so officers should verify facts, check translations and assess whether the material is suitable for its audience.</p>
+      <p class="tt-p">For content intended for publication under the MOE name, the workshop emphasised the importance of human review. AI-generated content can sound convincing while containing errors, so officers should verify facts, check translations and assess whether the material is suitable for its audience.</p>
       </div>
       <div class="tt-step">
         <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">3</div><div class="tt-step-title">Assess<span>Could the content raise ethical or disclosure concerns?</span></div></div>
@@ -280,11 +304,10 @@
           <div class="tt-tile"><div class="ico" aria-hidden="true">✍️</div><div><strong>Authorship</strong><span>Who created the content, and does it matter?</span></div></div>
         </div>
       <p class="tt-p">Not every use of AI needs to be disclosed. Grammar checks and formatting, for example, may not require it. But realistic AI-generated images, synthetic voices or content where authorship and authenticity matter may warrant disclosure.</p>
-      <p class="tt-p">When in doubt, consider whether telling the audience would build trust, or seek advice.</p>
       </div>
       <div class="tt-step">
         <div class="tt-step-head"><div class="tt-step-num" aria-hidden="true">4</div><div class="tt-step-title">Check<span>Can we use the output?</span></div></div>
-      <p class="tt-p">AI-generated content may resemble existing copyrighted work. Before publishing, check whether the output reproduces or closely imitates an existing work, and whether there is sufficient human creative or editorial contribution.</p>
+      <p class="tt-p">AI-generated content may resemble existing copyrighted work. Before publishing, check whether the output reproduces or closely imitates an existing work. Separately, consider whether there was sufficient human creative or editorial contribution if copyright protection for the final work matters.</p>
       <p class="tt-p">When working with vendors, ask whether AI was used, who owns the final output, where the content came from and who is responsible if copyright issues arise.</p>
       </div>
       <div class="tt-step">
@@ -303,6 +326,47 @@
         <h4>Keeping human judgement at the centre</h4>
         <p>AI can help officers work more efficiently and explore new ways of doing things. But when its outputs are used in our work, we still need to ask the right questions, assess the risks and take responsibility for the final result.</p>
         <p>The aim is not to avoid using AI, but to use it thoughtfully — with the right checks and human oversight in place. As the workshop reminds us: <strong>we cannot outsource judgement, but we can structure it.</strong></p>
+      </div>
+      <div class="tt-res">
+        <p class="tt-res-label">📎 Further reading from MDDI</p>
+        <h4 class="tt-res-title">AI-Generated Creative Content Guidelines</h4>
+        <p class="tt-res-lead">While AI offers valuable benefits for public communications work - enhancing efficiency and enabling more targeted messaging - it must be used responsibly. Communications officers should maintain human oversight, verify AI outputs, and be transparent about AI use to harness its advantages while mitigating risks like biases and errors. AI serves to augment, not replace, human judgement in maintaining public trust.</p>
+        <p class="tt-res-sub">Creating images, infographics and videos with AI: what to do and what to avoid</p>
+        <div class="tt-res-grid">
+          <div class="tt-res-col do">
+            <p class="tt-res-h">✅ Do</p>
+            <ul>
+              <li>Use AI for illustrations of objects, animals, buildings and backgrounds</li>
+              <li>Credit the AI when it is used</li>
+              <li>Have a person check every output for errors, typos and visual oddities</li>
+              <li>Set up SOPs for checks and clearance before AI-generated content goes public</li>
+              <li>Keep input data within the permitted security classification</li>
+            </ul>
+          </div>
+          <div class="tt-res-col dont">
+            <p class="tt-res-h">⛔ Avoid</p>
+            <ul>
+              <li>Using AI to generate real human faces or images of known people</li>
+              <li>Publishing AI output without human verification</li>
+              <li>Relying on tools that leave copyright risk with the end-user</li>
+              <li>Assuming the public is ready for AI-generated content without testing the waters</li>
+            </ul>
+          </div>
+        </div>
+        <details class="tt-res-more">
+          <summary><span class="when-closed">Read more ↓</span><span class="when-open">Show less ↑</span></summary>
+          <div class="tt-res-body">
+            <p class="tt-res-h">The case for using AI</p>
+            <p>The guidance does not recommend banning AI for creative work. Used well, it can speed up production of simple infographics and videos, increase volume and give design inspiration. But AI-generated assets always need editing before they are ready, so officers who can work with design software are still needed.</p>
+            <p class="tt-res-h">Copyright and reputational risk</p>
+            <p>Vendors are usually required to avoid IP infringement and to compensate the Government if they do, but reputational damage remains if a campaign is criticised. Illustrations carry lower risk, especially with carefully written prompts. Photos and videos carry much higher risk when known people or human faces are involved, because a real person’s face may be used without consent. Adobe Firefly is noted as the tool that appears to limit legal risk most, but agencies should still run their own checks before using any AI-generated content.</p>
+            <p class="tt-res-h">Authenticity and trust</p>
+            <p>The public values authenticity. Early trials of AI-generated content drew mixed reactions, so use discretion. Where AI-generated images could raise ethno-social issues, illustrations are a safer choice. Agencies that are not yet ready could start by using generative AI for internal communications only, and build confidence in small steps.</p>
+            <p class="tt-res-h">Quality control</p>
+            <p>AI is still prone to inaccuracies, from visual oddities to spelling errors. If AI is used to run checks, include instructions in the prompt to cite sources, and have a person verify the results.</p>
+          </div>
+        </details>
+        <p class="tt-res-source">Source: MDDI, <a href="https://sgdcs.sgnet.gov.sg/sites/MCI-commsinsiderportal/techincomms/Pages/Responsible-use-of-AI.aspx" target="_blank" rel="noopener">Responsible use of AI</a></p>
       </div>
       <div class="prev-issue-link">
         <a href="archive/oct-2026/think-tank.html#think-tank">↳ View other use case →</a>
