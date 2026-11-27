@@ -1463,7 +1463,7 @@
       <li><a href="frequency.html" data-page="frequency">📡 Frequency</a></li>
       <li><a href="launchpad.html" data-page="launchpad">🚀 Launchpad</a></li>
       <li><a href="think-tank.html" data-page="think-tank">💡 Think Tank</a></li>
-      <li><a href="toolbox.html" data-page="toolbox">🧰 Toolbox</a></li>
+      <li><a href="workedit.html" data-page="toolbox">🧰 Work Edit</a></li>
       <li><a href="in-the-field.html" data-page="in-the-field">💬 In the Field</a></li>
     </ul>
   </div>
@@ -1752,7 +1752,7 @@
       <li><a href="frequency.html">Frequency</a></li>
       <li><a href="launchpad.html">Launchpad</a></li>
       <li><a href="think-tank.html">Think Tank</a></li>
-      <li><a href="toolbox.html">Toolbox</a></li>
+      <li><a href="workedit.html">Work Edit</a></li>
       <li><a href="in-the-field.html">In the Field</a></li>
     </ul>
     <p class="footer-copy">© 2026 MOE Digital Excellence &amp; Products Division (DXD)</p>
@@ -1992,9 +1992,9 @@
 
   /* ─── CTRL+SHIFT: press the shortcut, jump to the next stop ── */
   (function () {
-    const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'toolbox.html', 'in-the-field.html'];
-    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'toolbox.html': 'Toolbox', 'in-the-field.html': 'In the Field' };
-    const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'toolbox.html', 'in-the-field': 'in-the-field.html' };
+    const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'workedit.html', 'in-the-field.html'];
+    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'workedit.html': 'Work Edit', 'in-the-field.html': 'In the Field' };
+    const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'workedit.html', 'in-the-field': 'in-the-field.html' };
     const currentFile = pageMap[document.body.dataset.page] || 'index.html';
     const nextFile = journey[(journey.indexOf(currentFile) + 1) % journey.length];
 

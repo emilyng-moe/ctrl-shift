@@ -212,7 +212,7 @@
       <li><a href="frequency.html" data-page="frequency">📡 Frequency</a></li>
       <li><a href="launchpad.html" data-page="launchpad">🚀 Launchpad</a></li>
       <li><a href="think-tank.html" data-page="think-tank">💡 Think Tank</a></li>
-      <li><a href="toolbox.html" data-page="toolbox">🧰 Toolbox</a></li>
+      <li><a href="workedit.html" data-page="toolbox">🧰 Work Edit</a></li>
       <li><a href="in-the-field.html" data-page="in-the-field">💬 In the Field</a></li>
     </ul>
   </div>
@@ -248,7 +248,7 @@
         <p class="story-subhead">From using AI to building a solution of his own</p>
         <p>Before AI-First, Jason was already comfortable using AI tools such as Copilot and Pair to draft emails, review submissions, summarise information and explore ideas. He was also used to refining prompts to get better results.</p>
         <p>But building an application from scratch was new territory. Although he had some basic HTML knowledge from his polytechnic days, he had never built a standalone application, much less one powered by AI.</p>
-        <p>As an AI Champion from CSB’s Contact Centre, Jason wanted to explore how AI could address a real challenge in customer service — quality assurance of customer email replies.</p>
+        <p>As an AI Champion from CSB’s Contact Centre, Jason wanted to explore how AI could address a real challenge in customer service — quality assurance of email replies to customer.</p>
         <p>With officers handling a high volume of enquiries, supervisors can only review a sample of replies. The team saw an opportunity for AI to help check replies against approved knowledge sources, flagging those that may be inaccurate, incomplete or require closer attention.</p>
         <p>This led to the CSB Email Checker, a prototype designed to validate customer enquiries and officers’ replies in batches, allowing supervisors to focus on flagged cases, complex issues and staff coaching.</p>
         <blockquote class="story-inline-quote">“The goal is not to replace the supervisor’s judgement. It is to make their time go further.”</blockquote>
@@ -298,7 +298,7 @@
 
 <div class="container">
   <div class="journey-nav">
-    <a href="toolbox.html" class="journey-link">← Toolbox</a>
+    <a href="workedit.html" class="journey-link">← Work Edit</a>
     <a href="index.html" class="journey-link home">🏠 Back to Home</a>
     <span class="journey-link disabled">Next →</span>
   </div>
@@ -314,7 +314,7 @@
       <li><a href="frequency.html">Frequency</a></li>
       <li><a href="launchpad.html">Launchpad</a></li>
       <li><a href="think-tank.html">Think Tank</a></li>
-      <li><a href="toolbox.html">Toolbox</a></li>
+      <li><a href="workedit.html">Work Edit</a></li>
       <li><a href="in-the-field.html">In the Field</a></li>
     </ul>
     <p class="footer-copy">© 2026 MOE Digital Excellence &amp; Products Division (DXD)</p>
@@ -341,9 +341,9 @@
 
   /* ─── CTRL+SHIFT: press the shortcut, jump to the next stop ── */
   (function () {
-    const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'toolbox.html', 'in-the-field.html'];
-    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'toolbox.html': 'Toolbox', 'in-the-field.html': 'In the Field' };
-    const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'toolbox.html', 'in-the-field': 'in-the-field.html' };
+    const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'workedit.html', 'in-the-field.html'];
+    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'workedit.html': 'Work Edit', 'in-the-field.html': 'In the Field' };
+    const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'workedit.html', 'in-the-field': 'in-the-field.html' };
     const currentFile = pageMap[document.body.dataset.page] || 'index.html';
     const nextFile = journey[(journey.indexOf(currentFile) + 1) % journey.length];
 
