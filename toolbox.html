@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toolbox | ctrl+shift</title>
+  <title>Work Edit | ctrl+shift</title>
   <style>
     :root {
       --navy:   #16244F;
@@ -107,6 +107,47 @@
     .tb-problem-label.tool { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--border); }
     .tb-problem-title { margin: 0 0 6px; font-size: 1.2rem; font-weight: 800; line-height: 1.3; color: var(--white); }
     .tb-problem-text { margin: 0; font-size: 0.88rem; line-height: 1.6; color: var(--muted); }
+    .wk-label { margin: 0 0 10px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lime); }
+    .wk-hero { padding: 44px 40px; }
+    .wk-hero-title { margin: 0 0 18px; font-size: clamp(1.25rem, 3vw, 1.65rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--white); }
+    .wk-hero-text { margin: 0 0 28px; font-size: 1.05rem; line-height: 1.75; color: var(--white); max-width: 62ch; }
+    .wk-familiar { padding: 20px 22px; border-radius: 14px; background: rgba(170,220,50,0.10); border: 1px solid rgba(170,220,50,0.4); }
+    .wk-familiar-title { margin: 0 0 12px; font-weight: 800; font-size: 0.95rem; color: var(--white); }
+    .wk-familiar ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+    .wk-familiar li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; line-height: 1.4; color: var(--white); }
+    .wk-familiar li span { flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
+    .wk-rethink, .wk-cap { padding: 32px 36px; }
+    .wk-title { margin: 0 0 12px; font-size: 1.4rem; font-weight: 800; line-height: 1.25; color: var(--white); }
+    .wk-text { margin: 0 0 14px; font-size: 0.92rem; line-height: 1.7; color: var(--white); }
+    .wk-flows { display: grid; gap: 14px; margin-top: 20px; }
+    .wk-flow { padding: 16px 18px; border-radius: 14px; border: 1px solid var(--border); }
+    .wk-flow.today { background: rgba(22,36,79,0.05); }
+    .wk-flow.next { background: rgba(170,220,50,0.12); border-color: rgba(170,220,50,0.55); }
+    .wk-flow-label { margin: 0 0 10px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .wk-flow.next .wk-flow-label { color: var(--lime); }
+    .wk-flow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .wk-step { padding: 9px 16px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; background: var(--card-bg); border: 1px solid var(--border); color: var(--white); }
+    .wk-flow.next .wk-step { border-color: rgba(75,127,11,0.55); }
+    .wk-flow-row i { font-style: normal; font-weight: 800; color: var(--muted); }
+    .wk-flow.next .wk-flow-row i { color: var(--lime); }
+    .wk-cap-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .wk-logo { width: 36px; height: 36px; border-radius: 9px; display: block; box-shadow: 0 1px 6px rgba(0,0,0,0.15); }
+    .wk-cap-sub { margin: 2px 0 0; font-size: 0.78rem; color: var(--muted); }
+    .wk-cap-lead { margin: 0 0 14px; font-size: 1rem; font-weight: 600; line-height: 1.6; color: var(--white); }
+    .wk-cap .opus-new { margin: 6px 0 16px; }
+    .wk-cta { display: inline-block; margin-top: 16px; font-size: 0.86rem; font-weight: 700; color: var(--lime); text-decoration: none; border-bottom: 1px solid transparent; }
+    .wk-cta:hover { border-bottom-color: var(--lime); }
+    .wk-think { padding: 28px 32px; border-radius: var(--radius); background: rgba(170,220,50,0.10); border-left: 5px solid #AADC32; }
+    .wk-think-q { margin: 0; font-size: 1.2rem; font-weight: 700; font-style: italic; line-height: 1.5; color: var(--white); }
+    @media (max-width: 640px) { .wk-hero { padding: 28px 22px; } .wk-rethink, .wk-cap { padding: 24px 20px; } .wk-familiar ul { grid-template-columns: 1fr; } }
+    .wk-picker { margin: 6px 0 4px; }
+    .wk-picks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 14px; }
+    .wk-pick { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--card-bg); }
+    .wk-pick-ic { font-size: 1.3rem; line-height: 1.2; }
+    .wk-pick-name { margin: 0 0 3px; font-size: 0.9rem; font-weight: 800; color: var(--white); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .wk-badge { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: rgba(170,220,50,0.25); color: #3F6B00; }
+    .wk-pick-use { margin: 0; font-size: 0.8rem; line-height: 1.55; color: var(--muted); }
+    @media (max-width: 640px) { .wk-picks { grid-template-columns: 1fr; } }
     .tb-feat-odd .opus-feat:last-child { grid-column: 1 / -1; }
     .tb-rule { font-size: 0.86rem; line-height: 1.6; padding: 14px 18px; border-left: 3px solid var(--lime); background: rgba(170,220,50,0.07); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
     .tb-p { font-size: 0.86rem; line-height: 1.6; margin: 0 0 10px; color: rgba(255,255,255,0.78); }
@@ -262,7 +303,7 @@
       <li><a href="frequency.html" data-page="frequency">📡 Frequency</a></li>
       <li><a href="launchpad.html" data-page="launchpad">🚀 Launchpad</a></li>
       <li><a href="think-tank.html" data-page="think-tank">💡 Think Tank</a></li>
-      <li><a href="toolbox.html" data-page="toolbox">🧰 Toolbox</a></li>
+      <li><a href="toolbox.html" data-page="toolbox">🧰 Work Edit</a></li>
       <li><a href="in-the-field.html" data-page="in-the-field">💬 In the Field</a></li>
     </ul>
   </div>
@@ -277,67 +318,102 @@
 <section id="toolbox" class="section reveal light has-bc">
 <div class="container breadcrumb">
   <div class="breadcrumb-row">
-    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Toolbox</span></div>
+    <div class="breadcrumb-trail"><a href="index.html">ctrl<span class="plus-accent">+</span>shift</a><span class="sep">/</span><span class="current">Work Edit</span></div>
     <a href="archive/oct-2026/toolbox.html" class="breadcrumb-archive-btn">View Oct Issue &rarr;</a>
   </div>
 </div>
   <div class="container">
     <div class="section-header">
-      <p class="section-label">🧰 Toolbox</p>
-      <h2 class="section-title">Know your tools before you need them.</h2>
+      <p class="section-label">🧰 Work Edit</p>
+      <h2 class="section-title">Familiar challenges. New possibilities.</h2>
+      <p class="section-desc">A closer look at the everyday challenges we face at work, and what AI could make possible.</p>
     </div>
 
     <div class="spotlight-grid">
 
-      <div class="card spotlight-desk">
-        <div class="tb-problem">
-          <p class="tb-problem-label">The problem</p>
-          <p class="tb-problem-title">Doing the same task again and again?</p>
-          <p class="tb-problem-text">Preparing a weekly update, answering the same queries, turning notes into drafts. You know the steps, you use the same sources, and you still have to explain it all to Copilot each time.</p>
+      <div class="card wk-hero">
+        <p class="wk-label">This month’s challenge</p>
+        <h3 class="wk-hero-title">Why are we starting from scratch every time?</h3>
+        <p class="wk-hero-text">It’s Friday again. You’re preparing the same weekly update, referring to the same documents and following the same format. Yet, every time you turn to AI, you find yourself explaining the task all over again.</p>
+        <div class="wk-familiar">
+          <p class="wk-familiar-title">Sound familiar?</p>
+          <ul>
+            <li><span aria-hidden="true">📊</span>Preparing recurring reports and updates</li>
+            <li><span aria-hidden="true">❓</span>Responding to frequently asked queries</li>
+            <li><span aria-hidden="true">📝</span>Turning meeting notes into standardised drafts</li>
+            <li><span aria-hidden="true">🔁</span>Repeating the same instructions to AI</li>
+          </ul>
         </div>
-        <div class="tb-tool">
-        <p class="tb-problem-label">The tool</p>
-        <div class="tool-header">
-        <div class="desk-header-left">
-          <a href="https://www.office.com/" target="_blank" rel="noopener" style="flex-shrink:0; display:block; line-height:0;"><img src="data:image/png;base64,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Yf78+YgIs2bNYsWKFZx44onV53/605/y27/92zz++OMsWbIEay2ve93rAMjznNNPP51XvvKVnHHGGbz//e8/ZC941m5PXFq6O/kFKBlmEuiEPW7YBzA4OMgNN9zAli1bOP74OJx71Weu6knO9sw4Ae69915WrlxJnuece+65/MHv/wGqSq0W70910kknEULgE5/4BFdffTUTExOcf/75fPzjHwdgy5Yt3HXXXXzta1/j1FNPZdGiRVx77bWEEHjf+97HOeecs89zOKhtrDV5qcat0KO0hRA0BFXNmzr5v9+vxf98qeofXaK/tWSeAjoyNKS//OUvVVX1ve99rwJ6xZ9doaqq3/72txXQ8847r/q+l73sZfu8ee6HPvSh6rglS5boZz7zGVVVXbVqlfb19VXHXX/99eq911WrVqkxZq/ftXDhQt21a5eGEPTyyy+vXr/vvvuiAIv9ijCoqnrvdWpq6sLKAzJrxmbYTzgEF0jLTlwD+9p30M4VimKfeCkifPFvvshLXvISPvCBD1R0tNza7Tbz5s3jxhtv5Ktf/Srz58/HWou1lm9961uMj48TQuCM089gzZo1AAwMDBBCoF6vY61l48aNGGNwzjF79mze+9738pGPfITFixdjra2SvDzPp+UAB7uFENoisrmKAT74HSEENaZaWS1HHoJiL1c1UDvvNUy94Z00v//305ZhVfcTSv/farVYsWLFXt8vMfryyy8HYN26dXzuc58D4FWvehV9fX0YY5icmuT+5fdTFAVLlizhgx/8INdccw0AF110ESEEnnrqKZrNJl/4wheYM2cOp512WkVNL774YkZGRhAR1q1bN9PLH221Wtu7EDQ2Nr/T6ezodZOjuYUQNKjXqVu+pq9fuqCCoA0bNqiq6jvf+U4l3vharbXqnFNAzznnnOo7Xv7ylyugN954Y/Xarbfeqt/4xjd0bGxMVVUfeughHRkZUUCvu+666rdvvvlmvf3226vPlZD36U9/unrt9ttv15tuuknHx8dVVfWOO+7QLMsqqDpACPKqqq28taIyclUVVZVWq3Xf0Y4D087Me1VVfeMb3hAVMDKiDz/8sIYQ9LLLLlNArbWxnZIu+uyzz9aiKNR7rxdccIECOmvWLP3a175WCb0U8p133qlnnXVW9fm+vj790pe+VAlUVXX79u36sY99rPqtWq2mV199tW7fvr06pigK/c53vqPHHXfctHM5QAXkqhqmOq0bkuytVA9qazY/32g0/oRn6ckZIcQpnEve9CZ+cOutOOdYsmQJjUaDxx57jF27du3xmb6+Pk444QRUlY0bN04ruC1evJjjjz+eWq3Gk08+yerVq6vkqRe2yoJeURSsWbOGzZs3V9SyPG7BggWcdtppNBoNHnnkkQp6eo+79957WbZsWVWq2MfmAdvynd/pc/W/U1VXPpqVvJlf9GxBUK/lvCvBTa1Wm8Y+UiNjj393P0ZEKk/Z/T1rbXWMMWavx/Ues6/vMsZUewmJJWMrPXmfDKgoxqemnl6cFGcqCFLVRqfdeTAd6J8tBdx55517XOi+6GUpoL0dY4xR55w65/YQau9eHld+T/n63n5nX7/1jne845mEX8FP4Tvfq4TfwyYsQNGa+tNfhThw00036YknnrhX65vJvjeh7v7e7vuBfO/g4KC+5z3v0Z07d6a8JjxjAG7mzf/SK/PyGTIl7Rzx3q+x1h7Ls/Qgn7KhMTU1xfr16w9PpnmEznPu3LksXrz4QA73gC1Ccbcz7hUxfEiYlnh1H2PV/P1G1vgbnsXHWD1DIPuV2sp+xT7XLZOGqwOmCMVFWZb9qPcxVr0KKFulJnj/Y2Pty3gWn6a0e5L1q7oZ84wgUQAuL/Kv1LLa7+7+YM+9Psqw1Wqd4py7z1o7wnPPFDskZwasD8Xa0Z27ls2dO3eCfT3KMPHaoKq20Wg8VBTF73QVFPQ5WR607ANggw+jvghvnTdv3liSse63HF0+erXRaHy35f0H4zEGIDwn1IOxfGtC8BNBw6X1ev2BBD3hgPoBSQmuz7nrO53O74ZQlMcWz8n2GcNyAVgCO0PQN2dZtvygH+iclFCoqqvX618Jof3mEMLWxIrihNVz297wXsG4EPwDnaJzUZZly5cvX+7291z5Zyw799SKTshq2V9bY3+rJIuJIBl+cx/2XI76pqX0ShH8lyfMxMdmy+zR/Vn+ASugN0cAaBftt1vMx611Z+2mfUj3Nze/3gLXnp6J7elF/MhL+9N92dAdvYzygPoiB6gEU1Kohx56qL5kyZL/4axcrsiF1rr6byTae78LuD2ofjXLslt7SgxB9hzTPjQF7M0bAMZaY6dnJnsVyIUKL3BijxMYEpGaiPxaPBA6hJADOeiol/BYUHM/oj/us8WPRQYeL0vTIXzTirz1oCa1ZoTdKWs2e9P06OjonFqtNmiMGcjzPPtPL/0aZJq1QwhTrVZrbM6cObv2ggzyTFh/WBWwlxMo4cn/usNOj/FJMsBDYoT/H9xMXG0MabNPAAAAAElFTkSuQmCC" alt="Microsoft 365 Copilot logo" style="height:48px; width:48px; border-radius:11px; display:block; box-shadow:0 2px 10px rgba(0,0,0,0.18);"></a>
-          <div class="desk-name-block">
-            <div style="font-size:1.05rem; font-weight:800;">Microsoft 365 Copilot</div>
-            <div class="desk-subtitle">Copilot Agents: build an AI helper around the work you do repeatedly.</div>
+      </div>
+
+      <div class="card wk-rethink">
+        <p class="wk-label">Rethink the workflow</p>
+        <h3 class="wk-title">What if you only had to explain it once?</h3>
+        <p class="wk-text">For tasks that follow a predictable process, could we move beyond one-off conversations and give AI a more consistent understanding of the task, instructions and relevant information?</p>
+        <div class="wk-flows">
+          <div class="wk-flow today">
+            <p class="wk-flow-label">The way we work today</p>
+            <div class="wk-flow-row"><span class="wk-step">Explain</span><i aria-hidden="true">→</i><span class="wk-step">Prompt</span><i aria-hidden="true">→</i><span class="wk-step">Review</span><i aria-hidden="true">→</i><span class="wk-step">Repeat</span></div>
+          </div>
+          <div class="wk-flow next">
+            <p class="wk-flow-label">What we could explore</p>
+            <div class="wk-flow-row"><span class="wk-step">Set up once</span><i aria-hidden="true">→</i><span class="wk-step">Reuse</span><i aria-hidden="true">→</i><span class="wk-step">Refine</span></div>
           </div>
         </div>
-        <a href="https://www.office.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="flex-shrink:0;">Open M365 →</a>
+      </div>
+
+      <div class="card wk-cap">
+        <p class="wk-label">A capability worth exploring</p>
+        <div class="wk-cap-head">
+          <img src="data:image/png;base64,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Yf78+YgIs2bNYsWKFZx44onV53/605/y27/92zz++OMsWbIEay2ve93rAMjznNNPP51XvvKVnHHGGbz//e8/ZC941m5PXFq6O/kFKBlmEuiEPW7YBzA4OMgNN9zAli1bOP74OJx71Weu6knO9sw4Ae69915WrlxJnuece+65/MHv/wGqSq0W70910kknEULgE5/4BFdffTUTExOcf/75fPzjHwdgy5Yt3HXXXXzta1/j1FNPZdGiRVx77bWEEHjf+97HOeecs89zOKhtrDV5qcat0KO0hRA0BFXNmzr5v9+vxf98qeofXaK/tWSeAjoyNKS//OUvVVX1ve99rwJ6xZ9doaqq3/72txXQ8847r/q+l73sZfu8ee6HPvSh6rglS5boZz7zGVVVXbVqlfb19VXHXX/99eq911WrVqkxZq/ftXDhQt21a5eGEPTyyy+vXr/vvvuiAIv9ijCoqnrvdWpq6sLKAzJrxmbYTzgEF0jLTlwD+9p30M4VimKfeCkifPFvvshLXvISPvCBD1R0tNza7Tbz5s3jxhtv5Ktf/Srz58/HWou1lm9961uMj48TQuCM089gzZo1AAwMDBBCoF6vY61l48aNGGNwzjF79mze+9738pGPfITFixdjra2SvDzPp+UAB7uFENoisrmKAT74HSEENaZaWS1HHoJiL1c1UDvvNUy94Z00v//305ZhVfcTSv/farVYsWLFXt8vMfryyy8HYN26dXzuc58D4FWvehV9fX0YY5icmuT+5fdTFAVLlizhgx/8INdccw0AF110ESEEnnrqKZrNJl/4wheYM2cOp512WkVNL774YkZGRhAR1q1bN9PLH221Wtu7EDQ2Nr/T6ezodZOjuYUQNKjXqVu+pq9fuqCCoA0bNqiq6jvf+U4l3vharbXqnFNAzznnnOo7Xv7ylyugN954Y/Xarbfeqt/4xjd0bGxMVVUfeughHRkZUUCvu+666rdvvvlmvf3226vPlZD36U9/unrt9ttv15tuuknHx8dVVfWOO+7QLMsqqDpACPKqqq28taIyclUVVZVWq3Xf0Y4D087Me1VVfeMb3hAVMDKiDz/8sIYQ9LLLLlNArbWxnZIu+uyzz9aiKNR7rxdccIECOmvWLP3a175WCb0U8p133qlnnXVW9fm+vj790pe+VAlUVXX79u36sY99rPqtWq2mV199tW7fvr06pigK/c53vqPHHXfctHM5QAXkqhqmOq0bkuytVA9qazY/32g0/oRn6ckZIcQpnEve9CZ+cOutOOdYsmQJjUaDxx57jF27du3xmb6+Pk444QRUlY0bN04ruC1evJjjjz+eWq3Gk08+yerVq6vkqRe2yoJeURSsWbOGzZs3V9SyPG7BggWcdtppNBoNHnnkkQp6eo+79957WbZsWVWq2MfmAdvynd/pc/W/U1VXPpqVvJlf9GxBUK/lvCvBTa1Wm8Y+UiNjj393P0ZEKk/Z/T1rbXWMMWavx/Ues6/vMsZUewmJJWMrPXmfDKgoxqemnl6cFGcqCFLVRqfdeTAd6J8tBdx55517XOi+6GUpoL0dY4xR55w65/YQau9eHld+T/n63n5nX7/1jne845mEX8FP4Tvfq4TfwyYsQNGa+tNfhThw00036YknnrhX65vJvjeh7v7e7vuBfO/g4KC+5z3v0Z07d6a8JjxjAG7mzf/SK/PyGTIl7Rzx3q+x1h7Ls/Qgn7KhMTU1xfr16w9PpnmEznPu3LksXrz4QA73gC1Ccbcz7hUxfEiYlnh1H2PV/P1G1vgbnsXHWD1DIPuV2sp+xT7XLZOGqwOmCMVFWZb9qPcxVr0KKFulJnj/Y2Pty3gWn6a0e5L1q7oZ84wgUQAuL/Kv1LLa7+7+YM+9Psqw1Wqd4py7z1o7wnPPFDskZwasD8Xa0Z27ls2dO3eCfT3KMPHaoKq20Wg8VBTF73QVFPQ5WR607ANggw+jvghvnTdv3liSse63HF0+erXRaHy35f0H4zEGIDwn1IOxfGtC8BNBw6X1ev2BBD3hgPoBSQmuz7nrO53O74ZQlMcWz8n2GcNyAVgCO0PQN2dZtvygH+iclFCoqqvX618Jof3mEMLWxIrihNVz297wXsG4EPwDnaJzUZZly5cvX+7291z5Zyw799SKTshq2V9bY3+rJIuJIBl+cx/2XI76pqX0ShH8lyfMxMdmy+zR/Vn+ASugN0cAaBftt1vMx611Z+2mfUj3Nze/3gLXnp6J7elF/MhL+9N92dAdvYzygPoiB6gEU1Kohx56qL5kyZL/4axcrsiF1rr6byTae78LuD2ofjXLslt7SgxB9hzTPjQF7M0bAMZaY6dnJnsVyIUKL3BijxMYEpGaiPxaPBA6hJADOeiol/BYUHM/oj/us8WPRQYeL0vTIXzTirz1oCa1ZoTdKWs2e9P06OjonFqtNmiMGcjzPPtPL/0aZJq1QwhTrVZrbM6cObv2ggzyTFh/WBWwlxMo4cn/usNOj/FJMsBDYoT/H9xMXG0MabNPAAAAAElFTkSuQmCC" alt="Microsoft 365 Copilot logo" class="wk-logo">
+          <div>
+            <h3 class="wk-title" style="margin:0;">Copilot Agents</h3>
+            <p class="wk-cap-sub">Available in Microsoft 365 Copilot</p>
+          </div>
         </div>
-        </div>
-        <p class="desk-desc"><strong>Go beyond one-off prompts.</strong> You may already use Microsoft 365 Copilot to summarise documents, draft emails or find information. Copilot Agents take this a step further. You can use Microsoft’s ready-made agents for particular types of work, or create your own agent with instructions and selected knowledge sources so it can support a recurring task in a more consistent way.</p>
-        <p class="desk-desc">Think of it as moving from “help me with this task” to “here’s how I usually do this task.”</p>
+        <p class="wk-cap-lead">Create a dedicated AI assistant with predefined instructions and selected knowledge sources to support recurring tasks.</p>
+        <p class="wk-text"><strong>Go beyond one-off prompts.</strong> You may already use Microsoft 365 Copilot to summarise documents, draft emails or find information. Copilot Agents take this a step further by allowing you to create a dedicated AI assistant for the work you do repeatedly.</p>
+        <p class="wk-text">You can use Microsoft’s ready-made agents for particular types of work, or create your own agent with instructions and selected knowledge sources so it can support a recurring task in a more consistent way. Think of it as moving from “help me with this task” to “here’s how I usually do this task.”</p>
         <div class="opus-new">
-          <p class="opus-new-label">What can you do with Copilot Agents?</p>
+          <p class="opus-new-label">Back to that Friday update: what could you do with an agent?</p>
           <div class="opus-feat-grid" style="margin-top:12px;">
-          <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">🔎</span><div><h4>Choose a ready-made specialist</h4><p>Microsoft-built agents such as Researcher and Analyst are designed for more focused tasks, from investigating a topic to analysing information across files.</p></div></div>
-          <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">🛠️</span><div><h4>Build an agent for your own work</h4><p>With Agent Builder, you can create one by starting from a template, describing what you want in plain language, or configuring it yourself.</p></div></div>
-          <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">📚</span><div><h4>Give it relevant knowledge</h4><p>Configure knowledge sources so the agent works with information relevant to the job rather than relying only on what you explain in each prompt. Sources can include SharePoint, OneDrive, email and websites.</p></div></div>
-          <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">📋</span><div><h4>Set instructions once</h4><p>Tell the agent the task, how it should approach it and what kind of output you want. Useful for a recurring role or process where you would otherwise keep repeating similar instructions.</p></div></div>
+            <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">📋</span><div><h4>Set instructions once</h4><p>Tell the agent the task, how it should approach it and what kind of output you want, so you no longer repeat similar instructions each time you start a recurring task.</p></div></div>
+            <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">📚</span><div><h4>Connect it to knowledge that stays current</h4><p>Configure knowledge sources so the agent works with information relevant to the task. For example, connect it to files or folders in SharePoint or OneDrive so it can work from that source as the content is updated, instead of you having to upload the latest version each time.</p></div></div>
+            <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">🛠️</span><div><h4>Build an agent for your own work</h4><p>With Agent Builder, you can create one by starting from a template, describing what you want in plain language, or configuring it yourself.</p></div></div>
+            <div class="opus-feat"><span class="opus-feat-ic" aria-hidden="true">🔎</span><div><h4>Choose a ready-made specialist</h4><p>Not ready to build? Microsoft-built agents such as Researcher and Analyst are designed for more focused tasks, from investigating a topic to analysing information across files.</p></div></div>
           </div>
         </div>
-        <div class="tb-rule"><strong>Quick rule of thumb:</strong> don’t build an agent just because you can. If a normal Copilot Chat prompt gets the job done, start there. Agent Builder makes more sense when you need repeatable instructions, selected knowledge and consistent behaviour.</div>
+        <div class="wk-picker">
+          <p class="opus-new-label">Which tool should you use?</p>
+          <div class="wk-picks">
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">💬</span><div><p class="wk-pick-name">Copilot Chat</p><p class="wk-pick-use">Use when you have a one-off task and a good prompt can get the job done.</p></div></div>
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">💡</span><div><p class="wk-pick-name">Idea Coach<span class="wk-badge">Copilot Agent</span></p><p class="wk-pick-use">Use when you have a starting idea and want help exploring, shaping or developing it further.</p></div></div>
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">✍️</span><div><p class="wk-pick-name">Prompt Coach<span class="wk-badge">Copilot Agent</span></p><p class="wk-pick-use">Use when you know what you want Copilot to do but want help improving how you ask.</p></div></div>
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">🔎</span><div><p class="wk-pick-name">Researcher<span class="wk-badge">Copilot Agent</span></p><p class="wk-pick-use">Use when you need to investigate a topic in depth, bring together information from multiple sources and produce a well-structured research output.</p></div></div>
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">📊</span><div><p class="wk-pick-name">Analyst<span class="wk-badge">Copilot Agent</span></p><p class="wk-pick-use">Use when you need to work through data, identify patterns, analyse information or turn complex data into useful insights.</p></div></div>
+          <div class="wk-pick"><span class="wk-pick-ic" aria-hidden="true">🛠️</span><div><p class="wk-pick-name">Copilot Build-Your-Own Agent</p><p class="wk-pick-use">Build your own when the work is recurring and you need repeatable instructions, selected knowledge sources and more consistent behaviour.</p></div></div>
+          </div>
+          <div class="tb-rule"><strong>Quick rule of thumb</strong><br>Start with the simplest tool that gets the job done. Move to Researcher or Analyst when the task needs deeper specialist work, and build your own agent when the work is recurring and you need consistency.</div>
+        </div>
+        <a href="https://www.office.com/" target="_blank" rel="noopener" class="wk-cta">Explore this capability →</a>
       </div>
 
       <div class="card tip-card">
         <p class="tip-label">🎯 Try this prompt</p>
         <p style="margin-bottom:10px; font-size:0.82rem; color:var(--muted);">Turn a recurring task into your own Copilot Agent</p>
         <p class="tb-h">1. Pick a repeatable task</p>
-        <p class="tb-p">A good starting point is something where:</p>
+        <p class="tb-p">A good starting point is a task where:</p>
         <ul class="tb-list">
           <li>you do roughly the same task each time;</li>
           <li>you regularly refer to the same sources; and</li>
           <li>you usually follow similar steps or produce a similar output.</li>
         </ul>
         <p class="tb-h">2. Open Agent Builder</p>
-        <p class="tb-p">In Microsoft 365 Copilot, go to Agents and select Create agent / New agent. Agent Builder is available from the Agents area of Microsoft 365 Copilot.</p>
+        <p class="tb-p">In Microsoft 365 Copilot, go to Agents and select New Agent. Agent Builder is available from the Agents area of Microsoft 365 Copilot.</p>
         <p class="tb-h">3. Tell Agent Builder what you want</p>
-        <p class="tb-p">Copy, paste and customise this:</p>
+        <p class="tb-p">Copy, paste and customise the prompt below:</p>
         <div class="prompt-box opus-prompt" id="opusPrompt">
-          <p class="prompt-intro"><em>I want to create an agent that supports my work. The agent should help me with [DESCRIBE YOUR RECURRING TASK], using the reference materials and information I provide.</em></p>
+          <p class="prompt-intro"><em>I want to create an agent to support a recurring task in my work. The agent should help me with [DESCRIBE YOUR RECURRING TASK], using the reference materials and information I provide.</em></p>
           <p class="prompt-intro"><em>For each task, the agent should:</em></p>
           <ol class="opus-prompt-list">
             <li><strong>Review the information</strong> – Examine the relevant documents, emails, meeting notes, spreadsheets or other materials I provide.</li>
@@ -353,18 +429,23 @@
         <button type="button" class="opus-copy" onclick="copyOpusPrompt(this)">Copy prompt</button>
         <p class="tb-p" style="margin-top:14px;"><strong>Customise the prompt:</strong> Replace the bracketed sections with details of your own recurring task. You can also add specific instructions, preferred output formats or examples of past work to help the agent produce more consistent results.</p>
         <p class="tb-h">4. Test before relying on it</p>
-        <p class="tb-p">Try the agent against a task you already know well. Check whether it:</p>
+        <p class="tb-p">Test the agent on a task you already know well. Check whether it:</p>
         <ul class="tb-list">
           <li>picks up the right information;</li>
           <li>follows your requested structure;</li>
           <li>flags gaps rather than filling them in; and</li>
           <li>produces something you would actually use.</li>
         </ul>
-        <p class="tb-p">Then refine its instructions.</p>
+        <p class="tb-p">Then refine its instructions and test it again.</p>
+      </div>
+
+      <div class="wk-think">
+        <p class="wk-label">Something to think about</p>
+        <p class="wk-think-q">Which recurring task in your work requires you to give the same instructions over and over again?</p>
       </div>
 
       <div class="prev-issue-link">
-        <a href="archive/oct-2026/toolbox.html#toolbox">↳ View other featured tools →</a>
+        <a href="archive/oct-2026/toolbox.html#toolbox">↳ View other spotlights →</a>
       </div>
 
     </div>
@@ -497,7 +578,7 @@
       <li><a href="frequency.html">Frequency</a></li>
       <li><a href="launchpad.html">Launchpad</a></li>
       <li><a href="think-tank.html">Think Tank</a></li>
-      <li><a href="toolbox.html">Toolbox</a></li>
+      <li><a href="toolbox.html">Work Edit</a></li>
       <li><a href="in-the-field.html">In the Field</a></li>
     </ul>
     <p class="footer-copy">© 2026 MOE Digital Excellence &amp; Products Division (DXD)</p>
@@ -541,7 +622,7 @@
   /* ─── CTRL+SHIFT: press the shortcut, jump to the next stop ── */
   (function () {
     const journey = ['index.html', 'frequency.html', 'launchpad.html', 'think-tank.html', 'toolbox.html', 'in-the-field.html'];
-    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'toolbox.html': 'Toolbox', 'in-the-field.html': 'In the Field' };
+    const labels = { 'index.html': 'Home', 'frequency.html': 'Frequency', 'launchpad.html': 'Launchpad', 'think-tank.html': 'Think Tank', 'toolbox.html': 'Work Edit', 'in-the-field.html': 'In the Field' };
     const pageMap = { home: 'index.html', frequency: 'frequency.html', launchpad: 'launchpad.html', 'think-tank': 'think-tank.html', toolbox: 'toolbox.html', 'in-the-field': 'in-the-field.html' };
     const currentFile = pageMap[document.body.dataset.page] || 'index.html';
     const nextFile = journey[(journey.indexOf(currentFile) + 1) % journey.length];
